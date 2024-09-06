@@ -28,7 +28,7 @@ jobs:
               run: sudo apt-get install clang-format
 
             - name: Run clang-format
-              run: find . -name '*.c' -o -name '*.h' | xargs clang-format -i
+              run: find . -name '*.c' -o -name '*.h' | xargs clang-format -i -style=file
 
             - name: Commit changes
               run: |
