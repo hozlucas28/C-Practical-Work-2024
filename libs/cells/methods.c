@@ -1,2 +1,2 @@
 
-void emptyFn(){}
+void emptyFn() {}
