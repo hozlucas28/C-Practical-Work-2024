@@ -9,4 +9,4 @@
 #include "cells/constructors.h"
 #include "cells/methods.h"
 
-#endif // MAIN_H_INCLUDED
+#endif  // MAIN_H_INCLUDED
