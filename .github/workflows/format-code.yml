@@ -5,6 +5,9 @@ on:
         branches:
             - Master
             - develop
+        paths:
+            - '**.c'
+            - '**.h'
     push:
         branches:
             - Master
