@@ -1,6 +1,8 @@
 {
     "C_Cpp.autocompleteAddParentheses": true,
     "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4 }",
+    "C_Cpp.clang_format_style": "file",
+    "C_Cpp.doxygen.generatedStyle": "/**",
     "cSpell.caseSensitive": true,
     "cSpell.language": "en,es-ES,es,en-GB,en-US,lorem",
     "diffEditor.ignoreTrimWhitespace": true,
@@ -14,7 +16,6 @@
     "files.autoSaveDelay": 1000,
     "files.trimTrailingWhitespace": true,
     "markdown-preview-github-styles.colorTheme": "dark",
-    "workbench.startupEditor": "none",
-    "C_Cpp.doxygen.generatedStyle": "/**",
-    "terminal.integrated.defaultProfile.windows": "Command Prompt"
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "workbench.startupEditor": "none"
 }
