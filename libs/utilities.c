@@ -1,3 +1,8 @@
+#include <stdio.h>
+
+
+
+
 
 int getStrLength(char* str) {
     int length = 0;
@@ -8,4 +13,10 @@ int getStrLength(char* str) {
     };
 
     return length;
+}
+
+void sayhi(){
+
+printf("hello guys");
+
 }

@@ -17,4 +17,6 @@
  */
 int getStrLength(char* str);
 
+void sayhi();
+
 #endif  // UTILITIES_H_INCLUDED
