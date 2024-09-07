@@ -49,15 +49,15 @@ Este repositorio contiene el trabajo práctico de la materia Tópicos de Program
 
 2. Abre los archivos [src.cbp](./src/src.cbp) (proyecto principal) y [libs.cbp](./libs/libs.cbp) (proyecto con las librerías) con la aplicación CodeBlocks. Estos archivos se encuentran dentro del repositorio clonado.
 
-3. Selecciona el proyecto [libs.cbp](./libs/libs.cbp) (proyecto con las librerías) y compílalo en modo Release y, opcionalmente, en modo Debug.
+3. Selecciona el proyecto [libs.cbp](./libs/libs.cbp) (proyecto con las librerías) y compílalo en modo Release y en modo Debug.
 
 4. Selecciona el proyecto [src.cbp](./src/src.cbp) (proyecto principal) y ejecútalo en modo Release para disfrutar del Juego de la Vida de Conway.
 
 ## Problemas conocidos
 
-| Problema                                                              | Solución                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| :-------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Proyecto [src.cbp](./src/src.cbp) (proyecto principal) no compila** | _Selecciona el proyecto [libs.cbp](./libs/libs.cbp) (proyecto con las librerías) y compílalo en modo Release. Luego, selecciona el proyecto [src.cbp](./src/src.cbp) (proyecto principal), haz clic derecho sobre este, elige la opción `Build Options` y ve a la pestaña `Linker settings`. Allí, añade el archivo `libs.a` que se encuentra dentro de la carpeta `libs/bin/Release` y vuelve a intentar compilar el proyecto._ |
+| Problema                                                              | Solución                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| :-------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Proyecto [src.cbp](./src/src.cbp) (proyecto principal) no compila** | _Selecciona el proyecto [libs.cbp](./libs/libs.cbp) (proyecto con las librerías) y compílalo en modo Release y en modo Debug. Luego, selecciona el proyecto [src.cbp](./src/src.cbp) (proyecto principal), haz clic derecho sobre este, elige la opción `Build Options` y ve a la pestaña `Linker settings`. Allí, añade los archivos `libs.a` que se encuentran dentro de las carpetas `libs/bin/Debug` y `libs/bin/Release`. Finalmente vuelve a intentar compilar el proyecto principal._ |
 
 ## Estructura de la aplicación
 
