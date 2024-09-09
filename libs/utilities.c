@@ -12,3 +12,11 @@ int getStrLength(char* str) {
 }
 
 void sayhi() { printf("hello guys"); }
+
+
+
+
+
+void sayGuido()
+{ printf("hello maquinas"); }
+

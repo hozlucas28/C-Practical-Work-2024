@@ -18,5 +18,6 @@
 int getStrLength(char* str);
 
 void sayhi();
+void sayGuido();
 
 #endif  // UTILITIES_H_INCLUDED

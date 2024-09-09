@@ -156,7 +156,7 @@ C-Practical-Work-2024/
         commit
         commit
         checkout develop
-        branch TODO_02
+        branch Guidolinares
         commit
         commit
         checkout develop
@@ -172,7 +172,7 @@ C-Practical-Work-2024/
         commit
         commit
         checkout develop
-        merge TODO_02
+        merge Guidolinares
         merge TODO_01
         merge TODO_03
         merge TODO_05
@@ -196,7 +196,7 @@ C-Practical-Work-2024/
 ## Development Team
 
 -   [TODO_01](TODO)
--   [TODO_02](TODO)
+-   [Guidolinares](https://www.linkedin.com/in/guido-linares-25859b209/)
 -   [TODO_03](TODO)
 -   [TODO_04](TODO)
 -   [TODO_05](TODO)
