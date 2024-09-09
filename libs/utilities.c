@@ -10,13 +10,3 @@ int getStrLength(char* str) {
 
     return length;
 }
-
-void sayhi() { printf("hello guys"); }
-
-
-
-
-
-void sayGuido()
-{ printf("hello maquinas"); }
-
