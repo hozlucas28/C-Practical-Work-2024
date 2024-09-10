@@ -4,21 +4,14 @@
 #define ROWS 100
 #define COLS 100
 
-typedef struct{
+typedef struct {
+    int dashboard[ROWS][COLS];
+    int rows;
+    int cols;
+    int cellAlive;
+    int cellDead;
 
-int dashboard[ROWS][COLS];
-int rows;
-int cols;
-int cellAlive;
-int cellDead;
-
-}TGame;
-
-
-
-
-
-
+} TGame;
 
 /**
  * @brief Calculates the length of a string.
