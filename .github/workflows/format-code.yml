@@ -23,8 +23,6 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
-              with:
-                  ref: ${{github.ref_name}}
 
             - name: Install clang-format (formatter tool)
               run: sudo apt-get install clang-format
@@ -42,4 +40,5 @@ jobs:
             - name: Push changes
               uses: ad-m/github-push-action@v0.8.0
               with:
+                  branch: ${{ github.ref }}
                   github_token: ${{ secrets.GITHUB_TOKEN }}
