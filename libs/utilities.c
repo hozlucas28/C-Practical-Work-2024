@@ -8,9 +8,5 @@ int getStrLength(char* str) {
         str++;
     };
 
-
-
-
-
     return length;
 }
