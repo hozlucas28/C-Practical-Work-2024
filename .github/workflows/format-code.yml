@@ -23,6 +23,8 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+              with:
+                  ref: ${{github.ref_name}}
 
             - name: Install clang-format (formatter tool)
               run: sudo apt-get install clang-format
