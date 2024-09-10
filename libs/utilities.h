@@ -1,6 +1,25 @@
 #ifndef UTILITIES_H_INCLUDED
 #define UTILITIES_H_INCLUDED
 
+#define ROWS 100
+#define COLS 100
+
+typedef struct{
+
+int dashboard[ROWS][COLS];
+int rows;
+int cols;
+int cellAlive;
+int cellDead;
+
+}TGame;
+
+
+
+
+
+
+
 /**
  * @brief Calculates the length of a string.
  *
@@ -16,5 +35,7 @@
  * undefined.
  */
 int getStrLength(char* str);
+
+void printDashboard(TGame* pGame);
 
 #endif  // UTILITIES_H_INCLUDED
