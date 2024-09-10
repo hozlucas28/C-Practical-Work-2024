@@ -10,3 +10,9 @@ int getStrLength(char* str) {
 
     return length;
 }
+
+int holaTefi()
+{
+    printf("hola chicos");
+    return 1;
+}
