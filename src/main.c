@@ -26,12 +26,10 @@ int main() {
     game.cellsDead = cellDead;
 
     fillDashboard(&game, 0);
-
-    // TODO: Replace `XXX` with a formatted version of `options` (global...
-    // variable).
-    requestedPattern =
-        getUserInputStr("Which pattern do you want (XXX)? ",
-                        "Invalid input! Try again...", 50, &validatePattern);
-    printf("\n'%s'", requestedPattern);
+    requestedPattern = getUserInputStr(
+        "> Which pattern do you want "
+        "('Glider','Toad', 'Press', or 'Glider cannon')? ",
+        "> Invalid pattern! Try again...", 50, &validatePattern);
+    printf("> Pattern received: '%s'", requestedPattern);
     return 0;
 }
