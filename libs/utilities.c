@@ -66,13 +66,14 @@ int strcmpi(const char* str01, const char* str02) {
 
     int lengthStr01 = strlen(str01);
     int lengthStr02 = strlen(str02);
-    int shortestLength = lengthStr01 < lengthStr02 ? lengthStr01 : lengthStr02;
 
     char charStr01;
     char charStr02;
     int cmp = 1;
 
-    for (i = 0; i < shortestLength; i++) {
+    if (lengthStr01 != lengthStr02) return lengthStr01 > lengthStr02 ? 1 : -1;
+
+    for (i = 0; i < lengthStr01; i++) {
         charStr01 = toupper(*(str01 + i));
         charStr02 = toupper(*(str02 + i));
         cmp = charStr01 - charStr02;
