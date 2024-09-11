@@ -91,6 +91,18 @@ void printDashboardByConsole(TGame* pGame);
 int strcmpi(const char* str01, const char* str02);
 
 /**
+ * @brief Validates the pattern of user input.
+ *
+ * This function checks if the user input matches `glider`, `toad`, `press`, or
+ * `glider cannon` pattern. The comparison is case insensitive.
+ *
+ * @param userInput The user input to be validated.
+ *
+ * @return 1 if the pattern is valid, 0 otherwise.
+ */
+int validatePattern(char* userInput);
+
+/**
  * @brief Trims leading and trailing whitespace characters from a string.
  *
  * This function trims leading and trailing whitespace characters from a string

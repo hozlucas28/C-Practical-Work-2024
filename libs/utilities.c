@@ -84,6 +84,11 @@ int strcmpi(const char* str01, const char* str02) {
     return cmp;
 }
 
+int validatePattern(char* userInput) {
+    char* options[] = {"glider", "toad", "press", "glider cannon"};
+    return isStrIn(userInput, options, 4);
+}
+
 void trimStr(char* str) {
     trimLeftStr(str);
     trimRightStr(str);
