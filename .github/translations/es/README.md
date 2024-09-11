@@ -152,31 +152,31 @@ C-Practical-Work-2024/
         commit
         commit tag: "v0.0.1"
         branch develop
-        branch TODO_01
+        branch "Giannotti Tiago"
         commit
         commit
         checkout develop
-        branch TODO_02
+        branch "Hoz Lucas"
         commit
         commit
         checkout develop
-        branch TODO_03
+        branch "Huergo Estefania"
         commit
         commit
         checkout develop
-        branch TODO_04
+        branch "Linares Guido"
         commit
         commit
         checkout develop
-        branch TODO_05
+        branch "Quiroga Ferney"
         commit
         commit
         checkout develop
-        merge TODO_02
-        merge TODO_01
-        merge TODO_03
-        merge TODO_05
-        merge TODO_04
+        merge "Hoz Lucas"
+        merge "Giannotti Tiago"
+        merge "Huergo Estefania"
+        merge "Quiroga Ferney"
+        merge "Linares Guido"
         checkout Master
         merge develop tag: "v1.0.0"
 ```
@@ -195,11 +195,11 @@ C-Practical-Work-2024/
 
 ## Equipo de desarrollo
 
--   [TODO_01](TODO)
--   [TODO_02](TODO)
--   [TODO_03](TODO)
--   [TODO_04](TODO)
--   [TODO_05](TODO)
+-   [Giannotti Tiago](https://github.com/TiagoGiannotti)
+-   [Hoz Lucas](https://github.com/hozlucas28)
+-   [Huergo Estefania](https://github.com/tefhuergo)
+-   [Linares Guido](https://www.linkedin.com/in/guido-linares-25859b209/)
+-   [Quiroga Ferney Santiago](https://github.com/Ferny1011)
 
 ## Material adicional
 
