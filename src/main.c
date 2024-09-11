@@ -26,6 +26,13 @@ int main() {
 
     fillDashboard(&game, 0);
 
+
+
+
+
+
+
+
     requestedPattern = getUserInputStr("Which pattern do you want (XXX)? ", 100,
                                        &validatePattern);
     printf("\n'%s'", requestedPattern);
