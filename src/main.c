@@ -15,6 +15,7 @@ int main() {
     int cols = COLS;
     int cellAlive = 0;
     int cellDead = 0;
+    int invalidPattern;
 
     char* requestedPattern;
 
@@ -25,10 +26,31 @@ int main() {
     game.cellsDead = cellDead;
 
     fillDashboard(&game, 0);
-    requestedPattern = getUserInputStr(
+
+    do{
+        requestedPattern = getUserInputStr(
         "> Which pattern do you want "
         "('Glider','Toad', 'Press', or 'Glider cannon')? ",
         "> Invalid pattern! Try again...", 50, &validatePattern);
-    printf("> Pattern received: '%s'", requestedPattern);
+        printf("> Pattern received: '%s'", requestedPattern);
+
+        invalidPattern = 0;
+
+        if(strcmpi(requestedPattern,"GLIDER") == 0)
+                gliderPattern (dashboard);
+            else if(strcmpi(requestedPattern,"TOAD") == 0)
+                toadPattern(dashboard);
+            else if(strcmpi(requestedPattern,"PRESS") == 0)
+                pressPattern(dashboard);
+            else if (strcmpi(requestedPattern,"GLIDER CANNON") == 0)
+                gliderCannonPattern(dashboard);
+        else{
+                puts("INVALID PATTERN, try again... :");
+                invalidPattern = 1;
+            }
+
+    }while(invalidPattern);
+
+
     return 0;
 }
