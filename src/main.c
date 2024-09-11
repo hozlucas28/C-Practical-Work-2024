@@ -2,7 +2,6 @@
 
 #include "stdio.h"
 
-// TODO: Convert `options` variable into a global variable.
 int validatePattern(char* userInput) {
     char* options[] = {"glider", "toad", "press", "glider cannon"};
     return isStrIn(userInput, options, 4);
