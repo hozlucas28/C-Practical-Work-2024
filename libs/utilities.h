@@ -20,6 +20,20 @@ typedef struct {
     int cellsDead;          /** Number of dead cells. */
 } TGame;
 
+// TODO
+typedef struct {
+    int (*dashboard)[COLS];
+    int rows;
+    int cols;
+    int center[2];
+} TPattern;
+
+// TODO
+void drawPattern(TGame* pGame, char* pattern);
+
+// TODO
+void drawPatternInDashboard(TGame* pGame, TPattern* pattern);
+
 /**
  * @brief Fills the dashboard of a Conway's Game of Life structure with a
  * specified value.

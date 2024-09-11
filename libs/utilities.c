@@ -5,6 +5,16 @@
 #include <stdlib.h>
 #include <string.h>
 
+// TODO
+void drawPattern(TGame* pGame, char* pattern) {
+    printf("%s pattern was drawn!", pattern);
+}
+
+// TODO
+void drawPatternInDashboard(TGame* pGame, TPattern* pattern) {
+    printf("%s pattern was injected!", pattern);
+}
+
 void fillDashboard(TGame* pGame, int with) {
     int i;
     int j;
