@@ -46,10 +46,8 @@ void fillDashboard(TGame* pGame, int with);
  *
  * @return A pointer to the string entered by the user.
  */
-char* getUserInputStr(char* message, int strLength,
+char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
                       int (*validator)(char* userInput));
-
-// TODO: Receive an `onInvalidMessage` parameter in `getUserInputStr` function.
 
 /**
  * @brief Checks if a string is present in an array of strings.

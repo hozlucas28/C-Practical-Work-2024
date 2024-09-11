@@ -16,7 +16,7 @@ void fillDashboard(TGame* pGame, int with) {
     }
 }
 
-char* getUserInputStr(char* message, int strLength,
+char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
                       int (*validator)(char* userInput)) {
     char* userInput = malloc(strLength * sizeof(char));
     if (userInput == NULL) {
@@ -24,14 +24,14 @@ char* getUserInputStr(char* message, int strLength,
         exit(EXIT_FAILURE);
     }
 
-    printf("%s", message);
+    printf(message);
     fflush(stdin);
     fgets(userInput, strLength, stdin);
     trimStr(userInput);
 
     while (!(*validator)(userInput)) {
-        printf("Invalid input! Try again...\n");
-        printf("%s", message);
+        puts(onInvalidMessage);
+        printf(message);
         fflush(stdin);
         fgets(userInput, strLength, stdin);
         trimStr(userInput);

@@ -5,7 +5,7 @@
 // TODO: Convert `options` variable into a global variable.
 int validatePattern(char* userInput) {
     char* options[] = {"glider", "toad", "press", "glider cannon"};
-    return isStrIn(userInput, options, 2);
+    return isStrIn(userInput, options, 4);
 }
 
 int main() {
@@ -29,9 +29,9 @@ int main() {
 
     // TODO: Replace `XXX` with a formatted version of `options` (global...
     // variable).
-    // TODO: Add `onInvalidMessage` argument.
-    requestedPattern = getUserInputStr("Which pattern do you want (XXX)? ", 50,
-                                       &validatePattern);
+    requestedPattern =
+        getUserInputStr("Which pattern do you want (XXX)? ",
+                        "Invalid input! Try again...", 50, &validatePattern);
     printf("\n'%s'", requestedPattern);
     return 0;
 }
