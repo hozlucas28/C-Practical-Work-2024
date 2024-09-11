@@ -44,9 +44,7 @@ int isStrIn(char* str, char* arr[], int size) {
     int i;
 
     for (i = 0; i < size; i++) {
-        if (strcmpi(str, *(arr + i)) == 0) {
-            return 1;
-        }
+        if (strcmpi(str, *(arr + i)) == 0) return 1;
     }
 
     return 0;
@@ -79,9 +77,7 @@ int strcmpi(const char* str01, const char* str02) {
         charStr02 = toupper(*(str02 + i));
         cmp = charStr01 - charStr02;
 
-        if (cmp != 0) {
-            return cmp;
-        };
+        if (cmp != 0) return cmp;
     };
 
     return cmp;
