@@ -39,6 +39,7 @@ void fillDashboard(TGame* pGame, int with);
  * string. The user's input is validated using the provided validator function.
  *
  * @param message The message to display as a prompt to the user.
+ * @param onInvalidMessage The message to display when the user input is invalid.
  * @param strLength The maximum length of the string to be inputted by the user.
  * @param validator A function pointer to a validator function that takes a
  * string as input and returns an integer. The validator function should return
