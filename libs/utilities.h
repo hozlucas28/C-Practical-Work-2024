@@ -49,6 +49,8 @@ void fillDashboard(TGame* pGame, int with);
 char* getUserInputStr(char* message, int strLength,
                       int (*validator)(char* userInput));
 
+// TODO: Receive an `onInvalidMessage` parameter in `getUserInputStr` function.
+
 /**
  * @brief Checks if a string is present in an array of strings.
  *
@@ -123,5 +125,8 @@ void trimLeftStr(char* str);
  * @warning This function assumes that the input string is null-terminated.
  */
 void trimRightStr(char* str);
+
+// TODO: Create a function to format an array of strings to a string...
+// conjunction, or disjunction.
 
 #endif  // UTILITIES_H_INCLUDED

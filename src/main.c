@@ -2,6 +2,7 @@
 
 #include "stdio.h"
 
+// TODO: Convert `options` variable into a global variable.
 int validatePattern(char* userInput) {
     char* options[] = {"glider", "toad", "press", "glider cannon"};
     return isStrIn(userInput, options, 2);
@@ -26,6 +27,9 @@ int main() {
 
     fillDashboard(&game, 0);
 
+    // TODO: Replace `XXX` with a formatted version of `options` (global...
+    // variable).
+    // TODO: Add `onInvalidMessage` argument.
     requestedPattern = getUserInputStr("Which pattern do you want (XXX)? ", 50,
                                        &validatePattern);
     printf("\n'%s'", requestedPattern);
