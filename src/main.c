@@ -18,7 +18,7 @@ int main() {
 
     char* requestedPattern;
 
-    game.dashboard = dashboard;
+       game.dashboard = dashboard;
     game.rows = rows;
     game.cols = cols;
     game.cellsAlive = cellAlive;
