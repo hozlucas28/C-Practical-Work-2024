@@ -50,7 +50,7 @@ int isStrIn(char* str, char* arr[], int size) {
     return 0;
 }
 
-void printDashboard(TGame* pGame) {
+void printDashboardByConsole(TGame* pGame) {
     int i, j;
 
     for (i = 0; i < pGame->rows; i++) {
