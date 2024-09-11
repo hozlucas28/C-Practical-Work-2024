@@ -27,15 +27,6 @@
             " */"
         ]
     },
-    "Document struct field": {
-        "scope": "c,cpp",
-        "prefix": "docStructField",
-        "body": [
-            "/**",
-            " * @brief ${1:<BRIEF DESCRIPTION OF THE MEMBER>}.",
-            " */"
-        ]
-    },
     "Document function": {
         "scope": "c,cpp",
         "prefix": "docFunction",
