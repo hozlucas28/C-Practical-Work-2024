@@ -19,6 +19,10 @@ void fillDashboard(TGame* pGame, int with) {
 char* getUserInputStr(char* message, int strLength,
                       int (*validator)(char* userInput)) {
     char* userInput = malloc(strLength * sizeof(char));
+    if (userInput == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
 
     printf("%s", message);
     fflush(stdin);
@@ -32,8 +36,6 @@ char* getUserInputStr(char* message, int strLength,
         fgets(userInput, strLength, stdin);
         trimStr(userInput);
     };
-
-    // TODO
 
     return userInput;
 }
