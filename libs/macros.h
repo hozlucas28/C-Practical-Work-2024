@@ -7,7 +7,7 @@
  * @brief Defines the number of rows in a grid.
  *
  * This macro is used to define the number of rows in a grid.
- * It is typically used in conjunction with the DASHBOARD_COLS macro to define
+ * It is typically used in conjunction with the `DASHBOARD_COLS` macro to define
  * the size of a grid.
  *
  * @warning The value of `DASHBOARD_ROWS` should be a positive integer.
