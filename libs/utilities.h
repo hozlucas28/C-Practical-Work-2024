@@ -1,7 +1,11 @@
+
 #ifndef UTILITIES_H_INCLUDED
 #define UTILITIES_H_INCLUDED
 
-#include "macros.h"
+#include <stdlib.h>
+
+#include "./macros.h"
+#include "./patterns/main.h"
 
 /**
  * @struct TGame
@@ -13,21 +17,13 @@
  * columns in the dashboard, and the values to represent alive and dead cells.
  */
 typedef struct {
-    int (*dashboard)[COLS]; /** Board (2D array) in which the cells moves. */
-    int rows;               /** Number of rows in `dashboard`. */
-    int cols;               /** Number of columns in `dashboard`. */
-    int cellsAlive;         /** Number of alive cells. */
-    int cellsDead;          /** Number of dead cells. */
-    int generation;         /** Represents the generation number. */
+    char (*dashboard)[DASHBOARD_COLS]; /** Board (2D array) in which the cells moves. */
+    int rows;                          /** Number of rows in `dashboard`. */
+    int cols;                          /** Number of columns in `dashboard`. */
+    int cellsAlive;                    /** Number of alive cells. */
+    int cellsDead;                     /** Number of dead cells. */
+    int generation;                    /** Represents the generation number. */
 } TGame;
-
-// TODO
-typedef struct {
-    int (*dashboard)[PATTERN_COLS];
-    int rows;
-    int cols;
-    int center[2];
-} TPattern;
 
 // TODO
 void drawPattern(TGame* pGame, char* pattern);
@@ -45,7 +41,7 @@ void drawPatternInDashboard(TGame* pGame, TPattern* pattern);
  * @warning This function assumes that `pGame` has been
  * properly initialized.
  */
-void fillDashboard(TGame* pGame, int with);
+void fillDashboard(TGame* pGame, char with);
 
 /**
  * @brief Gets user input as a string.

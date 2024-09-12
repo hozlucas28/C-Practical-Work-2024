@@ -1,21 +1,53 @@
-#include "utilities.h"
+
+#include "./utilities.h"
 
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-// TODO
+#include "./patterns/main.h"
+
 void drawPattern(TGame* pGame, char* pattern) {
-    // drawPatternInDashboard();
-    printf("\n* The '%s' pattern was injected! *", pattern);
-    printf("\n* The '%s' pattern was drawn! *", pattern);
+    TPattern SPattern;
+
+    char arr[PATTERN_ROWS][PATTERN_COLS];
+
+    SPattern.arr = arr;
+
+    fillDashboard(pGame, DEAD_CELL);
+
+    if (strcmpi(pattern, "glider") == 0) {
+        newGliderPattern(&SPattern);
+        pGame->cellsAlive = 5;
+    } else if (strcmpi(pattern, "glider cannon") == 0) {
+        newGliderCannonPattern(&SPattern);
+        pGame->cellsAlive = 36;
+    } else if (strcmpi(pattern, "press") == 0) {
+        newPressPattern(&SPattern);
+        pGame->cellsAlive = 48;
+    } else if (strcmpi(pattern, "toad") == 0) {
+        newToadPattern(&SPattern);
+        pGame->cellsAlive = 6;
+    };
+
+    pGame->cellsDead = (pGame->cols * pGame->rows) - pGame->cellsAlive;
+    pGame->generation = 0;
+
+    printf("\n\n");                    // TODO: Remove line.
+    printPatternByConsole(&SPattern);  // TODO: Remove line.
+
+    // TODO
+    drawPatternInDashboard(pGame, &SPattern);
+
+    printf("\n* The '%s' pattern was injected! *", pattern);  // TODO: Remove line.
+    printf("\n* The '%s' pattern was drawn! *", pattern);     // TODO: Remove line.
 }
 
 // TODO
 void drawPatternInDashboard(TGame* pGame, TPattern* pattern) {}
 
-void fillDashboard(TGame* pGame, int with) {
+void fillDashboard(TGame* pGame, char with) {
     int i;
     int j;
 
@@ -61,12 +93,14 @@ int isStrIn(char* str, char* arr[], int size) {
 }
 
 void printDashboardByConsole(TGame* pGame) {
-    int i, j;
+    int i;
+    int j;
 
     for (i = 0; i < pGame->rows; i++) {
         for (j = 0; j < pGame->cols; j++) {
-            printf("%d ", pGame->dashboard[i][j]);
+            printf("%c", pGame->dashboard[i][j]);
         }
+
         printf("\n");
     }
 }

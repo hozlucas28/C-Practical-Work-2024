@@ -1,13 +1,13 @@
+
 #ifndef MAIN_H_INCLUDED
 #define MAIN_H_INCLUDED
 
 // Root
-#include "macros.h"
-#include "utilities.h"
-#include "validators.h"
+#include "./macros.h"
+#include "./utilities.h"
+#include "./validators.h"
 
-// Cells
-#include "cells/constructors.h"
-#include "cells/methods.h"
+// Patterns
+#include "./patterns/main.h"
 
 #endif  // MAIN_H_INCLUDED
