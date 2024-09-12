@@ -4,11 +4,17 @@
 
 #include "./macros.h"
 
-// TODO: Documentation
+/**
+ * @struct TPattern
+ * @brief Represents a pattern structure.
+ *
+ * This structure is used to represent a pattern in a 2D array. It contains a 2D array representing
+ * the pattern, as well as other properties such as the number of rows and columns of the pattern.
+ */
 typedef struct {
-    char (*arr)[PATTERN_COLS];
-    int rows;
-    int cols;
+    char (*arr)[PATTERN_COLS]; /** 2D array representing the pattern. */
+    int rows;                  /** Number of rows of the pattern. */
+    int cols;                  /** Number of columns of the pattern. */
 } TPattern;
 
 #endif  // PATTERNS_STRUCTS_H_INCLUDED
