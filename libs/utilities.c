@@ -94,8 +94,6 @@ int strcmpi(const char* str01, const char* str02) {
     return cmp;
 }
 
-
-
 void trimStr(char* str) {
     trimLeftStr(str);
     trimRightStr(str);
