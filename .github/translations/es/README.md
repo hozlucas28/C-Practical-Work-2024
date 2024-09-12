@@ -99,11 +99,14 @@ C-Practical-Work-2024/
 │   ├── validators.c
 │   ├── validators.h
 |   |
-│   └── cells/
+│   └── patterns/
 │       ├── constructors.c
 │       ├── constructors.h
+│       ├── macros.h
+│       ├── main.h
 │       ├── methods.c
-│       └── methods.h
+│       ├── methods.h
+│       └── structs.h
 |
 ├── .clang-format
 ├── .gitignore
@@ -136,12 +139,15 @@ C-Practical-Work-2024/
     -   **[validators.c](./libs/validators.c)** - Archivo con el desarrollo de los prototipos de función presentes en `validators.h`.
     -   **[validators.h](./libs/validators.h)** - Archivo con prototipos de funciones relacionadas con procesos de validación.
 
-    -   **[cells](./libs/cells)** - Funciones y estructuras de las entidades `células`.
+    -   **[patterns](./libs/patterns)** - Funciones y estructuras para crear patrones con células.
 
-        -   **[constructors.c](./libs/cells/constructors.c)** - Archivo con el desarrollo de los prototipos de función presentes en `constructors.h`.
-        -   **[constructors.h](./libs/cells/constructors.h)** - Archivo con las estructuras y los prototipos de función relacionados a la creación de células.
-        -   **[methods.c](./libs/cells/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
-        -   **[methods.h](./libs/cells/methods.h)** - Archivo con los prototipos de función relacionados a los métodos de las células.
+        -   **[constructors.c](./libs/patterns/constructors.c)** - Archivo con el desarrollo de los prototipos de función presentes en `constructors.h`.
+        -   **[constructors.h](./libs/patterns/constructors.h)** - Archivo con las estructuras y los prototipos de función relacionados a la creación de patrones.
+        -   **[macros.h](./libs/macros.h)** - Archivo con macros.
+        -   **[main.h](./libs/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `patterns`.
+        -   **[methods.c](./libs/patterns/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
+        -   **[methods.h](./libs/patterns/methods.h)** - Archivo con los prototipos de función relacionados a los métodos de los patrones.
+        -   **[structs.h](./libs/patterns/methods.h)** - Archivo con estructuras.
 
 -   **[.clang-format](./.clang-format)** - Archivo de configuración de la herramienta de formateo de código `clang-format`.
 -   **[.gitignore](./.gitignore)** - Archivo de configuración de Git para evitar el rastreo de archivos no deseados.
