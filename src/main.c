@@ -19,6 +19,7 @@ int main() {
     game.cols = cols;
     game.cellsAlive = cellAlive;
     game.cellsDead = cellDead;
+    game.generation = 0;
 
     fillDashboard(&game, 0);
 

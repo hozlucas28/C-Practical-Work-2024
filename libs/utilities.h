@@ -18,6 +18,7 @@ typedef struct {
     int cols;               /** Number of columns in `dashboard`. */
     int cellsAlive;         /** Number of alive cells. */
     int cellsDead;          /** Number of dead cells. */
+    int generation;         /** Represents the generation number. */
 } TGame;
 
 // TODO
