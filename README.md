@@ -96,6 +96,8 @@ C-Practical-Work-2024/
 │   ├── main.h
 │   ├── utilities.c
 │   ├── utilities.h
+│   ├── validators.c
+│   ├── validators.h
 |   |
 │   └── cells/
 │       ├── constructors.c
@@ -131,6 +133,8 @@ C-Practical-Work-2024/
     -   **[main.h](./libs/main.h)** - File indexing all `.h` files of the project.
     -   **[utilities.c](./libs/utilities.c)** - File with the implementation of the function prototypes found in `utilities.h`.
     -   **[utilities.h](./libs/utilities.h)** - File with common structures and function prototypes.
+    -   **[validators.c](./libs/validators.c)** - File with the implementation of the function prototypes found in `validators.h`.
+    -   **[validators.h](./libs/validators.h)** - File with functions prototypes related to validation process.
 
     -   **[cells](./libs/cells)** - Functions and structures for `cell` entities.
 
