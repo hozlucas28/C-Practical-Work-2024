@@ -10,7 +10,6 @@ int main() {
     int cols = COLS;
     int cellAlive = 0;
     int cellDead = 0;
-    int invalidPattern;
 
     char* requestedPattern;
 
