@@ -4,6 +4,7 @@
 // Root
 #include "macros.h"
 #include "utilities.h"
+#include "validators.h"
 
 // Cells
 #include "cells/constructors.h"
