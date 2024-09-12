@@ -15,7 +15,15 @@
  */
 void newGliderPattern(TPattern* pattern);
 
-// TODO: Documentation
+/**
+ * @brief Initializes a new Glider Cannon pattern.
+ *
+ * This function sets up a Glider Cannon pattern in the provided pattern structure.
+ * The Glider Cannon is a pattern that periodically produces gliders.
+ *
+ * @param pattern Pointer to the pattern structure to be initialized with the Glider Cannon
+ * pattern.
+ */
 void newGliderCannonPattern(TPattern* pattern);
 
 // TODO: Documentation
