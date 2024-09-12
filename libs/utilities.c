@@ -7,13 +7,13 @@
 
 // TODO
 void drawPattern(TGame* pGame, char* pattern) {
-    printf("%s pattern was drawn!", pattern);
+    // drawPatternInDashboard();
+    printf("\n* The '%s' pattern was injected! *", pattern);
+    printf("\n* The '%s' pattern was drawn! *", pattern);
 }
 
 // TODO
-void drawPatternInDashboard(TGame* pGame, TPattern* pattern) {
-    printf("%s pattern was injected!", pattern);
-}
+void drawPatternInDashboard(TGame* pGame, TPattern* pattern) {}
 
 void fillDashboard(TGame* pGame, int with) {
     int i;
