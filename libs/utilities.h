@@ -22,7 +22,7 @@ typedef struct {
 
 // TODO
 typedef struct {
-    int (*dashboard)[COLS];
+    int (*dashboard)[PATTERN_COLS];
     int rows;
     int cols;
     int center[2];

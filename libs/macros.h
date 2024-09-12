@@ -25,4 +25,10 @@
  */
 #define COLS 110
 
+// TODO: Add documentation
+#define PATTERN_ROWS 13
+
+// TODO: Add documentation
+#define PATTERN_COLS 36
+
 #endif  // MACROS_H_INCLUDED
