@@ -25,7 +25,14 @@ typedef struct {
     int generation;                    /** Represents the generation number. */
 } TGame;
 
-// TODO
+/**
+ * @brief Draws a specified pattern on a Conway's Game of Life board.
+ *
+ * @param pGame Pointer to the Conway's Game of Life structure where the pattern will be drawn.
+ * @param pattern Pattern to be drawn.
+ *
+ * @warning The pattern must be `glider`, `toad`, `press`, or `glider cannon`.
+ */
 void drawPattern(TGame* pGame, char* pattern);
 
 // TODO
