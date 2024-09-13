@@ -3,6 +3,18 @@
 #define VALIDATORS_H_INCLUDED
 
 /**
+ * @brief Validates a delay.
+ *
+ * This function checks if a provided delay is between the minimum number, and the
+ * maximum number for a delay in milliseconds.
+ *
+ * @param delay The delay to be validated.
+ *
+ * @return 1 if the delay is valid, 0 otherwise.
+ */
+int validateDelay(char* delay);
+
+/**
  * @brief Validates a generation.
  *
  * This function checks if a provided generation string is between the minimum number, and the

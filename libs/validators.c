@@ -1,8 +1,24 @@
 
+#include <ctype.h>
 #include <limits.h>
 #include <stdio.h>
+#include <string.h>
 
+#include "./macros.h"
 #include "./utilities.h"
+
+int validateDelay(char* delay) {
+    int i;
+    int delayInt;
+    int delayLength = strlen(delay);
+
+    for (i = 0; i < delayLength; i++) {
+        if (!isdigit(*(delay + i))) return 0;
+    }
+
+    sscanf(delay, "%d", &delayInt);
+    return delayInt >= MINIMUM_DELAY && delayInt <= MAXIMUM_DELAY;
+}
 
 int validateGeneration(char* generation) {
     int generationInt;
