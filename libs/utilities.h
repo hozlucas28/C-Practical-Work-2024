@@ -35,7 +35,15 @@ typedef struct {
  */
 void drawPattern(TGame* pGame, char* pattern);
 
-// TODO
+/**
+ * @brief Draws a specified pattern on a Conway's Game of Life board.
+ *
+ * @param pGame Pointer to the Conway's Game of Life structure where the pattern will be drawn.
+ * @param pattern Pointer to pattern structure to be drawn.
+ *
+ * @warning This functions is intended for internal use only and should not be used outside of this
+ * library.
+ */
 void drawPatternInDashboard(TGame* pGame, TPattern* pattern);
 
 /**
