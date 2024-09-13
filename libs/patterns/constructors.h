@@ -37,7 +37,15 @@ void newGliderCannonPattern(TPattern* pattern);
  */
 void newPressPattern(TPattern* pattern);
 
-// TODO: Documentation
+/**
+ * @brief Initializes a new Toad pattern.
+ *
+ * This function sets up a new Toad pattern by initializing the provided pattern structure.
+ * The Toad is a pattern of cells that oscillates with a period of 2 generations in a Conway's Game
+ * of Life grid.
+ *
+ * @param pattern Pointer to the pattern structure to be initialized with the Toad pattern.
+ */
 void newToadPattern(TPattern* pattern);
 
 #endif  // PATTERNS_CONSTRUCTORS_H_INCLUDED
