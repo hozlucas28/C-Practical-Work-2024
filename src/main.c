@@ -1,6 +1,7 @@
 #include "../libs/main.h"
 
-#include "stdio.h"
+#include <limits.h>
+#include <stdio.h>
 
 int main() {
     TGame game;
@@ -10,6 +11,11 @@ int main() {
     int cols = DASHBOARD_COLS;
 
     char* requestedPattern;
+    char* maxGenerations;
+    char* delayBetweenGenerations;
+
+    int maxGenerationsInt;
+    int delayBetweenGenerationsInt;
 
     game.dashboard = dashboard;
     game.rows = rows;
@@ -23,9 +29,23 @@ int main() {
     requestedPattern = getUserInputStr(
         "> Which pattern do you want ('Glider','Toad', 'Press', or 'Glider cannon')? ",
         "> Invalid pattern! Try again...", 50, &validatePattern);
+
     printf("> Pattern received: '%s'", requestedPattern);
 
     drawPattern(&game, requestedPattern);
+
+    maxGenerations = getUserInputStr(
+        "\n> Which is maximum generation do you want? (a negative number is equal to infinity): ",
+        "> Invalid number! Try again...", 10, &validateGeneration);
+
+    sscanf(maxGenerations, "%d", &maxGenerationsInt);
+
+    if (maxGenerationsInt < 0) {
+        maxGenerations = "infinity";
+        maxGenerationsInt = INT_MAX;
+    };
+
+    printf("\n> Maximum generation received: '%s'", maxGenerations);
 
     return 0;
 }
