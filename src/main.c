@@ -13,6 +13,7 @@ int main() {
     char* requestedPattern;
     char* maxGenerations;
     char* delayBetweenGenerations;
+    char delayBetweenGenerationsMsg[120];
 
     int maxGenerationsInt;
     int delayBetweenGenerationsInt;
@@ -30,22 +31,34 @@ int main() {
         "> Which pattern do you want ('Glider','Toad', 'Press', or 'Glider cannon')? ",
         "> Invalid pattern! Try again...", 50, &validatePattern);
 
-    printf("> Pattern received: '%s'", requestedPattern);
+    printf("> Pattern received: '%s'.\n\n", requestedPattern);
 
     drawPattern(&game, requestedPattern);
 
     maxGenerations = getUserInputStr(
-        "\n> Which is maximum generation do you want? (a negative number is equal to infinity): ",
-        "> Invalid number! Try again...", 10, &validateGeneration);
+        "> Which is maximum generation do you want? (a negative number is equal to infinity): ",
+        "> Invalid generation! Try again...", 10, &validateGeneration);
 
     sscanf(maxGenerations, "%d", &maxGenerationsInt);
 
     if (maxGenerationsInt < 0) {
-        maxGenerations = "infinity";
+        maxGenerations = "'infinity'";
         maxGenerationsInt = INT_MAX;
     };
 
-    printf("\n> Maximum generation received: '%s'", maxGenerations);
+    printf("> Maximum generation received: %s.\n\n", maxGenerations);
+
+    sprintf(delayBetweenGenerationsMsg,
+            "> What should be the miliseconds delay between generations? (must be between %d "
+            "and %d, both included): ",
+            MINIMUM_DELAY, MAXIMUM_DELAY);
+
+    delayBetweenGenerations = getUserInputStr(delayBetweenGenerationsMsg,
+                                              "> Invalid delay! Try again...", 5, &validateDelay);
+
+    sscanf(delayBetweenGenerations, "%d", &delayBetweenGenerationsInt);
+
+    printf("> Delay received: %s miliseconds.\n", delayBetweenGenerations);
 
     return 0;
 }
