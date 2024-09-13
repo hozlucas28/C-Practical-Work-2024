@@ -29,7 +29,9 @@ void drawPattern(TGame* pGame, char* pattern) {
     } else if (strcmpi(pattern, "toad") == 0) {
         newToadPattern(&SPattern);
         pGame->cellsAlive = 6;
-    };
+    } else {
+        return;
+    }
 
     pGame->cellsDead = (pGame->cols * pGame->rows) - pGame->cellsAlive;
     pGame->generation = 0;
