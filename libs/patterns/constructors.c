@@ -17,7 +17,7 @@ void newGliderPattern(TPattern* pattern) {
 }
 
 void newGliderCannonPattern(TPattern* pattern) {
-    pattern->rows = 13;
+    pattern->rows = 9;
     pattern->cols = 36;
 
     fillPattern(pattern, DEAD_CELL);
