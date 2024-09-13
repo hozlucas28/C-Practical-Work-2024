@@ -3,6 +3,18 @@
 #define VALIDATORS_H_INCLUDED
 
 /**
+ * @brief Validates a generation.
+ *
+ * This function checks if a provided generation string is between the minimum number, and the
+ * maximum number for a generation.
+ *
+ * @param generation The generation to be validated.
+ *
+ * @return 1 if the generation is valid, 0 otherwise.
+ */
+int validateGeneration(char* generation);
+
+/**
  * @brief Validates the pattern of user input.
  *
  * This function checks if the user input matches `glider`, `toad`, `press`, or
