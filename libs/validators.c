@@ -26,7 +26,7 @@ int validateGeneration(char* generation) {
     int generationLength = strlen(generation);
 
     for (i = 0; i < generationLength; i++) {
-        if (!isdigit(*(generation + i))) return 0;
+        if (*(generation + i) != '-' && !isdigit(*(generation + i))) return 0;
     }
 
     sscanf(generation, "%d", &generationInt);
