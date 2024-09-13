@@ -8,8 +8,7 @@
  * @brief Initializes a new Glider pattern.
  *
  * This function sets up a new Glider pattern in the provided pattern structure.
- * The Glider pattern is a small configuration of cells that travels across a Conway's
- * Game of Life grid.
+ * The Glider pattern is a pattern of cells that travels across a Conway's Game of Life grid.
  *
  * @param pattern Pointer to the pattern structure to be initialized with the glider pattern.
  */
