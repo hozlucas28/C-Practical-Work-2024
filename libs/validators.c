@@ -21,7 +21,14 @@ int validateDelay(char* delay) {
 }
 
 int validateGeneration(char* generation) {
+    int i;
     int generationInt;
+    int generationLength = strlen(generation);
+
+    for (i = 0; i < generationLength; i++) {
+        if (!isdigit(*(generation + i))) return 0;
+    }
+
     sscanf(generation, "%d", &generationInt);
     return generationInt >= INT_MIN && generationInt <= INT_MAX;
 }
