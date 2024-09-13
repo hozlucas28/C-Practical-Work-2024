@@ -30,8 +30,8 @@ void newGliderCannonPattern(TPattern* pattern);
  * @brief Initializes a new Press pattern.
  *
  * This function sets up a new Press pattern by initializing the provided pattern structure.
- * The Press is a pattern that oscillates with a period of 3 generations in a Conway's Game of Life
- * grid.
+ * The Press is a pattern of cells that oscillates with a period of 3 generations in a Conway's Game
+ * of Life grid.
  *
  * @param pattern Pointer to the pattern structure to be initialized with the Press pattern.
  */
