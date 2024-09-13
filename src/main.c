@@ -27,6 +27,8 @@ int main() {
 
     fillDashboard(&game, DEAD_CELL);
 
+    /* ----------------------------- Request Pattern ---------------------------- */
+
     requestedPattern = getUserInputStr(
         "> Which pattern do you want ('Glider','Toad', 'Press', or 'Glider cannon')? ",
         "> Invalid pattern! Try again...", 50, &validatePattern);
@@ -34,6 +36,8 @@ int main() {
     printf("> Pattern received: '%s'.\n\n", requestedPattern);
 
     drawPattern(&game, requestedPattern);
+
+    /* ----------------------- Request Maximum Generation ----------------------- */
 
     maxGenerations = getUserInputStr(
         "> Which is maximum generation do you want? (a negative number is equal to infinity): ",
@@ -47,6 +51,8 @@ int main() {
     };
 
     printf("> Maximum generation received: %s.\n\n", maxGenerations);
+
+    /* ------------------------------ Request Delay ----------------------------- */
 
     sprintf(delayBetweenGenerationsMsg,
             "> What should be the miliseconds delay between generations? (must be between %d "
