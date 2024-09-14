@@ -66,8 +66,7 @@ int main() {
     delayBetweenGenerations = getUserInputStr(delayBetweenGenerationsMsg,
                                               "> Invalid delay! Try again...", 5, &validateDelay);
 
-    sscanf(delayBetweenGenerations, "%d",
-    &delayBetweenGenerationsInt);
+    sscanf(delayBetweenGenerations, "%d", &delayBetweenGenerationsInt);
 
     printf("> Delay received: %s miliseconds.\n", delayBetweenGenerations);
 
