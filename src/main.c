@@ -3,6 +3,8 @@
 #include <limits.h>
 #include <stdio.h>
 
+#include "../libs/utilities.c"
+
 int main() {
     TGame game;
 
@@ -25,6 +27,7 @@ int main() {
     game.cellsDead = cols * rows;
     game.generation = 0;
 
+    setDashboardCenter(&game);
     fillDashboard(&game, DEAD_CELL);
 
     /* ----------------------------- Request Pattern ---------------------------- */
@@ -36,6 +39,7 @@ int main() {
     printf("> Pattern received: '%s'.\n\n", requestedPattern);
 
     drawPattern(&game, requestedPattern);
+    printDashboardByConsole(&game);
 
     /* ----------------------- Request Maximum Generation ----------------------- */
 
@@ -55,14 +59,15 @@ int main() {
     /* ------------------------------ Request Delay ----------------------------- */
 
     sprintf(delayBetweenGenerationsMsg,
-            "> What should be the miliseconds delay between generations? (must be between %d "
-            "and %d, both included): ",
+            "> What should be the miliseconds delay between generations? (must be between %d and "
+            "%d, both included): ",
             MINIMUM_DELAY, MAXIMUM_DELAY);
 
     delayBetweenGenerations = getUserInputStr(delayBetweenGenerationsMsg,
                                               "> Invalid delay! Try again...", 5, &validateDelay);
 
-    sscanf(delayBetweenGenerations, "%d", &delayBetweenGenerationsInt);
+    sscanf(delayBetweenGenerations, "%d",
+    &delayBetweenGenerationsInt);
 
     printf("> Delay received: %s miliseconds.\n", delayBetweenGenerations);
 
