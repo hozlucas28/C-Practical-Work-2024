@@ -48,4 +48,12 @@
  */
 #define MINIMUM_DELAY 0
 
+/**
+ * @def NEIGHBORHOOD_RADIUS
+ * @brief Defines the radius of the neighborhood.
+ *
+ * @warning The value of `NEIGHBORHOOD_RADIUS` must be greater or equal to 1.
+ */
+#define NEIGHBORHOOD_RADIUS 1
+
 #endif  // MACROS_H_INCLUDED
