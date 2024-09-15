@@ -33,9 +33,9 @@ int validateGeneration(char* generation) {
     return generationInt >= INT_MIN && generationInt <= INT_MAX;
 }
 
-int validatePattern(char* userInput) {
+int validatePattern(char* pattern) {
     char* options[] = {"glider", "toad", "press", "glider cannon"};
-    return isStrIn(userInput, options, 4);
+    return isStrIn(pattern, options, 4);
 }
 
 int validatePlatform(char* userInput) {

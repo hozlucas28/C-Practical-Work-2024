@@ -36,7 +36,7 @@ int validateGeneration(char* generation);
  *
  * @return 1 if the pattern is valid, 0 otherwise.
  */
-int validatePattern(char* userInput);
+int validatePattern(char* pattern);
 
 // TODO: Documentation
 int validatePlatform(char* platform);
