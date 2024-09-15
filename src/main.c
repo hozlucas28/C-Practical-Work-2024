@@ -11,11 +11,12 @@ int main() {
     int cols = DASHBOARD_COLS;
 
     char* requestedPattern;
-    char* maxGenerations;
+    char* maxGeneration;
     char* delayBetweenGenerations;
     char delayBetweenGenerationsMsg[120];
+    char* platformSelected;
 
-    int maxGenerationsInt;
+    int maxGenerationInt;
     int delayBetweenGenerationsInt;
 
     game.dashboard = dashboard;
@@ -32,7 +33,7 @@ int main() {
     /* ----------------------------- Request Pattern ---------------------------- */
 
     requestedPattern = getUserInputStr(
-        "> Which pattern do you want ('Glider','Toad', 'Press', or 'Glider cannon')? ",
+        "> Which pattern do you want? ('Glider','Toad', 'Press', or 'Glider cannon'): ",
         "> Invalid pattern! Try again...", 50, &validatePattern);
 
     printf("> Pattern received: '%s'.\n\n", requestedPattern);
@@ -41,23 +42,23 @@ int main() {
 
     /* ----------------------- Request Maximum Generation ----------------------- */
 
-    maxGenerations = getUserInputStr(
+    maxGeneration = getUserInputStr(
         "> Which is maximum generation do you want? (a negative number is equal to infinity): ",
         "> Invalid generation! Try again...", 10, &validateGeneration);
 
-    sscanf(maxGenerations, "%d", &maxGenerationsInt);
+    sscanf(maxGeneration, "%d", &maxGenerationInt);
 
-    if (maxGenerationsInt < 0) {
-        maxGenerations = "'infinity'";
-        maxGenerationsInt = INT_MAX;
+    if (maxGenerationInt < 0) {
+        maxGeneration = "'infinity'";
+        maxGenerationInt = INT_MAX;
     };
 
-    printf("> Maximum generation received: %s.\n\n", maxGenerations);
+    printf("> Maximum generation received: %s.\n\n", maxGeneration);
 
     /* ------------------------------ Request Delay ----------------------------- */
 
     sprintf(delayBetweenGenerationsMsg,
-            "> What should be the miliseconds delay between generations? (must be between %d and "
+            "> What should be the milliseconds delay between generations? (must be between %d and "
             "%d, both included): ",
             MINIMUM_DELAY, MAXIMUM_DELAY);
 
@@ -66,7 +67,23 @@ int main() {
 
     sscanf(delayBetweenGenerations, "%d", &delayBetweenGenerationsInt);
 
-    printf("> Delay received: %s miliseconds.\n", delayBetweenGenerations);
+    printf("> Delay received: %s milliseconds.\n\n", delayBetweenGenerations);
+
+    /* ---------------------------- Request Platform ---------------------------- */
+
+    platformSelected = getUserInputStr(
+        "> In which platform do you want to start the Conway's Game of Life game? (console, or "
+        "Simple DirectMedia Layer (SDL)): ",
+        "> Invalid option! Try again...", 32, &validatePlatform);
+
+    printf("> Platform selected: '%s'.\n", platformSelected);
+
+    if (strcmpi(platformSelected, "console") == 0) {
+        startGameByConsole(&game, maxGenerationInt, delayBetweenGenerationsInt);
+        return 0;
+    }
+
+    // TODO: Start game in SDL.
 
     return 0;
 }

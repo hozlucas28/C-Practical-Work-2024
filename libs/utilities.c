@@ -5,10 +5,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #include "./patterns/main.h"
 
-int countNeighbors(TGame* pGame, int cellRow, int cellCol, int radius) {
+int countAliveNeighbors(TGame* pGame, int cellRow, int cellCol, int radius) {
     int i;
     int j;
 
@@ -18,7 +19,7 @@ int countNeighbors(TGame* pGame, int cellRow, int cellCol, int radius) {
     int endRow = cellRow + radius + 1;
     int endCol = cellCol + radius + 1;
 
-    int neighbors = 0;
+    int aliveNeighbors = 0;
 
     for (i = startRow; i < endRow; i++) {
         if (i > pGame->rows - 1) break;
@@ -29,11 +30,13 @@ int countNeighbors(TGame* pGame, int cellRow, int cellCol, int radius) {
             if (j < 0) continue;
 
             if (i == cellRow && j == cellCol) continue;
-            if (pGame->dashboard[i][j] == ALIVE_CELL) neighbors++;
+
+            if (pGame->dashboard[i][j] == ALIVE_CELL || pGame->dashboard[i][j] == DEAD_CELL_NG)
+                aliveNeighbors++;
         }
     }
 
-    return neighbors;
+    return aliveNeighbors;
 }
 
 void drawPattern(TGame* pGame, char* pattern) {
@@ -158,6 +161,69 @@ void setDashboardCenter(TGame* pGame) {
 
     pGame->center[0] = row;
     pGame->center[1] = col;
+}
+
+void sleep(int miliseconds) {
+    clock_t startTime = clock();
+    while (clock() < (startTime + miliseconds));
+}
+
+void startGameByConsole(TGame* pGame, int maxGeneration, int delayBetweenGenerations) {
+    int i;
+    int j;
+
+    int generation = 0;
+    int aliveNeighbors;
+
+    pGame->generation = 0;
+
+    system("cls");
+    printDashboardByConsole(pGame);
+    if (generation == maxGeneration) return;
+    sleep(delayBetweenGenerations);
+
+    while (generation < maxGeneration) {
+        for (i = 0; i < pGame->rows; i++) {
+            for (j = 0; j < pGame->cols; j++) {
+                aliveNeighbors = countAliveNeighbors(pGame, i, j, NEIGHBORHOOD_RADIUS);
+
+                if (pGame->dashboard[i][j] == DEAD_CELL) {
+                    if (aliveNeighbors == 3) {
+                        pGame->cellsDead--;
+                        pGame->cellsAlive++;
+                        pGame->dashboard[i][j] = ALIVE_CELL_NG;
+                    };
+
+                    continue;
+                }
+
+                if (aliveNeighbors < 2 || aliveNeighbors > 3) {
+                    pGame->cellsAlive--;
+                    pGame->cellsDead++;
+                    pGame->dashboard[i][j] = DEAD_CELL_NG;
+                };
+            }
+        }
+
+        for (i = 0; i < pGame->rows; i++) {
+            for (j = 0; j < pGame->cols; j++) {
+                if (pGame->dashboard[i][j] == DEAD_CELL_NG) {
+                    pGame->dashboard[i][j] = DEAD_CELL;
+                    continue;
+                }
+
+                if (pGame->dashboard[i][j] == ALIVE_CELL_NG) pGame->dashboard[i][j] = ALIVE_CELL;
+            }
+        }
+
+        generation++;
+
+        pGame->generation = generation;
+
+        system("cls");
+        printDashboardByConsole(pGame);
+        if (generation != maxGeneration) sleep(delayBetweenGenerations);
+    }
 }
 
 int strcmpi(const char* str01, const char* str02) {

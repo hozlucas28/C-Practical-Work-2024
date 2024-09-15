@@ -26,8 +26,23 @@ typedef struct {
     int generation; /** Represents the generation number. */
 } TGame;
 
-// TODO: Documentation
-int countNeighbors(TGame* pGame, int row, int col, int radius);
+/**
+ * @brief Counts the number of alive neighbors around a given position inside the `dashboard` field
+ * of a Conway's Game of Life structure.
+ *
+ * This function iterates through the cells within a specified radius around the given cell
+ * (excluding the cell itself) and counts how many of those cells are alive.
+ *
+ * @param pGame Pointer to the Conway's Game of Life structure.
+ * @param row Row index of the cell.
+ * @param col Column index of the cell.
+ * @param radius Radius around the cell to check for alive neighbors.
+ *
+ * @return The number of alive neighbors around the specified cell.
+ *
+ * @warning This function assumes that `pGame` has been properly initialized.
+ */
+int countAliveNeighbors(TGame* pGame, int row, int col, int radius);
 
 /**
  * @brief Draws a specified pattern on a Conway's Game of Life board.
@@ -112,6 +127,24 @@ void printDashboardByConsole(TGame* pGame);
  * `cols` field values.
  */
 void setDashboardCenter(TGame* pGame);
+
+/**
+ * @brief Pauses the execution of the program.
+ *
+ * @warning The actual delay may be longer than specified due to system timer.
+ */
+void sleep(int milliseconds);
+
+/**
+ * @brief Starts a Conway's Game of Life game using the console as the output.
+ *
+ * @param pGame Pointer to a Conway's Game of Life structure.
+ * @param maxGeneration Maximum number of generations.
+ * @param delayBetweenGenerations Delay in milliseconds between each generation.
+ *
+ * @warning This function assumes that `pGame` has been properly initialized.
+ */
+void startGameByConsole(TGame* pGame, int maxGeneration, int delayBetweenGenerations);
 
 /**
  * @brief Compares two strings case-insensitively.
