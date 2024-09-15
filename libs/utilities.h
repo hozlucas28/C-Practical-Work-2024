@@ -26,6 +26,9 @@ typedef struct {
     int generation; /** Represents the generation number. */
 } TGame;
 
+// TODO: Documentation
+int countNeighbors(TGame* pGame, int row, int col, int radius);
+
 /**
  * @brief Draws a specified pattern on a Conway's Game of Life board.
  *

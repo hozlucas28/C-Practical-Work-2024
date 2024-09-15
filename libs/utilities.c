@@ -8,6 +8,34 @@
 
 #include "./patterns/main.h"
 
+int countNeighbors(TGame* pGame, int cellRow, int cellCol, int radius) {
+    int i;
+    int j;
+
+    int startRow = cellRow - radius;
+    int startCol = cellCol - radius;
+
+    int endRow = cellRow + radius + 1;
+    int endCol = cellCol + radius + 1;
+
+    int neighbors = 0;
+
+    for (i = startRow; i < endRow; i++) {
+        if (i > pGame->rows - 1) break;
+        if (i < 0) continue;
+
+        for (j = startCol; j < endCol; j++) {
+            if (j > pGame->cols - 1) break;
+            if (j < 0) continue;
+
+            if (i == cellRow && j == cellCol) continue;
+            if (pGame->dashboard[i][j] == ALIVE_CELL) neighbors++;
+        }
+    }
+
+    return neighbors;
+}
+
 void drawPattern(TGame* pGame, char* pattern) {
     TPattern SPattern;
 
