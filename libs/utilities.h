@@ -20,9 +20,10 @@ typedef struct {
     char (*dashboard)[DASHBOARD_COLS]; /** Board (2D array) in which the cells moves. */
     int rows;                          /** Number of rows in `dashboard`. */
     int cols;                          /** Number of columns in `dashboard`. */
-    int cellsAlive;                    /** Number of alive cells. */
-    int cellsDead;                     /** Number of dead cells. */
-    int generation;                    /** Represents the generation number. */
+    int center[2];  /** Array (row, and column) representing the center of the `dashboard`. */
+    int cellsAlive; /** Number of alive cells. */
+    int cellsDead;  /** Number of dead cells. */
+    int generation; /** Represents the generation number. */
 } TGame;
 
 /**
@@ -39,12 +40,12 @@ void drawPattern(TGame* pGame, char* pattern);
  * @brief Draws a specified pattern on a Conway's Game of Life board.
  *
  * @param pGame Pointer to the Conway's Game of Life structure where the pattern will be drawn.
- * @param pattern Pointer to pattern structure to be drawn.
+ * @param pPattern Pointer to pattern structure to be drawn.
  *
  * @warning This functions is intended for internal use only and should not be used outside of this
  * library.
  */
-void drawPatternInDashboard(TGame* pGame, TPattern* pattern);
+void drawPatternInDashboard(TGame* pGame, TPattern* pPattern);
 
 /**
  * @brief Fills the dashboard of a Conway's Game of Life structure with a
@@ -98,6 +99,16 @@ int isStrIn(char* str, char* arr[], int arrLength);
  * @warning This function assumes that `pGame` has been properly initialized.
  */
 void printDashboardByConsole(TGame* pGame);
+
+/**
+ * @brief Sets the center of a Conway's Game of Life structure.
+ *
+ * @param pGame A pointer to the Conway's Game of Life structure.
+ *
+ * @warning This function assumes that `pGame` has been properly initialized with valid `rows` and
+ * `cols` field values.
+ */
+void setDashboardCenter(TGame* pGame);
 
 /**
  * @brief Compares two strings case-insensitively.

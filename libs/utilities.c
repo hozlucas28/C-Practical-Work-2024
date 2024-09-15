@@ -36,18 +36,35 @@ void drawPattern(TGame* pGame, char* pattern) {
     pGame->cellsDead = (pGame->cols * pGame->rows) - pGame->cellsAlive;
     pGame->generation = 0;
 
-    printf("\n\n");                    // TODO: Remove line.
-    printPatternByConsole(&SPattern);  // TODO: Remove line.
-
-    // TODO
     drawPatternInDashboard(pGame, &SPattern);
-
-    printf("\n* The '%s' pattern was injected! *", pattern);  // TODO: Remove line.
-    printf("\n* The '%s' pattern was drawn! *", pattern);     // TODO: Remove line.
 }
 
-// TODO
-void drawPatternInDashboard(TGame* pGame, TPattern* pattern) {}
+void drawPatternInDashboard(TGame* pGame, TPattern* pPattern) {
+    int i;
+    int j;
+
+    int pI = 0;
+    int pJ = 0;
+
+    int startRow = pGame->center[0] - pPattern->center[0];
+    int startCol = pGame->center[1] - pPattern->center[1];
+
+    for (i = startRow; pI < pPattern->rows; i++) {
+        if (i < 0) continue;
+        if (i > pGame->rows - 1) break;
+
+        for (j = startCol; pJ < pPattern->cols; j++) {
+            if (j < 0) continue;
+            if (j > pGame->cols - 1) break;
+
+            pGame->dashboard[i][j] = pPattern->arr[pI][pJ];
+            pJ++;
+        };
+
+        pJ = 0;
+        pI++;
+    }
+}
 
 void fillDashboard(TGame* pGame, char with) {
     int i;
@@ -105,6 +122,14 @@ void printDashboardByConsole(TGame* pGame) {
 
         printf("\n");
     }
+}
+
+void setDashboardCenter(TGame* pGame) {
+    int row = pGame->rows / 2;
+    int col = pGame->cols / 2;
+
+    pGame->center[0] = row;
+    pGame->center[1] = col;
 }
 
 int strcmpi(const char* str01, const char* str02) {
