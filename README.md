@@ -49,15 +49,15 @@ This repository contains the practical work for the Programming Topics course at
 
 2. Open the files [src.cbp](./src/src.cbp) (main project) and [libs.cbp](./libs/libs.cbp) (library project) with the CodeBlocks application. These files are located within the cloned repository.
 
-3. Select the [libs.cbp](./libs/libs.cbp) project (library project) and compile it in Release mode, and optionally in Debug mode.
+3. Select the [libs.cbp](./libs/libs.cbp) project (library project) and compile it in Release mode and Debug mode.
 
 4. Select the [src.cbp](./src/src.cbp) project (main project) and run it in Release mode to enjoy Conway's Game of Life.
 
 ## Known Issues
 
-| Issue                                                       | Solution                                                                                                                                                                                                                                                                                                                                                        |
-| :---------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[src.cbp](./src/src.cbp) (main project) doesn't compile** | _Select the [libs.cbp](./libs/libs.cbp) project (library project) and compile it in Release mode. Then, select the [src.cbp](./src/src.cbp) project (main project), right-click on it, choose `Build Options`, and go to the `Linker settings` tab. There, add the `libs.a` file located in the `libs/bin/Release` folder and try compiling the project again._ |
+| Issue                                                       | Solution                                                                                                                                                                                                                                                                                                                                                                                                         |
+| :---------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[src.cbp](./src/src.cbp) (main project) doesn't compile** | _Select the [libs.cbp](./libs/libs.cbp) project (library project) and compile it in Release mode and Debug mode. Then, select the [src.cbp](./src/src.cbp) project (main project), right-click on it, choose `Build Options`, and go to the `Linker settings` tab. There, add the `libs.a` files located in the `libs/bin/Debug` and `libs/bin/Release` folders. Finally, try compiling the main project again._ |
 
 ## Application Structure
 
