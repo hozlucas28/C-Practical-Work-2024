@@ -108,6 +108,46 @@ void fillDashboard(TGame* pGame, char with) {
     }
 }
 
+void generateNextGeneration(TGame* pGame) {
+    int i;
+    int j;
+
+    int aliveNeighbors;
+
+    for (i = 0; i < pGame->rows; i++) {
+        for (j = 0; j < pGame->cols; j++) {
+            aliveNeighbors = countAliveNeighbors(pGame, i, j, NEIGHBORHOOD_RADIUS);
+
+            if (pGame->dashboard[i][j] == DEAD_CELL) {
+                if (aliveNeighbors == 3) {
+                    pGame->cellsDead--;
+                    pGame->cellsAlive++;
+                    pGame->dashboard[i][j] = ALIVE_CELL_NG;
+                };
+
+                continue;
+            }
+
+            if (aliveNeighbors < 2 || aliveNeighbors > 3) {
+                pGame->cellsAlive--;
+                pGame->cellsDead++;
+                pGame->dashboard[i][j] = DEAD_CELL_NG;
+            };
+        }
+    }
+
+    for (i = 0; i < pGame->rows; i++) {
+        for (j = 0; j < pGame->cols; j++) {
+            if (pGame->dashboard[i][j] == DEAD_CELL_NG) {
+                pGame->dashboard[i][j] = DEAD_CELL;
+                continue;
+            }
+
+            if (pGame->dashboard[i][j] == ALIVE_CELL_NG) pGame->dashboard[i][j] = ALIVE_CELL;
+        }
+    }
+}
+
 char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
                       int (*validator)(char* userInput)) {
     char* userInput = malloc(strLength * sizeof(char));
@@ -146,15 +186,34 @@ void printDashboardByConsole(TGame* pGame) {
     int i;
     int j;
 
+    for (i = 0; i < pGame->cols + 2; i++) printf("-");
+    printf("\n");
+
     for (i = 0; i < pGame->rows; i++) {
+        printf("|");
         for (j = 0; j < pGame->cols; j++) {
             printf("%c", pGame->dashboard[i][j]);
         }
 
-        printf("\n");
+        printf("|\n");
     }
+
+    for (i = 0; i < pGame->cols + 2; i++) printf("-");
 }
 
+void printGame(TGame* pGame) {
+    int i;
+    for (i = 0; i < pGame->cols + 2; i++) printf("-");
+
+    printf("\n| Cells alive: %*d |", pGame->cols - 17 + 2, pGame->cellsAlive);
+    printf("\n| Cells dead: %*d |", pGame->cols - 16 + 2, pGame->cellsDead);
+    printf("\n| Generation: %*d |", pGame->cols - 16 + 2, pGame->generation);
+    printf("\n| Maximum generation: %*d |", pGame->cols - 25 + 3, pGame->maximumGeneration);
+    printf("\n| Delay between generations: %*d |\n", pGame->cols - 32 + 3,
+           pGame->delayBetweenGenerations);
+
+    printDashboardByConsole(pGame);
+}
 void setDashboardCenter(TGame* pGame) {
     int row = pGame->rows / 2;
     int col = pGame->cols / 2;
@@ -165,64 +224,30 @@ void setDashboardCenter(TGame* pGame) {
 
 void sleep(int miliseconds) {
     clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds))
-        ;
+    while (clock() < (startTime + miliseconds));
 }
 
 void startGameByConsole(TGame* pGame, int maxGeneration, int delayBetweenGenerations) {
-    int i;
-    int j;
-
     int generation = 0;
-    int aliveNeighbors;
 
     pGame->generation = 0;
+    pGame->maximumGeneration = maxGeneration;
+    pGame->delayBetweenGenerations = delayBetweenGenerations;
 
     system("cls");
-    printDashboardByConsole(pGame);
+    printGame(pGame);
     if (generation == maxGeneration) return;
     sleep(delayBetweenGenerations);
 
     while (generation < maxGeneration) {
-        for (i = 0; i < pGame->rows; i++) {
-            for (j = 0; j < pGame->cols; j++) {
-                aliveNeighbors = countAliveNeighbors(pGame, i, j, NEIGHBORHOOD_RADIUS);
-
-                if (pGame->dashboard[i][j] == DEAD_CELL) {
-                    if (aliveNeighbors == 3) {
-                        pGame->cellsDead--;
-                        pGame->cellsAlive++;
-                        pGame->dashboard[i][j] = ALIVE_CELL_NG;
-                    };
-
-                    continue;
-                }
-
-                if (aliveNeighbors < 2 || aliveNeighbors > 3) {
-                    pGame->cellsAlive--;
-                    pGame->cellsDead++;
-                    pGame->dashboard[i][j] = DEAD_CELL_NG;
-                };
-            }
-        }
-
-        for (i = 0; i < pGame->rows; i++) {
-            for (j = 0; j < pGame->cols; j++) {
-                if (pGame->dashboard[i][j] == DEAD_CELL_NG) {
-                    pGame->dashboard[i][j] = DEAD_CELL;
-                    continue;
-                }
-
-                if (pGame->dashboard[i][j] == ALIVE_CELL_NG) pGame->dashboard[i][j] = ALIVE_CELL;
-            }
-        }
+        generateNextGeneration(pGame);
 
         generation++;
 
         pGame->generation = generation;
 
         system("cls");
-        printDashboardByConsole(pGame);
+        printGame(pGame);
         if (generation != maxGeneration) sleep(delayBetweenGenerations);
     }
 }

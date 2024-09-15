@@ -24,6 +24,8 @@ typedef struct {
     int cellsAlive; /** Number of alive cells. */
     int cellsDead;  /** Number of dead cells. */
     int generation; /** Represents the generation number. */
+    int maximumGeneration;       /** TODO: Documentation */
+    int delayBetweenGenerations; /** TODO: Documentation */
 } TGame;
 
 /**
@@ -77,6 +79,9 @@ void drawPatternInDashboard(TGame* pGame, TPattern* pPattern);
  */
 void fillDashboard(TGame* pGame, char with);
 
+// TODO: Documentation
+void generateNextGeneration(TGame* pGame);
+
 /**
  * @brief Gets user input as a string.
  *
@@ -117,6 +122,9 @@ int isStrIn(char* str, char* arr[], int arrLength);
  * @warning This function assumes that `pGame` has been properly initialized.
  */
 void printDashboardByConsole(TGame* pGame);
+
+// TODO: Documentation
+void printGame(TGame* pGame);
 
 /**
  * @brief Sets the center of a Conway's Game of Life structure.
