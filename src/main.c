@@ -28,6 +28,7 @@ int main() {
     game.generation = 0;
 
     setDashboardCenter(&game);
+
     fillDashboard(&game, DEAD_CELL);
 
     /* ----------------------------- Request Pattern ---------------------------- */
@@ -39,7 +40,6 @@ int main() {
     printf("> Pattern received: '%s'.\n\n", requestedPattern);
 
     drawPattern(&game, requestedPattern);
-    printDashboardByConsole(&game);
 
     /* ----------------------- Request Maximum Generation ----------------------- */
 
