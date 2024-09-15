@@ -26,3 +26,11 @@ void printPatternByConsole(TPattern* pPattern) {
         printf("\n");
     }
 }
+
+void setPatternCenter(TPattern* pPattern) {
+    int row = pPattern->rows / 2;
+    int col = pPattern->cols / 2;
+
+    pPattern->center[0] = row;
+    pPattern->center[1] = col;
+}

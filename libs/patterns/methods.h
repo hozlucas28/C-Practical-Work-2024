@@ -23,4 +23,14 @@ void fillPattern(TPattern* pPattern, char with);
  */
 void printPatternByConsole(TPattern* pPattern);
 
+/**
+ * @brief Sets the center of a pattern structure.
+ *
+ * @param pPattern A pointer to the pattern structure.
+ *
+ * @warning This function assumes that `pPattern` has been properly initialized with valid `rows`
+ * and `cols` field values.
+ */
+void setPatternCenter(TPattern* pPattern);
+
 #endif  // PATTERNS_METHODS_H_INCLUDED
