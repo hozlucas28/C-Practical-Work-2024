@@ -15,6 +15,7 @@ typedef struct {
     char (*arr)[PATTERN_COLS]; /** 2D array representing the pattern. */
     int rows;                  /** Number of rows of the pattern. */
     int cols;                  /** Number of columns of the pattern. */
+    int center[2]; /** Array (row, and column) representing the center of the pattern. */
 } TPattern;
 
 #endif  // PATTERNS_STRUCTS_H_INCLUDED
