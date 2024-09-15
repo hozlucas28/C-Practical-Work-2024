@@ -3,8 +3,6 @@
 #include <limits.h>
 #include <stdio.h>
 
-#include "../libs/utilities.c"
-
 int main() {
     TGame game;
 
