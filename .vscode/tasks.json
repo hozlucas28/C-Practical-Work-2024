@@ -14,9 +14,10 @@
         {
             "command": [
                 "(gcc -Wall -O2 -pedantic-errors -c \"${workspaceFolder}\\libs\\utilities.c\" -o \"${workspaceFolder}\\libs\\obj\\Release\\utilities.o\")",
-                "& (gcc -Wall -O2 -pedantic-errors -c \"${workspaceFolder}\\libs\\cells\\constructors.c\" -o \"${workspaceFolder}\\libs\\obj\\Release\\constructors.o\")",
-                "& (gcc -Wall -O2 -pedantic-errors -c \"${workspaceFolder}\\libs\\cells\\methods.c\" -o \"${workspaceFolder}\\libs\\obj\\Release\\methods.o\")",
-                "& (ar -r -s \"${workspaceFolder}\\libs\\bin\\Release\\libs.a\" \"${workspaceFolder}\\libs\\obj\\Release\\constructors.o\" \"${workspaceFolder}\\libs\\obj\\Release\\methods.o\" \"${workspaceFolder}\\libs\\obj\\Release\\utilities.o\")"
+                "& (gcc -Wall -O2 -pedantic-errors -c \"${workspaceFolder}\\libs\\validators.c\" -o \"${workspaceFolder}\\libs\\obj\\Release\\validators.o\")",
+                "& (gcc -Wall -O2 -pedantic-errors -c \"${workspaceFolder}\\libs\\patterns\\constructors.c\" -o \"${workspaceFolder}\\libs\\obj\\Release\\constructors.o\")",
+                "& (gcc -Wall -O2 -pedantic-errors -c \"${workspaceFolder}\\libs\\patterns\\methods.c\" -o \"${workspaceFolder}\\libs\\obj\\Release\\methods.o\")",
+                "& (ar -r -s \"${workspaceFolder}\\libs\\bin\\Release\\libs.a\" \"${workspaceFolder}\\libs\\obj\\Release\\constructors.o\" \"${workspaceFolder}\\libs\\obj\\Release\\methods.o\" \"${workspaceFolder}\\libs\\obj\\Release\\utilities.o\" \"${workspaceFolder}\\libs\\obj\\Release\\validators.o\")"
             ],
             "group": {"kind": "build", "isDefault": false},
             "label": "Compile libs project",
