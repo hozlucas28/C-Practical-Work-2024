@@ -1,6 +1,13 @@
 name: 'Format code'
 
 on:
+    pull_request:
+        branches:
+            - Master
+            - develop
+        paths:
+            - '**.c'
+            - '**.h'
     push:
         branches:
             - Master

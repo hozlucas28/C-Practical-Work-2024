@@ -34,27 +34,20 @@
 				</Linker>
 			</Target>
 		</Build>
+		<Unit filename="cells/constructors.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="cells/constructors.h" />
+		<Unit filename="cells/methods.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="cells/methods.h" />
 		<Unit filename="macros.h" />
 		<Unit filename="main.h" />
-		<Unit filename="patterns/constructors.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="patterns/constructors.h" />
-		<Unit filename="patterns/macros.h" />
-		<Unit filename="patterns/main.h" />
-		<Unit filename="patterns/methods.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="patterns/methods.h" />
-		<Unit filename="patterns/structs.h" />
 		<Unit filename="utilities.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="utilities.h" />
-		<Unit filename="validators.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="validators.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

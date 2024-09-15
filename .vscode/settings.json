@@ -10,6 +10,8 @@
     "editor.minimap.renderCharacters": false,
     "emojisense.unicodeCompletionsEnabled": false,
     "files.associations": {"*.c": "c", "*.h": "c"},
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
     "files.trimTrailingWhitespace": true,
     "markdown-preview-github-styles.colorTheme": "dark",
     "terminal.integrated.defaultProfile.windows": "Command Prompt",

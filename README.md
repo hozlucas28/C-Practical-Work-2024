@@ -96,17 +96,12 @@ C-Practical-Work-2024/
 │   ├── main.h
 │   ├── utilities.c
 │   ├── utilities.h
-│   ├── validators.c
-│   ├── validators.h
 |   |
-│   └── patterns/
+│   └── cells/
 │       ├── constructors.c
 │       ├── constructors.h
-│       ├── macros.h
-│       ├── main.h
 │       ├── methods.c
-│       ├── methods.h
-│       └── structs.h
+│       └── methods.h
 |
 ├── .clang-format
 ├── .gitignore
@@ -136,18 +131,13 @@ C-Practical-Work-2024/
     -   **[main.h](./libs/main.h)** - File indexing all `.h` files of the project.
     -   **[utilities.c](./libs/utilities.c)** - File with the implementation of the function prototypes found in `utilities.h`.
     -   **[utilities.h](./libs/utilities.h)** - File with common structures and function prototypes.
-    -   **[validators.c](./libs/validators.c)** - File with the implementation of the function prototypes found in `validators.h`.
-    -   **[validators.h](./libs/validators.h)** - File with functions prototypes related to validation process.
 
-    -   **[patterns](./libs/patterns)** - Functions and structures for create patterns with cells.
+    -   **[cells](./libs/cells)** - Functions and structures for `cell` entities.
 
-        -   **[constructors.c](./libs/patterns/constructors.c)** - File with the implementation of the function prototypes found in `constructors.h`.
-        -   **[constructors.h](./libs/patterns/constructors.h)** - File with structures and function prototypes related to patterns creation.
-        -   **[macros.h](./libs/macros.h)** - File with macros.
-        -   **[main.h](./libs/main.h)** - File indexing all `.h` files inside `patterns` folder.
-        -   **[methods.c](./libs/patterns/methods.c)** - File with the implementation of the function prototypes found in `methods.h`.
-        -   **[methods.h](./libs/patterns/methods.h)** - File with function prototypes related to pattern methods.
-        -   **[structs.h](./libs/patterns/methods.h)** - File with structs.
+        -   **[constructors.c](./libs/cells/constructors.c)** - File with the implementation of the function prototypes found in `constructors.h`.
+        -   **[constructors.h](./libs/cells/constructors.h)** - File with structures and function prototypes related to cell creation.
+        -   **[methods.c](./libs/cells/methods.c)** - File with the implementation of the function prototypes found in `methods.h`.
+        -   **[methods.h](./libs/cells/methods.h)** - File with function prototypes related to cell methods.
 
 -   **[.clang-format](./.clang-format)** - Configuration file for the `clang-format` code formatting tool.
 -   **[.gitignore](./.gitignore)** - Git configuration file to avoid tracking unwanted files.
