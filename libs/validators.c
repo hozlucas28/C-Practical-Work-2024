@@ -37,3 +37,9 @@ int validatePattern(char* userInput) {
     char* options[] = {"glider", "toad", "press", "glider cannon"};
     return isStrIn(userInput, options, 4);
 }
+
+int validatePlatform(char* userInput) {
+    char* options[] = {"console", "simple directmedia layer (sdl)", "simple directmedia layer",
+                       "sdl"};
+    return isStrIn(userInput, options, 4);
+}

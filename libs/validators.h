@@ -38,4 +38,7 @@ int validateGeneration(char* generation);
  */
 int validatePattern(char* userInput);
 
+// TODO: Documentation
+int validatePlatform(char* platform);
+
 #endif  // VALIDATORS_H_INCLUDED
