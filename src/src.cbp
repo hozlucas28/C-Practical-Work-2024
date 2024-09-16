@@ -43,6 +43,11 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="sdl/main.h" />
+		<Unit filename="sdl/methods.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sdl/methods.h" />
 		<Unit filename="statics/initial-state.txt" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
