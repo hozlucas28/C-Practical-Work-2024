@@ -30,6 +30,8 @@ int main() {
 
     fillDashboard(&game, DEAD_CELL);
 
+    system("cls");
+
     /* ----------------------------- Request Pattern ---------------------------- */
 
     requestedPattern = getUserInputStr(

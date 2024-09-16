@@ -224,8 +224,7 @@ void setDashboardCenter(TGame* pGame) {
 
 void sleep(int miliseconds) {
     clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds))
-        ;
+    while (clock() < (startTime + miliseconds));
 }
 
 void startGameByConsole(TGame* pGame, int maxGeneration, int delayBetweenGenerations) {
