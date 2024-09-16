@@ -220,8 +220,10 @@ void startGameByConsole(TGame* pGame, int maxGeneration, int delayBetweenGenerat
     while (isToInfinity || generation < maxGeneration) {
         generateNextGeneration(pGame);
 
-        if (generation + 1 != INT_MAX) generation++;
-        pGame->generation = generation;
+        if (generation + 1 != INT_MAX) {
+            generation++;
+            pGame->generation = generation;
+        };
 
         system("cls");
         printGameByConsole(pGame);
