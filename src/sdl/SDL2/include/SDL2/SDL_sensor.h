@@ -29,9 +29,8 @@
 #ifndef SDL_sensor_h_
 #define SDL_sensor_h_
 
-#include "SDL_stdinc.h"
 #include "SDL_error.h"
-
+#include "SDL_stdinc.h"
 #include "begin_code.h"
 /* Set up for C function definitions, even when using C++ */
 #ifdef __cplusplus
@@ -66,16 +65,15 @@ typedef Sint32 SDL_SensorID;
  * Hare are the additional Android sensors:
  * https://developer.android.com/reference/android/hardware/SensorEvent.html#values
  */
-typedef enum
-{
-    SDL_SENSOR_INVALID = -1,    /**< Returned for an invalid sensor */
-    SDL_SENSOR_UNKNOWN,         /**< Unknown sensor type */
-    SDL_SENSOR_ACCEL,           /**< Accelerometer */
-    SDL_SENSOR_GYRO,            /**< Gyroscope */
-    SDL_SENSOR_ACCEL_L,         /**< Accelerometer for left Joy-Con controller and Wii nunchuk */
-    SDL_SENSOR_GYRO_L,          /**< Gyroscope for left Joy-Con controller */
-    SDL_SENSOR_ACCEL_R,         /**< Accelerometer for right Joy-Con controller */
-    SDL_SENSOR_GYRO_R           /**< Gyroscope for right Joy-Con controller */
+typedef enum {
+    SDL_SENSOR_INVALID = -1, /**< Returned for an invalid sensor */
+    SDL_SENSOR_UNKNOWN,      /**< Unknown sensor type */
+    SDL_SENSOR_ACCEL,        /**< Accelerometer */
+    SDL_SENSOR_GYRO,         /**< Gyroscope */
+    SDL_SENSOR_ACCEL_L,      /**< Accelerometer for left Joy-Con controller and Wii nunchuk */
+    SDL_SENSOR_GYRO_L,       /**< Gyroscope for left Joy-Con controller */
+    SDL_SENSOR_ACCEL_R,      /**< Accelerometer for right Joy-Con controller */
+    SDL_SENSOR_GYRO_R        /**< Gyroscope for right Joy-Con controller */
 } SDL_SensorType;
 
 /**
@@ -95,12 +93,12 @@ typedef enum
  * -X ... +X : left ... right
  * -Y ... +Y : bottom ... top
  * -Z ... +Z : farther ... closer
- * 
+ *
  * The axis data is not changed when the phone is rotated.
  *
  * \sa SDL_GetDisplayOrientation()
  */
-#define SDL_STANDARD_GRAVITY    9.80665f
+#define SDL_STANDARD_GRAVITY 9.80665f
 
 /**
  * Gyroscope sensor
@@ -120,7 +118,7 @@ typedef enum
  * -X ... +X : left ... right
  * -Y ... +Y : bottom ... top
  * -Z ... +Z : farther ... closer
- * 
+ *
  * The axis data is not changed when the phone or controller is rotated.
  *
  * \sa SDL_GetDisplayOrientation()
@@ -284,7 +282,8 @@ extern DECLSPEC int SDLCALL SDL_SensorGetData(SDL_Sensor *sensor, float *data, i
  *
  * \since This function is available since SDL 2.26.0.
  */
-extern DECLSPEC int SDLCALL SDL_SensorGetDataWithTimestamp(SDL_Sensor *sensor, Uint64 *timestamp, float *data, int num_values);
+extern DECLSPEC int SDLCALL SDL_SensorGetDataWithTimestamp(SDL_Sensor *sensor, Uint64 *timestamp,
+                                                           float *data, int num_values);
 
 /**
  * Close a sensor previously opened with SDL_SensorOpen().
@@ -307,7 +306,6 @@ extern DECLSPEC void SDLCALL SDL_SensorClose(SDL_Sensor *sensor);
  * \since This function is available since SDL 2.0.9.
  */
 extern DECLSPEC void SDLCALL SDL_SensorUpdate(void);
-
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

@@ -39,7 +39,7 @@ extern "C" {
 /* Function prototypes */
 
 #define FONT_CHARACTER_SIZE 8
-#define FONT_LINE_HEIGHT    (FONT_CHARACTER_SIZE + 2)
+#define FONT_LINE_HEIGHT (FONT_CHARACTER_SIZE + 2)
 
 /**
  *  \brief Draw a string in the currently set font.
@@ -70,8 +70,7 @@ int SDLTest_DrawString(SDL_Renderer *renderer, int x, int y, const char *s);
 /**
  *  \brief Data used for multi-line text output
  */
-typedef struct SDLTest_TextWindow
-{
+typedef struct SDLTest_TextWindow {
     SDL_Rect rect;
     int current;
     int numlines;
@@ -117,7 +116,9 @@ void SDLTest_TextWindowDisplay(SDLTest_TextWindow *textwin, SDL_Renderer *render
  *
  *  \since This function is available since SDL 2.24.0
  */
-void SDLTest_TextWindowAddText(SDLTest_TextWindow *textwin, SDL_PRINTF_FORMAT_STRING const char *fmt, ...) SDL_PRINTF_VARARG_FUNC(2);
+void SDLTest_TextWindowAddText(SDLTest_TextWindow *textwin,
+                               SDL_PRINTF_FORMAT_STRING const char *fmt, ...)
+    SDL_PRINTF_VARARG_FUNC(2);
 
 /**
  *  \brief Add text to a multi-line text output window

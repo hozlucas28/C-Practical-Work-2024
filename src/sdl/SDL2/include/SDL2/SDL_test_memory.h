@@ -36,10 +36,9 @@
 extern "C" {
 #endif
 
-
 /**
  * \brief Start tracking SDL memory allocations
- * 
+ *
  * \note This should be called before any other SDL functions for complete tracking coverage
  */
 int SDLTest_TrackAllocations(void);
@@ -50,7 +49,6 @@ int SDLTest_TrackAllocations(void);
  * \note This can be called after SDL_Quit()
  */
 void SDLTest_LogAllocations(void);
-
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

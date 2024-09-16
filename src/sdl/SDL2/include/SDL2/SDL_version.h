@@ -29,7 +29,6 @@
 #define SDL_version_h_
 
 #include "SDL_stdinc.h"
-
 #include "begin_code.h"
 /* Set up for C function definitions, even when using C++ */
 #ifdef __cplusplus
@@ -48,18 +47,17 @@ extern "C" {
  * \sa SDL_VERSION
  * \sa SDL_GetVersion
  */
-typedef struct SDL_version
-{
-    Uint8 major;        /**< major version */
-    Uint8 minor;        /**< minor version */
-    Uint8 patch;        /**< update version */
+typedef struct SDL_version {
+    Uint8 major; /**< major version */
+    Uint8 minor; /**< minor version */
+    Uint8 patch; /**< update version */
 } SDL_version;
 
 /* Printable format: "%d.%d.%d", MAJOR, MINOR, PATCHLEVEL
-*/
-#define SDL_MAJOR_VERSION   2
-#define SDL_MINOR_VERSION   30
-#define SDL_PATCHLEVEL      5
+ */
+#define SDL_MAJOR_VERSION 2
+#define SDL_MINOR_VERSION 30
+#define SDL_PATCHLEVEL 5
 
 /**
  * Macro to determine SDL version program was compiled against.
@@ -76,12 +74,12 @@ typedef struct SDL_version
  * \sa SDL_version
  * \sa SDL_GetVersion
  */
-#define SDL_VERSION(x)                          \
-{                                   \
-    (x)->major = SDL_MAJOR_VERSION;                 \
-    (x)->minor = SDL_MINOR_VERSION;                 \
-    (x)->patch = SDL_PATCHLEVEL;                    \
-}
+#define SDL_VERSION(x)                  \
+    {                                   \
+        (x)->major = SDL_MAJOR_VERSION; \
+        (x)->minor = SDL_MINOR_VERSION; \
+        (x)->patch = SDL_PATCHLEVEL;    \
+    }
 
 /* TODO: Remove this whole block in SDL 3 */
 #if SDL_MAJOR_VERSION < 3
@@ -98,8 +96,7 @@ typedef struct SDL_version
  *  and 2.255.99 would be encoded as 25799.
  *  This macro will not be available in SDL 3.x.
  */
-#define SDL_VERSIONNUM(X, Y, Z)                     \
-    ((X)*1000 + (Y)*100 + (Z))
+#define SDL_VERSIONNUM(X, Y, Z) ((X)*1000 + (Y)*100 + (Z))
 
 /**
  *  This is the version number macro for the current SDL version.
@@ -110,16 +107,14 @@ typedef struct SDL_version
  *
  *  Deprecated, use SDL_VERSION_ATLEAST or SDL_VERSION instead.
  */
-#define SDL_COMPILEDVERSION \
-    SDL_VERSIONNUM(SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL)
+#define SDL_COMPILEDVERSION SDL_VERSIONNUM(SDL_MAJOR_VERSION, SDL_MINOR_VERSION, SDL_PATCHLEVEL)
 #endif /* SDL_MAJOR_VERSION < 3 */
 
 /**
  *  This macro will evaluate to true if compiled with SDL at least X.Y.Z.
  */
-#define SDL_VERSION_ATLEAST(X, Y, Z) \
-    ((SDL_MAJOR_VERSION >= X) && \
-     (SDL_MAJOR_VERSION > X || SDL_MINOR_VERSION >= Y) && \
+#define SDL_VERSION_ATLEAST(X, Y, Z)                                                  \
+    ((SDL_MAJOR_VERSION >= X) && (SDL_MAJOR_VERSION > X || SDL_MINOR_VERSION >= Y) && \
      (SDL_MAJOR_VERSION > X || SDL_MINOR_VERSION > Y || SDL_PATCHLEVEL >= Z))
 
 /**
@@ -138,7 +133,7 @@ typedef struct SDL_version
  *
  * \sa SDL_GetRevision
  */
-extern DECLSPEC void SDLCALL SDL_GetVersion(SDL_version * ver);
+extern DECLSPEC void SDLCALL SDL_GetVersion(SDL_version *ver);
 
 /**
  * Get the code revision of SDL that is linked against your program.
@@ -191,7 +186,6 @@ extern DECLSPEC const char *SDLCALL SDL_GetRevision(void);
  * \sa SDL_GetRevision
  */
 extern SDL_DEPRECATED DECLSPEC int SDLCALL SDL_GetRevisionNumber(void);
-
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus

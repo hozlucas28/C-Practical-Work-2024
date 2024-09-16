@@ -28,10 +28,9 @@
 #ifndef SDL_touch_h_
 #define SDL_touch_h_
 
-#include "SDL_stdinc.h"
 #include "SDL_error.h"
+#include "SDL_stdinc.h"
 #include "SDL_video.h"
-
 #include "begin_code.h"
 /* Set up for C function definitions, even when using C++ */
 #ifdef __cplusplus
@@ -41,16 +40,14 @@ extern "C" {
 typedef Sint64 SDL_TouchID;
 typedef Sint64 SDL_FingerID;
 
-typedef enum
-{
+typedef enum {
     SDL_TOUCH_DEVICE_INVALID = -1,
     SDL_TOUCH_DEVICE_DIRECT,            /* touch screen with window-relative coordinates */
     SDL_TOUCH_DEVICE_INDIRECT_ABSOLUTE, /* trackpad with absolute device coordinates */
     SDL_TOUCH_DEVICE_INDIRECT_RELATIVE  /* trackpad with screen cursor-relative coordinates */
 } SDL_TouchDeviceType;
 
-typedef struct SDL_Finger
-{
+typedef struct SDL_Finger {
     SDL_FingerID id;
     float x;
     float y;
@@ -62,7 +59,6 @@ typedef struct SDL_Finger
 
 /* Used as the SDL_TouchID for touch events simulated with mouse input */
 #define SDL_MOUSE_TOUCHID ((Sint64)-1)
-
 
 /**
  * Get the number of registered touch devices.
@@ -137,7 +133,7 @@ extern DECLSPEC int SDLCALL SDL_GetNumTouchFingers(SDL_TouchID touchID);
  *
  * \sa SDL_RecordGesture
  */
-extern DECLSPEC SDL_Finger * SDLCALL SDL_GetTouchFinger(SDL_TouchID touchID, int index);
+extern DECLSPEC SDL_Finger* SDLCALL SDL_GetTouchFinger(SDL_TouchID touchID, int index);
 
 /* Ends C function definitions when using C++ */
 #ifdef __cplusplus
