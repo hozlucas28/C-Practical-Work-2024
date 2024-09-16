@@ -66,7 +66,7 @@ void generateNextGeneration(TGame* pGame);
 void printDashboardByConsole(TGame* pGame);
 
 // TODO: Documentation
-void printGame(TGame* pGame);
+void printGameByConsole(TGame* pGame);
 
 /**
  * @brief Sets the center of a Conway's Game of Life structure.

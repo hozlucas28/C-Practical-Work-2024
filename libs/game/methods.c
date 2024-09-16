@@ -150,33 +150,50 @@ void printDashboardByConsole(TGame* pGame) {
     int i;
     int j;
 
-    for (i = 0; i < pGame->cols + 2; i++) printf("-");
-    printf("\n");
-
     for (i = 0; i < pGame->rows; i++) {
-        printf("|");
+        printf("\n");
+
         for (j = 0; j < pGame->cols; j++) {
             printf("%c", pGame->dashboard[i][j]);
         }
-
-        printf("|\n");
     }
-
-    for (i = 0; i < pGame->cols + 2; i++) printf("-");
 }
 
-void printGame(TGame* pGame) {
+void printGameByConsole(TGame* pGame) {
     int i;
+    int j;
+
+    // Print header
     for (i = 0; i < pGame->cols + 2; i++) printf("-");
 
     printf("\n| Cells alive: %*d |", pGame->cols - 17 + 2, pGame->cellsAlive);
     printf("\n| Cells dead: %*d |", pGame->cols - 16 + 2, pGame->cellsDead);
     printf("\n| Generation: %*d |", pGame->cols - 16 + 2, pGame->generation);
-    printf("\n| Maximum generation: %*d |", pGame->cols - 25 + 3, pGame->maximumGeneration);
-    printf("\n| Delay between generations: %*d |\n", pGame->cols - 32 + 3,
+
+    if (pGame->maximumGeneration == INT_MAX) {
+        printf("\n| Maximum generation: %*s |", pGame->cols - 25 + 3, "infinity");
+    } else {
+        printf("\n| Maximum generation: %*d |", pGame->cols - 25 + 3, pGame->maximumGeneration);
+    }
+
+    printf("\n| Delay between generations: %*d ms |\n", pGame->cols - 35 + 3,
            pGame->delayBetweenGenerations);
 
-    printDashboardByConsole(pGame);
+    // Print dashboard
+    for (i = 0; i < pGame->cols + 2; i++) printf("-");
+
+    for (i = 0; i < pGame->rows; i++) {
+        printf("\n|");
+
+        for (j = 0; j < pGame->cols; j++) {
+            printf("%c", pGame->dashboard[i][j]);
+        }
+
+        printf("|");
+    }
+
+    printf("\n");
+    for (i = 0; i < pGame->cols + 2; i++) printf("-");
 }
 
 void setDashboardCenter(TGame* pGame) {
@@ -189,25 +206,25 @@ void setDashboardCenter(TGame* pGame) {
 
 void startGameByConsole(TGame* pGame, int maxGeneration, int delayBetweenGenerations) {
     int generation = 0;
+    int isToInfinity = maxGeneration == INT_MAX;
 
     pGame->generation = 0;
     pGame->maximumGeneration = maxGeneration;
     pGame->delayBetweenGenerations = delayBetweenGenerations;
 
     system("cls");
-    printGame(pGame);
+    printGameByConsole(pGame);
     if (generation == maxGeneration) return;
     sleep(delayBetweenGenerations);
 
-    while (generation < maxGeneration) {
+    while (isToInfinity || generation < maxGeneration) {
         generateNextGeneration(pGame);
 
-        generation++;
-
+        if (generation + 1 != INT_MAX) generation++;
         pGame->generation = generation;
 
         system("cls");
-        printGame(pGame);
+        printGameByConsole(pGame);
         if (generation != maxGeneration) sleep(delayBetweenGenerations);
     }
 }
