@@ -1,6 +1,7 @@
 
 #include "./methods.h"
 
+#include <limits.h>
 #include <stdio.h>
 
 #include "../patterns/main.h"

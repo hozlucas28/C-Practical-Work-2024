@@ -8,6 +8,7 @@
 #endif
 
 #include <SDL.h>
+#include <limits.h>
 #include <stdio.h>
 
 int startGameBySDL(TGame* pGame, int maxGeneration, int delayBetweenGenerations) {
