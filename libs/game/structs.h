@@ -21,8 +21,8 @@ typedef struct {
     int cellsAlive; /** Number of alive cells. */
     int cellsDead;  /** Number of dead cells. */
     int generation; /** Represents the generation number. */
-    int maximumGeneration;       /** TODO: Documentation */
-    int delayBetweenGenerations; /** TODO: Documentation */
+    int maximumGeneration;       /** Maximum number of generations to be processed. */
+    int delayBetweenGenerations; /** Delay time in milliseconds for processed the next generation.*/
 } TGame;
 
 #endif  // GAME_STRUCTS_H_INCLUDED
