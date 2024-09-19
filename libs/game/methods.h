@@ -53,7 +53,16 @@ void drawPatternInDashboard(TGame* pGame, TPattern* pPattern);
  */
 void fillDashboard(TGame* pGame, char with);
 
-// TODO: Documentation
+/**
+ * @brief Generates the next generation of a Conway's Game of Life.
+ *
+ * This function updates the `dashboard` field inside a Conway's Game of Life structure to the next
+ * generation based on the current state.
+ *
+ * @param pGame A pointer to the Conway's Game of Life structure.
+ *
+ * @warning This function assumes that `pGame` has been properly initialized.
+ */
 void generateNextGeneration(TGame* pGame);
 
 /**
@@ -65,7 +74,16 @@ void generateNextGeneration(TGame* pGame);
  */
 void printDashboardByConsole(TGame* pGame);
 
-// TODO: Documentation
+/**
+ * @brief Prints a Conway's Game of Life by console.
+ *
+ * This function takes a pointer to a Conway's Game of Life structure and prints its details
+ * to the console.
+ *
+ * @param pGame A pointer to the Conway's Game of Life structure.
+ *
+ * @warning This function assumes that `pGame` has been properly initialized.
+ */
 void printGameByConsole(TGame* pGame);
 
 /**
