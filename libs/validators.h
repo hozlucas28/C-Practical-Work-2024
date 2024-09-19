@@ -38,7 +38,16 @@ int validateGeneration(char* generation);
  */
 int validatePattern(char* pattern);
 
-// TODO: Documentation
+/**
+ * @brief Validates a platform.
+ *
+ * This function checks if a provided platform matches `console`, `simple directmedia layer (sdl)`,
+ * `simple directmedia layer`, or `sdl`. The comparison is case insensitive.
+ *
+ * @param platform The platform to be validated.
+ *
+ * @return 1 if the platform is valid, 0 otherwise.
+ */
 int validatePlatform(char* platform);
 
 #endif  // VALIDATORS_H_INCLUDED
