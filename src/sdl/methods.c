@@ -29,7 +29,7 @@ int startGameBySDL(TGame* pGame, int maxGeneration, int delayBetweenGenerations)
     char windowCaption[256];
     int windowWidth = cellSize * (pGame->cols + 2);
     int windowHeight = cellSize * (pGame->rows + 2);
-    Uint32 windowFlags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_MAXIMIZED;
+    Uint32 windowFlags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
 
     // SDL initialization
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
