@@ -1,4 +1,6 @@
 
+#include "./methods.h"
+
 #include <stdio.h>
 
 #include "./structs.h"

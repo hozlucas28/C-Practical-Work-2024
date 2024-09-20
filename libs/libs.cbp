@@ -36,6 +36,13 @@
 		</Build>
 		<Unit filename="macros.h" />
 		<Unit filename="main.h" />
+        <Unit filename="game/methods.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="game/macros.h" />
+		<Unit filename="game/main.h" />
+		<Unit filename="game/methods.h" />
+		<Unit filename="game/structs.h" />
 		<Unit filename="patterns/constructors.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -27,18 +27,27 @@ int validateDelay(char* delay);
 int validateGeneration(char* generation);
 
 /**
- * @brief Validates the pattern of user input.
+ * @brief Validates a pattern.
  *
- * This function checks if the user input matches `glider`, `toad`, `press`, or
- * `glider cannon` pattern. The comparison is case insensitive.
+ * This function checks if a provided pattern matches `glider`, `toad`, `press`, or
+ * `glider cannon`. The comparison is case insensitive.
  *
- * @param userInput The user input to be validated.
+ * @param userInput The pattern to be validated.
  *
  * @return 1 if the pattern is valid, 0 otherwise.
  */
 int validatePattern(char* pattern);
 
-// TODO: Documentation
+/**
+ * @brief Validates a platform.
+ *
+ * This function checks if a provided platform matches `console`, `simple directmedia layer (sdl)`,
+ * `simple directmedia layer`, or `sdl`. The comparison is case insensitive.
+ *
+ * @param platform The platform to be validated.
+ *
+ * @return 1 if the platform is valid, 0 otherwise.
+ */
 int validatePlatform(char* platform);
 
 #endif  // VALIDATORS_H_INCLUDED

@@ -8,6 +8,9 @@
 #include "./validators.h"
 
 // Patterns
+#include "./game/main.h"
+
+// Patterns
 #include "./patterns/main.h"
 
 #endif  // MAIN_H_INCLUDED

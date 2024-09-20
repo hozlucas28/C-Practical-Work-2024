@@ -1,5 +1,7 @@
 
-#include "./macros.h"
+#include "./constructors.h"
+
+#include "../game/main.h"
 #include "./methods.h"
 #include "./structs.h"
 

@@ -3,6 +3,8 @@
 #include <limits.h>
 #include <stdio.h>
 
+#include "./sdl/main.h"
+
 int main() {
     TGame game;
 
@@ -49,7 +51,7 @@ int main() {
     sscanf(maxGeneration, "%d", &maxGenerationInt);
 
     if (maxGenerationInt < 0) {
-        maxGeneration = "'infinity'";
+        maxGeneration = "infinity";
         maxGenerationInt = INT_MAX;
     };
 
@@ -83,7 +85,7 @@ int main() {
         return 0;
     }
 
-    // TODO: Start game in SDL.
+    startGameBySDL(&game, maxGenerationInt, delayBetweenGenerationsInt);
 
     return 0;
 }
