@@ -8,7 +8,7 @@
                 "& (mkdir \"${workspaceFolder}\\libs\\bin\\Release\")"
             ],
             "group": {"kind": "build", "isDefault": false},
-            "label": "Create \\libs\\obj\\Release and \\libs\\bin\\Release folders",
+            "label": "Create `\\libs\\obj\\Release` and `\\libs\\bin\\Release` folders",
             "type": "shell"
         },
         {
@@ -23,20 +23,47 @@
             "group": {"kind": "build", "isDefault": false},
             "label": "Compile libs project",
             "type": "shell",
-            "dependsOn": "Create \\libs\\obj\\Release and \\libs\\bin\\Release folders"
+            "dependsOn": "Create `\\libs\\obj\\Release` and `\\libs\\bin\\Release` folders"
+        },
+        {
+            "command": [
+                "(if exist \"${workspaceFolder}\\src\\obj\" rmdir /s /q \"${workspaceFolder}\\src\\obj\")",
+                "& (mkdir \"${workspaceFolder}\\src\\obj\\Release\")",
+                "& (if exist \"${workspaceFolder}\\src\\bin\" rmdir /s /q \"${workspaceFolder}\\src\\bin\")",
+                "& (mkdir \"${workspaceFolder}\\src\\bin\\Release\")"
+            ],
+            "group": {"kind": "build", "isDefault": false},
+            "label": "Create `\\src\\obj\\Release` and `\\src\\bin\\Release` folders",
+            "type": "shell"
+        },
+        {
+            "command": "copy \"${workspaceFolder}\\src\\SDL2.dll\" \"${workspaceFolder}\\src\\bin\\Release\\SDL2.dll\"",
+            "dependsOn": "Create `\\src\\obj\\Release` and `\\src\\bin\\Release` folders",
+            "group": {"kind": "build", "isDefault": false},
+            "label": "Copy `SDL2.dll` file from `.\\src\\` into `.\\src\\bin\\Release\\",
+            "type": "shell"
         },
         {
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "${workspaceFolder}\\src\\*.c",
+                "${workspaceFolder}\\src\\sdl\\*.c",
                 "-o",
-                "${fileDirname}\\bin\\Release\\${fileBasenameNoExtension}.exe",
+                "${workspaceFolder}\\src\\bin\\Release\\src.exe",
+                "-I${workspaceFolder}\\src\\sdl\\SDL2\\include\\SDL2",
+                "-I${workspaceFolder}\\src\\sdl\\SDL2\\include",
+                "-L${workspaceFolder}\\src\\sdl\\SDL2\\lib",
+                "-lSDL2",
+                "-lSDL2main",
                 "-s",
                 "${workspaceFolder}\\libs\\bin\\Release\\libs.a"
             ],
             "command": "gcc",
-            "dependsOn": "Compile libs project",
+            "dependsOn": [
+                "Compile libs project",
+                "Copy `SDL2.dll` file from `.\\src\\` into `.\\src\\bin\\Release\\"
+            ],
             "group": {"kind": "build", "isDefault": true},
             "label": "C/C++: gcc.exe build active file",
             "problemMatcher": ["$gcc"],
