@@ -76,7 +76,8 @@ char** newMatrix(int rows, int cols) {
 
 void sleep(int miliseconds) {
     clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds));
+    while (clock() < (startTime + miliseconds))
+        ;
 }
 
 int strcmpi(const char* str01, const char* str02) {
