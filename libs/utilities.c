@@ -9,6 +9,16 @@
 
 #include "./patterns/main.h"
 
+void destroyMatrix(char** matrix, int rows, int cols) {
+    int i;
+
+    for (i = 0; i < rows; i++) {
+        free(*(matrix + i));
+    }
+
+    free(matrix);
+}
+
 char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
                       int (*validator)(char* userInput)) {
     char* userInput = malloc(strLength * sizeof(char));
@@ -43,10 +53,30 @@ int isStrIn(char* str, char* arr[], int size) {
     return 0;
 }
 
+char** newMatrix(int rows, int cols) {
+    char** matrixRows;
+    int i;
+
+    matrixRows = malloc(rows * sizeof(char*));
+    if (matrixRows == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    for (i = 0; i < rows; i++) {
+        *(matrixRows + i) = malloc(cols * sizeof(char));
+        if (*(matrixRows + i) == NULL) {
+            printf("Memory allocation failed!\n");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    return matrixRows;
+}
+
 void sleep(int miliseconds) {
     clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds))
-        ;
+    while (clock() < (startTime + miliseconds));
 }
 
 int strcmpi(const char* str01, const char* str02) {

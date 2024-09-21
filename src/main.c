@@ -9,9 +9,9 @@
 int main() {
     TGame game;
 
-    char dashboard[DASHBOARD_ROWS][DASHBOARD_COLS];
     int rows = DASHBOARD_ROWS;
     int cols = DASHBOARD_COLS;
+    char** dashboard = newMatrix(rows, cols);
 
     char* requestedPattern;
     char* maxGeneration;
@@ -54,13 +54,14 @@ int main() {
     sscanf(maxGeneration, "%d", &maxGenerationInt);
 
     if (maxGenerationInt < 0) {
+        free(maxGeneration);
         maxGeneration = "infinity";
         maxGenerationInt = INT_MAX;
     };
 
     printf("> Maximum generation received: %s.\n\n", maxGeneration);
 
-    free(maxGeneration);
+    if (maxGenerationInt != INT_MAX) free(maxGeneration);
 
     /* ------------------------------ Request Delay ----------------------------- */
 
@@ -90,11 +91,13 @@ int main() {
     if (strcmpi(platformSelected, "console") == 0) {
         free(platformSelected);
         startGameByConsole(&game, maxGenerationInt, delayBetweenGenerationsInt);
+        destroyMatrix(game.dashboard, game.rows, game.cols);
         return 0;
     }
 
     free(platformSelected);
     startGameBySDL(&game, maxGenerationInt, delayBetweenGenerationsInt);
+    destroyMatrix(game.dashboard, game.rows, game.cols);
 
     return 0;
 }
