@@ -9,6 +9,8 @@ void newGliderPattern(TPattern* pattern) {
     pattern->rows = 3;
     pattern->cols = 3;
 
+    pattern->arr = newMatrix(pattern->rows, pattern->cols);
+
     setPatternCenter(pattern);
 
     fillPattern(pattern, DEAD_CELL);
@@ -23,6 +25,7 @@ void newGliderPattern(TPattern* pattern) {
 void newGliderCannonPattern(TPattern* pattern) {
     pattern->rows = 9;
     pattern->cols = 36;
+    pattern->arr = newMatrix(pattern->rows, pattern->cols);
 
     setPatternCenter(pattern);
 
@@ -71,6 +74,7 @@ void newGliderCannonPattern(TPattern* pattern) {
 void newPressPattern(TPattern* pattern) {
     pattern->rows = 13;
     pattern->cols = 13;
+    pattern->arr = newMatrix(pattern->rows, pattern->cols);
 
     setPatternCenter(pattern);
 
@@ -138,6 +142,7 @@ void newPressPattern(TPattern* pattern) {
 void newToadPattern(TPattern* pattern) {
     pattern->rows = 2;
     pattern->cols = 4;
+    pattern->arr = newMatrix(pattern->rows, pattern->cols);
 
     setPatternCenter(pattern);
 
