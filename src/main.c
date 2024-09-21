@@ -2,6 +2,7 @@
 
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "./sdl/main.h"
 
@@ -42,6 +43,8 @@ int main() {
 
     drawPattern(&game, requestedPattern);
 
+    free(requestedPattern);
+
     /* ----------------------- Request Maximum Generation ----------------------- */
 
     maxGeneration = getUserInputStr(
@@ -57,6 +60,8 @@ int main() {
 
     printf("> Maximum generation received: %s.\n\n", maxGeneration);
 
+    free(maxGeneration);
+
     /* ------------------------------ Request Delay ----------------------------- */
 
     sprintf(delayBetweenGenerationsMsg,
@@ -71,6 +76,8 @@ int main() {
 
     printf("> Delay received: %s milliseconds.\n\n", delayBetweenGenerations);
 
+    free(delayBetweenGenerations);
+
     /* ---------------------------- Request Platform ---------------------------- */
 
     platformSelected = getUserInputStr(
@@ -81,10 +88,12 @@ int main() {
     printf("> Platform selected: '%s'.\n", platformSelected);
 
     if (strcmpi(platformSelected, "console") == 0) {
+        free(platformSelected);
         startGameByConsole(&game, maxGenerationInt, delayBetweenGenerationsInt);
         return 0;
     }
 
+    free(platformSelected);
     startGameBySDL(&game, maxGenerationInt, delayBetweenGenerationsInt);
 
     return 0;
