@@ -2,15 +2,16 @@
 
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "./sdl/main.h"
 
 int main() {
     TGame game;
 
-    char dashboard[DASHBOARD_ROWS][DASHBOARD_COLS];
     int rows = DASHBOARD_ROWS;
     int cols = DASHBOARD_COLS;
+    char** dashboard = new2DArray(rows, cols);
 
     char* requestedPattern;
     char* maxGeneration;
@@ -42,6 +43,8 @@ int main() {
 
     drawPattern(&game, requestedPattern);
 
+    free(requestedPattern);
+
     /* ----------------------- Request Maximum Generation ----------------------- */
 
     maxGeneration = getUserInputStr(
@@ -51,11 +54,14 @@ int main() {
     sscanf(maxGeneration, "%d", &maxGenerationInt);
 
     if (maxGenerationInt < 0) {
+        free(maxGeneration);
         maxGeneration = "infinity";
         maxGenerationInt = INT_MAX;
     };
 
     printf("> Maximum generation received: %s.\n\n", maxGeneration);
+
+    if (maxGenerationInt != INT_MAX) free(maxGeneration);
 
     /* ------------------------------ Request Delay ----------------------------- */
 
@@ -71,6 +77,8 @@ int main() {
 
     printf("> Delay received: %s milliseconds.\n\n", delayBetweenGenerations);
 
+    free(delayBetweenGenerations);
+
     /* ---------------------------- Request Platform ---------------------------- */
 
     platformSelected = getUserInputStr(
@@ -81,11 +89,15 @@ int main() {
     printf("> Platform selected: '%s'.\n", platformSelected);
 
     if (strcmpi(platformSelected, "console") == 0) {
+        free(platformSelected);
         startGameByConsole(&game, maxGenerationInt, delayBetweenGenerationsInt);
+        destroy2DArray(game.dashboard, game.rows, game.cols);
         return 0;
     }
 
+    free(platformSelected);
     startGameBySDL(&game, maxGenerationInt, delayBetweenGenerationsInt);
+    destroy2DArray(game.dashboard, game.rows, game.cols);
 
     return 0;
 }

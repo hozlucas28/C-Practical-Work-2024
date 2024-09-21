@@ -41,10 +41,6 @@ int countAliveNeighbors(TGame* pGame, int cellRow, int cellCol, int radius) {
 void drawPattern(TGame* pGame, char* pattern) {
     TPattern SPattern;
 
-    char arr[PATTERN_ROWS][PATTERN_COLS];
-
-    SPattern.arr = arr;
-
     fillDashboard(pGame, DEAD_CELL);
 
     if (strcmpi(pattern, "glider") == 0) {
@@ -67,6 +63,7 @@ void drawPattern(TGame* pGame, char* pattern) {
     pGame->generation = 0;
 
     drawPatternInDashboard(pGame, &SPattern);
+    destroy2DArray(SPattern.arr, SPattern.rows, SPattern.cols);
 }
 
 void drawPatternInDashboard(TGame* pGame, TPattern* pPattern) {

@@ -7,6 +7,9 @@
 #include "./macros.h"
 #include "./patterns/main.h"
 
+// TODO: Documentation
+void destroy2DArray(char** arr, int rows, int cols);
+
 /**
  * @brief Gets user input as a string.
  *
@@ -38,6 +41,9 @@ char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
  * @return 1 if the string is found in the array, 0 otherwise.
  */
 int isStrIn(char* str, char* arr[], int arrLength);
+
+// TODO: Documentation
+char** new2DArray(int rows, int cols);
 
 /**
  * @brief Pauses the execution of the program.

@@ -9,6 +9,16 @@
 
 #include "./patterns/main.h"
 
+void destroy2DArray(char** arr, int rows, int cols) {
+    int i;
+
+    for (i = 0; i < rows; i++) {
+        free(*(arr + i));
+    }
+
+    free(arr);
+}
+
 char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
                       int (*validator)(char* userInput)) {
     char* userInput = malloc(strLength * sizeof(char));
@@ -41,6 +51,27 @@ int isStrIn(char* str, char* arr[], int size) {
     }
 
     return 0;
+}
+
+char** new2DArray(int rows, int cols) {
+    char** bidimensionalArr;
+    int i;
+
+    bidimensionalArr = malloc(rows * sizeof(char*));
+    if (bidimensionalArr == NULL) {
+        printf("Memory allocation failed!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    for (i = 0; i < rows; i++) {
+        *(bidimensionalArr + i) = malloc(cols * sizeof(char));
+        if (*(bidimensionalArr + i) == NULL) {
+            printf("Memory allocation failed!\n");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    return bidimensionalArr;
 }
 
 void sleep(int miliseconds) {
