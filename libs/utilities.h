@@ -8,7 +8,7 @@
 #include "./patterns/main.h"
 
 // TODO: Documentation
-void destroyMatrix(char** matrix, int rows, int cols);
+void destroy2DArray(char** arr, int rows, int cols);
 
 /**
  * @brief Gets user input as a string.
@@ -43,7 +43,7 @@ char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
 int isStrIn(char* str, char* arr[], int arrLength);
 
 // TODO: Documentation
-char** newMatrix(int rows, int cols);
+char** new2DArray(int rows, int cols);
 
 /**
  * @brief Pauses the execution of the program.

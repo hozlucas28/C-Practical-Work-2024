@@ -9,14 +9,14 @@
 
 #include "./patterns/main.h"
 
-void destroyMatrix(char** matrix, int rows, int cols) {
+void destroy2DArray(char** arr, int rows, int cols) {
     int i;
 
     for (i = 0; i < rows; i++) {
-        free(*(matrix + i));
+        free(*(arr + i));
     }
 
-    free(matrix);
+    free(arr);
 }
 
 char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
@@ -53,31 +53,30 @@ int isStrIn(char* str, char* arr[], int size) {
     return 0;
 }
 
-char** newMatrix(int rows, int cols) {
-    char** matrixRows;
+char** new2DArray(int rows, int cols) {
+    char** bidimensionalArr;
     int i;
 
-    matrixRows = malloc(rows * sizeof(char*));
-    if (matrixRows == NULL) {
+    bidimensionalArr = malloc(rows * sizeof(char*));
+    if (bidimensionalArr == NULL) {
         printf("Memory allocation failed!\n");
         exit(EXIT_FAILURE);
     }
 
     for (i = 0; i < rows; i++) {
-        *(matrixRows + i) = malloc(cols * sizeof(char));
-        if (*(matrixRows + i) == NULL) {
+        *(bidimensionalArr + i) = malloc(cols * sizeof(char));
+        if (*(bidimensionalArr + i) == NULL) {
             printf("Memory allocation failed!\n");
             exit(EXIT_FAILURE);
         }
     }
 
-    return matrixRows;
+    return bidimensionalArr;
 }
 
 void sleep(int miliseconds) {
     clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds))
-        ;
+    while (clock() < (startTime + miliseconds));
 }
 
 int strcmpi(const char* str01, const char* str02) {

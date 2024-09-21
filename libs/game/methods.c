@@ -63,7 +63,7 @@ void drawPattern(TGame* pGame, char* pattern) {
     pGame->generation = 0;
 
     drawPatternInDashboard(pGame, &SPattern);
-    destroyMatrix(SPattern.arr, SPattern.rows, SPattern.cols);
+    destroy2DArray(SPattern.arr, SPattern.rows, SPattern.cols);
 }
 
 void drawPatternInDashboard(TGame* pGame, TPattern* pPattern) {
