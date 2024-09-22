@@ -40,8 +40,12 @@ This repository contains the practical work for the Programming Topics course at
 
 ## Features
 
--   Continuous integration with [GitHub Actions](https://docs.github.com/en/actions)
+-   Architecture planning
+-   Code conventions and standards
 -   Code documentation using [Doxygen](https://www.doxygen.nl/) syntax
+-   Continuous integration with [GitHub Actions](https://docs.github.com/en/actions)
+-   Dynamic memory
+-   Team Workflow planning (branches, tags, and releases)
 
 ## Installation
 
