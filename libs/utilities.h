@@ -15,8 +15,8 @@
  * of row pointers.
  *
  * @param arr 2D array to be destroyed.
- * @param rows number of rows in the 2D array.
- * @param cols number of columns in the 2D array.
+ * @param rows Number of rows in the 2D array.
+ * @param cols Number of columns in the 2D array.
  *
  * @warning Ensure that the array has been dynamically allocated and that the number of rows and
  * columns are correctly specified to avoid undefined behavior.
