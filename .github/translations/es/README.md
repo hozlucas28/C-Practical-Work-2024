@@ -40,8 +40,12 @@ Este repositorio contiene el trabajo práctico de la materia Tópicos de Program
 
 ## Características
 
--   Integración continua con [GitHub Actions](https://docs.github.com/es/actions)
+-   Convenciones y estándares de código
 -   Documentación del código utilizando la sintaxis de [Doxygen](https://www.doxygen.nl/)
+-   Integración continua con [GitHub Actions](https://docs.github.com/es/actions)
+-   Memoria dinámica
+-   Planificación de la arquitectura
+-   Planificación del flujo de trabajo del equipo (ramas, etiquetas y versionado)
 
 ## Instalación
 
