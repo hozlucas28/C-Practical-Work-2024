@@ -7,7 +7,20 @@
 #include "./macros.h"
 #include "./patterns/main.h"
 
-// TODO: Documentation
+/**
+ * @brief Frees the memory allocated for a 2D array.
+ *
+ * This function deallocates the memory used by a 2D array of characters. It iterates through each
+ * row, frees the memory allocated for each row, and then frees the memory allocated for the array
+ * of row pointers.
+ *
+ * @param arr 2D array to be destroyed.
+ * @param rows number of rows in the 2D array.
+ * @param cols number of columns in the 2D array.
+ *
+ * @warning Ensure that the array has been dynamically allocated and that the number of rows and
+ * columns are correctly specified to avoid undefined behavior.
+ */
 void destroy2DArray(char** arr, int rows, int cols);
 
 /**
