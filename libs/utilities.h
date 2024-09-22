@@ -55,7 +55,20 @@ char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
  */
 int isStrIn(char* str, char* arr[], int arrLength);
 
-// TODO: Documentation
+/**
+ * @brief Initializes a 2D array of characters.
+ *
+ * This function dynamically allocates memory for a 2D array of characters with the specified number
+ * of rows and columns.
+ *
+ * @param rows Number of rows.
+ * @param cols Number of columns.
+ *
+ * @return A pointer to the 2D array of characters.
+ *
+ * @warning Ensure to free the allocated memory using appropriate deallocation functions to avoid
+ * memory leaks.
+ */
 char** new2DArray(int rows, int cols);
 
 /**
