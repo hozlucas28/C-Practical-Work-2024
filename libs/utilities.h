@@ -37,7 +37,10 @@ void destroy2DArray(char** arr, int rows, int cols);
  * string as input and returns an integer. The validator function should return
  * 1 if the input is valid, and 0 otherwise.
  *
- * @return A pointer to the string entered by the user.
+ * @return A pointer to the string entered by the user dynamically allocated in memory.
+ *
+ * @warning Ensure to free the returned pointer after use with the appropriate deallocation
+ * functions to avoid memory leaks.
  */
 char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
                       int (*validator)(char* userInput));
