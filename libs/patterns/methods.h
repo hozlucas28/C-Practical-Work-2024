@@ -1,6 +1,6 @@
 
-#ifndef PATTERNS_METHODS_H_INCLUDED
-#define PATTERNS_METHODS_H_INCLUDED
+#ifndef LIBS_PATTERNS_METHODS_H_INCLUDED
+#define LIBS_PATTERNS_METHODS_H_INCLUDED
 
 #include "./structs.h"
 
@@ -33,4 +33,4 @@ void printPatternByConsole(TPattern* pPattern);
  */
 void setPatternCenter(TPattern* pPattern);
 
-#endif  // PATTERNS_METHODS_H_INCLUDED
+#endif  // LIBS_PATTERNS_METHODS_H_INCLUDED

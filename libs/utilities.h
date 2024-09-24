@@ -1,6 +1,6 @@
 
-#ifndef UTILITIES_H_INCLUDED
-#define UTILITIES_H_INCLUDED
+#ifndef LIBS_UTILITIES_H_INCLUDED
+#define LIBS_UTILITIES_H_INCLUDED
 
 #include <stdlib.h>
 
@@ -134,4 +134,4 @@ void trimLeftStr(char* str);
  */
 void trimRightStr(char* str);
 
-#endif  // UTILITIES_H_INCLUDED
+#endif  // LIBS_UTILITIES_H_INCLUDED

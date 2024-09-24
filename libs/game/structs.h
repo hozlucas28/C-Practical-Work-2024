@@ -1,8 +1,8 @@
 
-#include "../main.h"
+#ifndef LIBS_GAME_STRUCTS_H_INCLUDED
+#define LIBS_GAME_STRUCTS_H_INCLUDED
 
-#ifndef GAME_STRUCTS_H_INCLUDED
-#define GAME_STRUCTS_H_INCLUDED
+#include "../main.h"
 
 /**
  * @struct TGame
@@ -25,4 +25,4 @@ typedef struct {
     int delayBetweenGenerations; /** Delay time in milliseconds for processed the next generation.*/
 } TGame;
 
-#endif  // GAME_STRUCTS_H_INCLUDED
+#endif  // LIBS_GAME_STRUCTS_H_INCLUDED

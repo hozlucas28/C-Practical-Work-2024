@@ -1,6 +1,6 @@
 
-#ifndef MAIN_H_INCLUDED
-#define MAIN_H_INCLUDED
+#ifndef LIBS_MAIN_H_INCLUDED
+#define LIBS_MAIN_H_INCLUDED
 
 // Root
 #include "./macros.h"
@@ -13,4 +13,4 @@
 // Patterns
 #include "./patterns/main.h"
 
-#endif  // MAIN_H_INCLUDED
+#endif  // LIBS_MAIN_H_INCLUDED

@@ -1,4 +1,7 @@
 
+#ifndef LIBS_GAME_METHODS_H_INCLUDED
+#define LIBS_GAME_METHODS_H_INCLUDED
+
 #include "../patterns/main.h"
 #include "./structs.h"
 
@@ -106,3 +109,5 @@ void setDashboardCenter(TGame* pGame);
  * @warning This function assumes that `pGame` has been properly initialized.
  */
 void startGameByConsole(TGame* pGame, int maxGeneration, int delayBetweenGenerations);
+
+#endif  // LIBS_GAME_MAIN_H_INCLUDED

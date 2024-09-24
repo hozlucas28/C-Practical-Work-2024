@@ -1,6 +1,6 @@
 
-#ifndef PATTERNS_STRUCTS_H_INCLUDED
-#define PATTERNS_STRUCTS_H_INCLUDED
+#ifndef LIBS_PATTERNS_STRUCTS_H_INCLUDED
+#define LIBS_PATTERNS_STRUCTS_H_INCLUDED
 
 #include "./macros.h"
 
@@ -18,4 +18,4 @@ typedef struct {
     int center[2]; /** Array (row, and column) representing the center of the pattern. */
 } TPattern;
 
-#endif  // PATTERNS_STRUCTS_H_INCLUDED
+#endif  // LIBS_PATTERNS_STRUCTS_H_INCLUDED

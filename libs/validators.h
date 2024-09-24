@@ -1,6 +1,6 @@
 
-#ifndef VALIDATORS_H_INCLUDED
-#define VALIDATORS_H_INCLUDED
+#ifndef LIBS_VALIDATORS_H_INCLUDED
+#define LIBS_VALIDATORS_H_INCLUDED
 
 /**
  * @brief Validates a delay.
@@ -50,4 +50,4 @@ int validatePattern(char* pattern);
  */
 int validatePlatform(char* platform);
 
-#endif  // VALIDATORS_H_INCLUDED
+#endif  // LIBS_VALIDATORS_H_INCLUDED
