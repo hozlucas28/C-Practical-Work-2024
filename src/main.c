@@ -5,8 +5,12 @@
 #include <stdlib.h>
 
 #include "./sdl/main.h"
+#include "./structs.h"
+#include "./utilities.h"
 
-int main() {
+int main(int argc, char* argv[]) {
+    TMainArguments mainArguments;
+
     TGame game;
 
     int rows = DASHBOARD_ROWS;
@@ -21,6 +25,19 @@ int main() {
 
     int maxGenerationInt;
     int delayBetweenGenerationsInt;
+
+    setDefaultMainArguments(&mainArguments);
+    getMainArguments(&mainArguments, argc, argv);
+
+    // printf("> dashboardRows --> %d\n", mainArguments.dashboardRows);
+    // printf("> dashboardCols --> %d\n", mainArguments.dashboardCols);
+    // printf("> pattern --> %s\n", mainArguments.pattern);
+    // printf("> maximumGeneration --> %d\n", mainArguments.maximumGeneration);
+    // printf("> delay --> %d\n", mainArguments.delay);
+    // printf("> platform --> %s\n", mainArguments.platform);
+
+    // free(mainArguments.pattern);
+    // free(mainArguments.platform);
 
     game.dashboard = dashboard;
     game.rows = rows;
