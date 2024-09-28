@@ -55,7 +55,9 @@ int isStrIn(char* str, char* arr[], int size) {
 
 char** new2DArray(int rows, int cols) {
     char** bidimensionalArr;
+
     int i;
+    int j;
 
     bidimensionalArr = malloc(rows * sizeof(char*));
     if (bidimensionalArr == NULL) {
@@ -66,6 +68,7 @@ char** new2DArray(int rows, int cols) {
     for (i = 0; i < rows; i++) {
         *(bidimensionalArr + i) = malloc(cols * sizeof(char));
         if (*(bidimensionalArr + i) == NULL) {
+            for (j = 0; j < i; j++) free(*(bidimensionalArr + j));
             printf("Memory allocation failed!\n");
             exit(EXIT_FAILURE);
         }
@@ -76,8 +79,7 @@ char** new2DArray(int rows, int cols) {
 
 void sleep(int miliseconds) {
     clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds))
-        ;
+    while (clock() < (startTime + miliseconds));
 }
 
 int strcmpi(const char* str01, const char* str02) {
