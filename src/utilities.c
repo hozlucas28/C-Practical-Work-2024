@@ -31,7 +31,11 @@ void getMainArguments(TMainArguments* pMainArguments, int argc, char* argv[]) {
             free(argumentValue);
 
         } else if (strcmp(argumentName, "pattern") == 0) {
-            if (validatePattern(argumentValue)) pMainArguments->pattern = argumentValue;
+            if (validatePattern(argumentValue)) {
+                pMainArguments->pattern = argumentValue;
+            } else {
+                free(argumentValue);
+            };
 
         } else if (strcmp(argumentName, "maximum-generation") == 0) {
             if (validateGeneration(argumentValue)) {
@@ -50,7 +54,11 @@ void getMainArguments(TMainArguments* pMainArguments, int argc, char* argv[]) {
             free(argumentValue);
 
         } else if (strcmp(argumentName, "platform") == 0) {
-            if (validatePlatform(argumentValue)) pMainArguments->platform = argumentValue;
+            if (validatePlatform(argumentValue)) {
+                pMainArguments->platform = argumentValue;
+            } else {
+                free(argumentValue);
+            };
 
         } else {
             free(argumentValue);
