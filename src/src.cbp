@@ -42,6 +42,7 @@
 			<Add library="../libs/bin/Release/libs.a" />
 			<Add directory="./sdl/SDL2/lib" />
 		</Linker>
+		<Unit filename="macros.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -56,6 +57,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="utilities.h" />
+		<Unit filename="validators.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="validators.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
