@@ -5,6 +5,9 @@
 #include <string.h>
 
 #include "../libs/main.h"
+#include "./macros.h"
+#include "./sdl/main.h"
+#include "./validators.h"
 
 void getMainArguments(TMainArguments* pMainArguments, int argc, char* argv[]) {
     int i;
@@ -20,13 +23,13 @@ void getMainArguments(TMainArguments* pMainArguments, int argc, char* argv[]) {
 
         if (strcmp(argumentName, "dashboard-rows") == 0) {
             sscanf(argumentValue, "%d", &argumentValueInt);
-            if (argumentValueInt > 0) pMainArguments->dashboardRows = argumentValueInt;
+            if (validateRows(argumentValueInt)) pMainArguments->dashboardRows = argumentValueInt;
 
             free(argumentValue);
 
         } else if (strcmp(argumentName, "dashboard-cols") == 0) {
             sscanf(argumentValue, "%d", &argumentValueInt);
-            if (argumentValueInt > 0) pMainArguments->dashboardCols = argumentValueInt;
+            if (validateCols(argumentValueInt)) pMainArguments->dashboardCols = argumentValueInt;
 
             free(argumentValue);
 
@@ -67,8 +70,16 @@ void getMainArguments(TMainArguments* pMainArguments, int argc, char* argv[]) {
 }
 
 void setDefaultMainArguments(TMainArguments* pMainArguments) {
-    pMainArguments->dashboardRows = 0;
-    pMainArguments->dashboardCols = 0;
+    int screenWidth;
+    int screenHeight;
+
+    if (!getScreenResolution(&screenWidth, &screenHeight)) {
+        screenWidth = 640;
+        screenHeight = 360;
+    };
+
+    pMainArguments->dashboardRows = (screenHeight / CELL_SIZE) * 0.75;
+    pMainArguments->dashboardCols = (screenWidth / CELL_SIZE) * 0.75;
     pMainArguments->pattern = "";
     pMainArguments->maximumGeneration = 0;
     pMainArguments->delay = 0;
