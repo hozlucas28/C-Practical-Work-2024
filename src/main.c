@@ -29,12 +29,12 @@ int main(int argc, char* argv[]) {
     setDefaultMainArguments(&mainArguments);
     getMainArguments(&mainArguments, argc, argv);
 
-    // printf("> dashboardRows --> %d\n", mainArguments.dashboardRows);
-    // printf("> dashboardCols --> %d\n", mainArguments.dashboardCols);
-    // printf("> pattern --> %s\n", mainArguments.pattern);
-    // printf("> maximumGeneration --> %d\n", mainArguments.maximumGeneration);
-    // printf("> delay --> %d\n", mainArguments.delay);
-    // printf("> platform --> %s\n", mainArguments.platform);
+    printf("> dashboardRows --> %d\n", mainArguments.dashboardRows);
+    printf("> dashboardCols --> %d\n", mainArguments.dashboardCols);
+    printf("> pattern --> \"%s\"\n", mainArguments.pattern);
+    printf("> maximumGeneration --> %d\n", mainArguments.maximumGeneration);
+    printf("> delay --> %d\n", mainArguments.delay);
+    printf("> platform --> \"%s\"\n", mainArguments.platform);
 
     // free(mainArguments.pattern);
     // free(mainArguments.platform);
