@@ -1,6 +1,7 @@
 #include "./methods.h"
 
 #include "../../libs/main.h"
+#include "../macros.h"
 
 #ifdef __MINGW32__
 #define SDL_MAIN_HANDLED
@@ -11,11 +12,30 @@
 #include <limits.h>
 #include <stdio.h>
 
+int getScreenResolution(int* width, int* height) {
+    SDL_DisplayMode displayMode;
+
+    // SDL initialization
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        printf("\n> SDL could not initialize!");
+        printf("\n> SDL_Error: %s", SDL_GetError());
+        return 0;
+    }
+
+    SDL_GetCurrentDisplayMode(0, &displayMode);
+    SDL_Quit();
+
+    *width = displayMode.w;
+    *height = displayMode.h;
+
+    return 1;
+}
+
 int startGameBySDL(TGame* pGame, int maxGeneration, int delayBetweenGenerations) {
     int i;
     int j;
 
-    int cellSize = 10;
+    int cellSize = CELL_SIZE;
     int generation = 0;
     int isToInfinity = maxGeneration == INT_MAX;
     int userRequestClose = 0;

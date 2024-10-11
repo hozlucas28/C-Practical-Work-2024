@@ -1,6 +1,6 @@
 
-#ifndef PATTERNS_CONSTRUCTORS_H_INCLUDED
-#define PATTERNS_CONSTRUCTORS_H_INCLUDED
+#ifndef LIBS_PATTERNS_CONSTRUCTORS_H_INCLUDED
+#define LIBS_PATTERNS_CONSTRUCTORS_H_INCLUDED
 
 #include "./structs.h"
 
@@ -48,4 +48,4 @@ void newPressPattern(TPattern* pattern);
  */
 void newToadPattern(TPattern* pattern);
 
-#endif  // PATTERNS_CONSTRUCTORS_H_INCLUDED
+#endif  // LIBS_PATTERNS_CONSTRUCTORS_H_INCLUDED

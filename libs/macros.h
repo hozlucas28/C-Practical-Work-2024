@@ -1,6 +1,12 @@
 
-#ifndef MACROS_H_INCLUDED
-#define MACROS_H_INCLUDED
+#ifndef LIBS_MACROS_H_INCLUDED
+#define LIBS_MACROS_H_INCLUDED
+
+// TODO: Documentation
+#define MAX(a, b) a > b ? a : b;
+
+// TODO: Documentation
+#define MIN(a, b) a > b ? b : a;
 
 /**
  * @def MAXIMUM_DELAY
@@ -24,4 +30,4 @@
  */
 #define MINIMUM_DELAY 0
 
-#endif  // MACROS_H_INCLUDED
+#endif  // LIBS_MACROS_H_INCLUDED

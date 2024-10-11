@@ -3,6 +3,9 @@
 
 #include "../../libs/main.h"
 
+// TODO: Documentation
+int getScreenResolution(int* width, int* height);
+
 /**
  * @brief Starts a Conway's Game of Life game using the SDL library for display.
  *
