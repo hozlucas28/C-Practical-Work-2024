@@ -62,8 +62,8 @@ void setDefaultMainArguments(TMainArguments* pMainArguments) {
         screenHeight = 360;
     };
 
-    pMainArguments->dashboardRows = (screenHeight / CELL_SIZE) * 0.75;
-    pMainArguments->dashboardCols = (screenWidth / CELL_SIZE) * 0.75;
+    pMainArguments->dashboardRows = (screenHeight / CELL_SIZE) * 0.93;
+    pMainArguments->dashboardCols = (screenWidth / CELL_SIZE) * 0.99;
     pMainArguments->pattern = "";
     pMainArguments->maximumGeneration = 0;
     pMainArguments->delay = 0;
