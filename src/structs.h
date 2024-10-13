@@ -10,6 +10,7 @@ typedef struct {
     int maximumGeneration;
     int delay;
     char* platform;
+    char* initialStateFile;
 } TMainArguments;
 
 #endif  // SRC_STRUCTS_H_INCLUDED

@@ -21,6 +21,8 @@ void getMainArguments(TMainArguments* pMainArguments, int argc, char* argv[]) {
     for (i = 1; i < argc; i++) {
         argumentName = *(argv + i);
         sep = strrchr(argumentName, '=');
+        if (sep == NULL) continue;
+
         argumentValue = sep + 1;
         *sep = '\0';
 
@@ -49,6 +51,10 @@ void getMainArguments(TMainArguments* pMainArguments, int argc, char* argv[]) {
 
         } else if (strcmp(argumentName, "--platform") == 0) {
             if (validatePlatform(argumentValue)) pMainArguments->platform = argumentValue;
+
+        } else if (strcmp(argumentName, "--initial-state-file") == 0) {
+            if (validateInitialStateFile(argumentValue))
+                pMainArguments->initialStateFile = argumentValue;
         };
     }
 }
@@ -68,4 +74,5 @@ void setDefaultMainArguments(TMainArguments* pMainArguments) {
     pMainArguments->maximumGeneration = 0;
     pMainArguments->delay = 0;
     pMainArguments->platform = "";
+    pMainArguments->initialStateFile = "";
 }
