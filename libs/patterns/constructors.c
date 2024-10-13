@@ -2,6 +2,7 @@
 #include "./constructors.h"
 
 #include "../game/main.h"
+#include "../utilities.h"
 #include "./methods.h"
 #include "./structs.h"
 

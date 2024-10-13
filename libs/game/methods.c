@@ -5,6 +5,7 @@
 #include <stdio.h>
 
 #include "../patterns/main.h"
+#include "../utilities.h"
 #include "./macros.h"
 #include "./structs.h"
 
