@@ -2,8 +2,6 @@
 #ifndef LIBS_GAME_STRUCTS_H_INCLUDED
 #define LIBS_GAME_STRUCTS_H_INCLUDED
 
-#include "../main.h"
-
 /**
  * @struct TGame
  * @brief Represents a Conway's Game of Life structure.
