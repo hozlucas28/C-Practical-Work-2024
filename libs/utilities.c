@@ -130,8 +130,7 @@ char** new2DArray(int rows, int cols) {
 
 void sleep(int miliseconds) {
     clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds))
-        ;
+    while (clock() < (startTime + miliseconds));
 }
 
 int strcmpi(const char* str01, const char* str02) {
@@ -189,6 +188,7 @@ void trimRightStr(char* str) {
 
     for (i = strLength - 1; i > 0; i--) {
         if (!isspace(*(str + i))) break;
+        counter++;
     }
 
     *(str + strLength - counter) = '\0';
