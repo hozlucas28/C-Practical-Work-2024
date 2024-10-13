@@ -47,23 +47,29 @@ int main(int argc, char* argv[]) {
 
     /* ----------------------------- Request Pattern ---------------------------- */
 
-    if (strcmp(mainArguments.pattern, "") == 0) {
-        requestedPattern = getUserInputStr(
-            "> Which pattern do you want? ('Glider','Toad', 'Press', or 'Glider cannon'): ",
-            "> Invalid pattern! Try again...", 50, &validatePattern);
+    if (*mainArguments.initialStateFile == '\0') {
+        if (*mainArguments.pattern == '\0') {
+            requestedPattern = getUserInputStr(
+                "> Which pattern do you want? ('Glider','Toad', 'Press', or 'Glider cannon'): ",
+                "> Invalid pattern! Try again...", 50, &validatePattern);
 
-        printf("> Pattern received: '%s'.\n\n", requestedPattern);
+            printf("> Pattern received: '%s'.\n\n", requestedPattern);
 
-        drawPattern(&game, requestedPattern);
+            drawPattern(&game, requestedPattern);
 
-        free(requestedPattern);
+            free(requestedPattern);
+        } else {
+            requestedPattern = mainArguments.pattern;
+
+            printf("> Pattern received: '%s'.\n\n", requestedPattern);
+
+            drawPattern(&game, requestedPattern);
+        };
     } else {
-        requestedPattern = mainArguments.pattern;
+        /* --------------------------- Draw Initial State --------------------------- */
 
-        printf("> Pattern received: '%s'.\n\n", requestedPattern);
-
-        drawPattern(&game, requestedPattern);
-    };
+        drawDashboardFromFile(mainArguments.initialStateFile, &game);
+    }
 
     /* ----------------------- Request Maximum Generation ----------------------- */
 
@@ -121,7 +127,7 @@ int main(int argc, char* argv[]) {
 
     /* ---------------------------- Request Platform ---------------------------- */
 
-    if (strcmp(mainArguments.platform, "") == 0) {
+    if (*mainArguments.platform == '\0') {
         platformSelected = getUserInputStr(
             "> In which platform do you want to start the Conway's Game of Life game? (console, or "
             "Simple DirectMedia Layer (SDL)): ",
