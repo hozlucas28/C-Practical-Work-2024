@@ -19,6 +19,57 @@ void destroy2DArray(char** arr, int rows, int cols) {
     free(arr);
 }
 
+int drawDashboardFromFile(char* filePath, TGame* pGame) {
+    FILE* pf;
+
+    char* line;
+    int lineLength = 100;
+
+    char* row;
+    char* col;
+    char* sep;
+
+    int rowInt;
+    int colInt;
+
+    int rows = pGame->rows;
+    int cols = pGame->cols;
+
+    pf = fopen(filePath, "rt");
+    if (pf == NULL) return 0;
+
+    line = malloc(sizeof(char) * (lineLength + 1));
+    if (line == NULL) {
+        fclose(pf);
+        return 0;
+    };
+    *(line + lineLength) = '\0';
+
+    fgets(line, lineLength, pf);
+
+    while (fgets(line, lineLength, pf)) {
+        row = line;
+        sep = strrchr(line, ';');
+        if (sep == NULL) continue;
+
+        *sep = '\0';
+        col = sep + 1;
+
+        sscanf(row, "%d", &rowInt);
+        sscanf(col, "%d", &colInt);
+
+        if (rowInt > rows) rows = rowInt;
+        if (colInt > cols) cols = colInt;
+    }
+
+    printf("\n\n> rows: %d\n", rows);
+    printf("> cols: %d\n\n", cols);
+
+    // TODO: draw in dashboard.
+
+    return 1;
+}
+
 char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
                       int (*validator)(char* userInput)) {
     char* userInput = malloc(strLength * sizeof(char));
@@ -79,8 +130,7 @@ char** new2DArray(int rows, int cols) {
 
 void sleep(int miliseconds) {
     clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds))
-        ;
+    while (clock() < (startTime + miliseconds));
 }
 
 int strcmpi(const char* str01, const char* str02) {
@@ -138,7 +188,6 @@ void trimRightStr(char* str) {
 
     for (i = strLength - 1; i > 0; i--) {
         if (!isspace(*(str + i))) break;
-        counter++;
     }
 
     *(str + strLength - counter) = '\0';

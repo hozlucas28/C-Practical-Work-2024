@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 
+#include "./game/main.h"
 #include "./macros.h"
 #include "./patterns/main.h"
 
@@ -22,6 +23,9 @@
  * columns are correctly specified to avoid undefined behavior.
  */
 void destroy2DArray(char** arr, int rows, int cols);
+
+// TODO: Documentation
+int drawDashboardFromFile(char* filePath, TGame* pGame);
 
 /**
  * @brief Gets user input as a string.
