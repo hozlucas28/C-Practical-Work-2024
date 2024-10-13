@@ -1,7 +1,6 @@
 
 #include "./validators.h"
 
-#include <stdio.h>
 #include <strings.h>
 
 #include "./macros.h"
@@ -32,9 +31,5 @@ int validateCols(int cols) {
 int validateInitialStateFile(char* filePath) {
     char* extensions[] = {"csv", "txt"};
     char* extension = strrchr(filePath, '.');
-
-    printf("> filePath: \"%s\"\n\n", filePath);
-    printf("> extension: \"%s\"\n\n", extension);
-
     return extension == NULL ? 0 : isStrIn(extension + 1, extensions, 2);
 }
