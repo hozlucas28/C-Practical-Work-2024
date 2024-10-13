@@ -1,31 +1,6 @@
 
 #ifndef LIBS_GAME_MACROS_H_INCLUDED
 #define LIBS_GAME_MACROS_H_INCLUDED
-
-/**
- * @def DASHBOARD_ROWS
- * @brief Defines the number of rows in a grid.
- *
- * This macro is used to define the number of rows in a grid.
- * It is typically used in conjunction with the `DASHBOARD_COLS` macro to define
- * the size of a grid.
- *
- * @warning The value of `DASHBOARD_ROWS` must be a positive integer.
- */
-#define DASHBOARD_ROWS 56
-
-/**
- * @def DASHBOARD_COLS
- * @brief Defines the number of columns in a grid.
- *
- * This macro is used to define the number of columns in a grid.
- * It is typically used in conjunction with the `DASHBOARD_ROWS` macro to define
- * the size of a grid.
- *
- * @warning The value of `DASHBOARD_COLS` must be a positive integer.
- */
-#define DASHBOARD_COLS 110
-
 /**
  * @def ALIVE_CELL
  * @brief Represents a live cell.
