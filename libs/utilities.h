@@ -24,7 +24,18 @@
  */
 void destroy2DArray(char** arr, int rows, int cols);
 
-// TODO: Documentation
+/**
+ * @brief Sets a Conway's Game of Life dashboard based on a file.
+ *
+ * This function reads a file content and updates a Conway's Game of Life structure with the parsed
+ * content to set the dashboard. Also, it modifies the `rows`, `cols`, `center`, `cellsAlive`, and
+ * `cellsDead` field of the Conway's Game of Life structure.
+ *
+ * @param filePath File path with the content to be parsed.
+ * @param pGame Pointer to the Conway's Game of Life structure.
+ *
+ * @return Returns `1` on success, otherwise returns `0`.
+ */
 int drawDashboardFromFile(char* filePath, TGame* pGame);
 
 /**

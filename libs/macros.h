@@ -2,10 +2,20 @@
 #ifndef LIBS_MACROS_H_INCLUDED
 #define LIBS_MACROS_H_INCLUDED
 
-// TODO: Documentation
+/**
+ * @def MAX
+ * @brief Returns the maximum value between two values.
+ *
+ * @warning The value of `a` and `b` parameters must be an integer or float.
+ */
 #define MAX(a, b) a > b ? a : b;
 
-// TODO: Documentation
+/**
+ * @def MIN
+ * @brief Returns the minimum value between two values.
+ *
+ * @warning The value of `a` and `b` parameters must be an integer or float.
+ */
 #define MIN(a, b) a > b ? b : a;
 
 /**
