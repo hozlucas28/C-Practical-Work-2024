@@ -36,7 +36,7 @@ void destroy2DArray(char** arr, int rows, int cols);
  *
  * @return Returns `1` on success, otherwise returns `0`.
  */
-int drawDashboardFromFile(char* filePath, TGame* pGame);
+int setDashboardFromFile(char* filePath, TGame* pGame);
 
 /**
  * @brief Gets user input as a string.

@@ -20,7 +20,7 @@ void destroy2DArray(char** arr, int rows, int cols) {
     free(arr);
 }
 
-int drawDashboardFromFile(char* filePath, TGame* pGame) {
+int setDashboardFromFile(char* filePath, TGame* pGame) {
     FILE* pf;
 
     char* line;

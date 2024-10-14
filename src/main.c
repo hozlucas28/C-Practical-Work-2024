@@ -68,7 +68,7 @@ int main(int argc, char* argv[]) {
     } else {
         /* --------------------------- Draw Initial State --------------------------- */
 
-        drawDashboardFromFile(mainArguments.initialStateFile, &game);
+        setDashboardFromFile(mainArguments.initialStateFile, &game);
     }
 
     /* ----------------------- Request Maximum Generation ----------------------- */
