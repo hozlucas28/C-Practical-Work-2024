@@ -7,6 +7,7 @@
 #include <string.h>
 #include <time.h>
 
+#include "./macros.h"
 #include "./patterns/main.h"
 
 void destroy2DArray(char** arr, int rows, int cols) {
@@ -58,8 +59,8 @@ int drawDashboardFromFile(char* filePath, TGame* pGame) {
         sscanf(row, "%d", &rowInt);
         sscanf(col, "%d", &colInt);
 
-        if (rowInt > rows) rows = rowInt;
-        if (colInt > cols) cols = colInt;
+        rows = MAX(rowInt, rows);
+        cols = MAX(colInt, cols);
     }
 
     printf("\n\n> rows: %d\n", rows);
@@ -130,8 +131,7 @@ char** new2DArray(int rows, int cols) {
 
 void sleep(int miliseconds) {
     clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds))
-        ;
+    while (clock() < (startTime + miliseconds));
 }
 
 int strcmpi(const char* str01, const char* str02) {
