@@ -16,7 +16,7 @@
  * @param argc           Number of command-line arguments.
  * @param argv           Array with the command-line arguments.
  */
-void getMainArguments(TMainArguments* pMainArguments, int argc, char* argv[]);
+void getMainArguments(TMainArguments* pMainArguments, const int argc, char* argv[]);
 
 /**
  * @brief Sets the default values for the main arguments of the application.

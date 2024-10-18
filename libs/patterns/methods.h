@@ -12,7 +12,7 @@
  *
  * @warning This function assumes that `pPattern` has been properly initialized.
  */
-void fillPattern(TPattern* pPattern, char with);
+void fillPattern(TPattern* pPattern, const char with);
 
 /**
  * @brief Prints the `arr` field of a pattern structure by console.

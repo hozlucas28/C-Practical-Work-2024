@@ -22,6 +22,7 @@ int getScreenResolution(int* width, int* height);
  *
  * @warning This function assumes that `pGame` has been properly initialized.
  */
-int startGameBySDL(TGame* pGame, int maxGeneration, int delayBetweenGenerations);
+unsigned char startGameBySDL(TGame* pGame, const int maxGeneration,
+                             const int delayBetweenGenerations);
 
 #endif  // SDL_METHODS_H_INCLUDED

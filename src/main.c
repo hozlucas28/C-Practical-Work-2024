@@ -9,7 +9,7 @@
 #include "./structs.h"
 #include "./utilities.h"
 
-int main(int argc, char* argv[]) {
+int main(const int argc, char* argv[]) {
     TMainArguments mainArguments;
 
     TGame game;

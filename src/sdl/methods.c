@@ -31,14 +31,15 @@ int getScreenResolution(int* width, int* height) {
     return 1;
 }
 
-int startGameBySDL(TGame* pGame, int maxGeneration, int delayBetweenGenerations) {
-    int i;
-    int j;
+unsigned char startGameBySDL(TGame* pGame, const int maxGeneration,
+                             const int delayBetweenGenerations) {
+    size_t i;
+    size_t j;
 
-    int cellSize = CELL_SIZE;
-    int generation = 0;
-    int isToInfinity = maxGeneration == INT_MAX;
-    int userRequestClose = 0;
+    const size_t cellSize = CELL_SIZE;
+    size_t generation = 0;
+    const unsigned char isToInfinity = maxGeneration == INT_MAX;
+    unsigned char userRequestClose = 0;
 
     SDL_Window* window = NULL;
     SDL_Renderer* renderer = NULL;
@@ -47,9 +48,9 @@ int startGameBySDL(TGame* pGame, int maxGeneration, int delayBetweenGenerations)
 
     // Window configuration
     char windowCaption[256];
-    int windowWidth = cellSize * (pGame->cols + 2);
-    int windowHeight = cellSize * (pGame->rows + 2);
-    Uint32 windowFlags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
+    const int windowWidth = cellSize * (pGame->cols + 2);
+    const int windowHeight = cellSize * (pGame->rows + 2);
+    const Uint32 windowFlags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
 
     // SDL initialization
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {

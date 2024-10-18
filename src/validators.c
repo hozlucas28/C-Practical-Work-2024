@@ -6,7 +6,7 @@
 #include "./macros.h"
 #include "./sdl/methods.h"
 
-int validateRows(int rows) {
+unsigned char validateRows(const int rows) {
     int maxRows;
     int screenHeight;
     int _;
@@ -17,7 +17,7 @@ int validateRows(int rows) {
     return rows > 0 && rows <= maxRows;
 }
 
-int validateCols(int cols) {
+unsigned char validateCols(const int cols) {
     int maxCols;
     int screenWidth;
     int _;
@@ -28,8 +28,8 @@ int validateCols(int cols) {
     return cols > 0 && cols <= maxCols;
 }
 
-int validateInitialStateFile(char* filePath) {
-    char* extensions[] = {"csv", "txt"};
-    char* extension = strrchr(filePath, '.');
+unsigned char validateInitialStateFile(const char* filePath) {
+    const char* extensions[] = {"csv", "txt"};
+    const char* extension = strrchr(filePath, '.');
     return extension == NULL ? 0 : isStrIn(extension + 1, extensions, 2);
 }

@@ -21,7 +21,7 @@
  *
  * @warning This function assumes that `pGame` has been properly initialized.
  */
-int countAliveNeighbors(TGame* pGame, int row, int col, int radius);
+int countAliveNeighbors(TGame* pGame, const int row, const int col, const int radius);
 
 /**
  * @brief Draws a specified pattern on a Conway's Game of Life board.
@@ -31,7 +31,7 @@ int countAliveNeighbors(TGame* pGame, int row, int col, int radius);
  *
  * @warning The pattern must be `glider`, `toad`, `press`, or `glider cannon`.
  */
-void drawPattern(TGame* pGame, char* pattern);
+void drawPattern(TGame* pGame, const char* pattern);
 
 /**
  * @brief Draws a specified pattern on a Conway's Game of Life board.
@@ -54,7 +54,7 @@ void drawPatternInDashboard(TGame* pGame, TPattern* pPattern);
  * @warning This function assumes that `pGame` has been
  * properly initialized.
  */
-void fillDashboard(TGame* pGame, char with);
+void fillDashboard(TGame* pGame, const char with);
 
 /**
  * @brief Generates the next generation of a Conway's Game of Life.
@@ -108,6 +108,6 @@ void setDashboardCenter(TGame* pGame);
  *
  * @warning This function assumes that `pGame` has been properly initialized.
  */
-void startGameByConsole(TGame* pGame, int maxGeneration, int delayBetweenGenerations);
+void startGameByConsole(TGame* pGame, const int maxGeneration, const int delayBetweenGenerations);
 
 #endif  // LIBS_GAME_MAIN_H_INCLUDED

@@ -9,8 +9,8 @@
 #include "./sdl/main.h"
 #include "./validators.h"
 
-void getMainArguments(TMainArguments* pMainArguments, int argc, char* argv[]) {
-    int i;
+void getMainArguments(TMainArguments* pMainArguments, const int argc, char* argv[]) {
+    size_t i;
 
     char* argumentName;
     char* argumentValue;

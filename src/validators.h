@@ -11,7 +11,7 @@
  *
  * @return Returns `1` if the number of rows is valid, otherwise returns `0`.
  */
-int validateRows(int rows);
+unsigned char validateRows(const int rows);
 
 /**
  * @brief Validates a number of cols.
@@ -23,7 +23,7 @@ int validateRows(int rows);
  *
  * @return Returns `1` if the number of cols is valid, otherwise returns `0`.
  */
-int validateCols(int cols);
+unsigned char validateCols(const int cols);
 
 /**
  * @brief Validates a initial state file path.
@@ -35,6 +35,6 @@ int validateCols(int cols);
  *
  * @return Returns `1` if the file path is valid, otherwise returns `0`.
  */
-int validateInitialStateFile(char* filePath);
+unsigned char validateInitialStateFile(const char* filePath);
 
 #endif  // SRC_VALIDATORS_H_INCLUDED

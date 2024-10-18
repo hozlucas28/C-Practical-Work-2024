@@ -9,17 +9,17 @@
 #include "./macros.h"
 #include "./structs.h"
 
-int countAliveNeighbors(TGame* pGame, int cellRow, int cellCol, int radius) {
-    int i;
-    int j;
+int countAliveNeighbors(TGame* pGame, const int cellRow, const int cellCol, const int radius) {
+    size_t i;
+    size_t j;
 
-    int startRow = cellRow - radius;
-    int startCol = cellCol - radius;
+    const int startRow = cellRow - radius;
+    const int startCol = cellCol - radius;
 
-    int endRow = cellRow + radius + 1;
-    int endCol = cellCol + radius + 1;
+    const int endRow = cellRow + radius + 1;
+    const int endCol = cellCol + radius + 1;
 
-    int aliveNeighbors = 0;
+    size_t aliveNeighbors = 0;
 
     for (i = startRow; i < endRow; i++) {
         if (i > pGame->rows - 1) break;
@@ -39,7 +39,7 @@ int countAliveNeighbors(TGame* pGame, int cellRow, int cellCol, int radius) {
     return aliveNeighbors;
 }
 
-void drawPattern(TGame* pGame, char* pattern) {
+void drawPattern(TGame* pGame, const char* pattern) {
     TPattern SPattern;
 
     fillDashboard(pGame, DEAD_CELL);
@@ -68,14 +68,14 @@ void drawPattern(TGame* pGame, char* pattern) {
 }
 
 void drawPatternInDashboard(TGame* pGame, TPattern* pPattern) {
-    int i;
-    int j;
+    size_t i;
+    size_t j;
 
-    int pI = 0;
-    int pJ = 0;
+    size_t pI = 0;
+    size_t pJ = 0;
 
-    int startRow = pGame->center[0] - pPattern->center[0];
-    int startCol = pGame->center[1] - pPattern->center[1];
+    const int startRow = pGame->center[0] - pPattern->center[0];
+    const int startCol = pGame->center[1] - pPattern->center[1];
 
     for (i = startRow; pI < pPattern->rows; i++) {
         if (i < 0) continue;
@@ -94,9 +94,9 @@ void drawPatternInDashboard(TGame* pGame, TPattern* pPattern) {
     }
 }
 
-void fillDashboard(TGame* pGame, char with) {
-    int i;
-    int j;
+void fillDashboard(TGame* pGame, const char with) {
+    size_t i;
+    size_t j;
 
     for (i = 0; i < pGame->rows; i++) {
         for (j = 0; j < pGame->cols; j++) {
@@ -106,10 +106,10 @@ void fillDashboard(TGame* pGame, char with) {
 }
 
 void generateNextGeneration(TGame* pGame) {
-    int i;
-    int j;
+    size_t i;
+    size_t j;
 
-    int aliveNeighbors;
+    size_t aliveNeighbors;
 
     for (i = 0; i < pGame->rows; i++) {
         for (j = 0; j < pGame->cols; j++) {
@@ -146,8 +146,8 @@ void generateNextGeneration(TGame* pGame) {
 }
 
 void printDashboardByConsole(TGame* pGame) {
-    int i;
-    int j;
+    size_t i;
+    size_t j;
 
     for (i = 0; i < pGame->rows; i++) {
         printf("\n");
@@ -159,8 +159,8 @@ void printDashboardByConsole(TGame* pGame) {
 }
 
 void printGameByConsole(TGame* pGame) {
-    int i;
-    int j;
+    size_t i;
+    size_t j;
 
     // Print header
     for (i = 0; i < pGame->cols + 2; i++) printf("-");
@@ -196,16 +196,16 @@ void printGameByConsole(TGame* pGame) {
 }
 
 void setDashboardCenter(TGame* pGame) {
-    int row = pGame->rows / 2;
-    int col = pGame->cols / 2;
+    const int row = pGame->rows / 2;
+    const int col = pGame->cols / 2;
 
     pGame->center[0] = row;
     pGame->center[1] = col;
 }
 
-void startGameByConsole(TGame* pGame, int maxGeneration, int delayBetweenGenerations) {
-    int generation = 0;
-    int isToInfinity = maxGeneration == INT_MAX;
+void startGameByConsole(TGame* pGame, const int maxGeneration, const int delayBetweenGenerations) {
+    size_t generation = 0;
+    unsigned char isToInfinity = maxGeneration == INT_MAX;
 
     pGame->generation = 0;
     pGame->maximumGeneration = maxGeneration;

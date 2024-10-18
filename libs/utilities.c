@@ -10,8 +10,8 @@
 #include "./macros.h"
 #include "./patterns/main.h"
 
-void destroy2DArray(char** arr, int rows, int cols) {
-    int i;
+void destroy2DArray(char** arr, const int rows, const int cols) {
+    size_t i;
 
     for (i = 0; i < rows; i++) {
         free(*(arr + i));
@@ -20,11 +20,11 @@ void destroy2DArray(char** arr, int rows, int cols) {
     free(arr);
 }
 
-int setDashboardFromFile(char* filePath, TGame* pGame) {
+int setDashboardFromFile(const char* filePath, TGame* pGame) {
     FILE* pf;
 
     char* line;
-    int lineLength = 100;
+    const size_t lineLength = 100;
 
     char* row;
     char* col;
@@ -71,8 +71,8 @@ int setDashboardFromFile(char* filePath, TGame* pGame) {
     return 1;
 }
 
-char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
-                      int (*validator)(char* userInput)) {
+char* getUserInputStr(const char* message, const char* onInvalidMessage, const int strLength,
+                      unsigned char (*validator)(const char* userInput)) {
     char* userInput = malloc(strLength * sizeof(char));
     if (userInput == NULL) {
         printf("Memory allocation failed!\n");
@@ -95,8 +95,8 @@ char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
     return userInput;
 }
 
-int isStrIn(char* str, char* arr[], int size) {
-    int i;
+int isStrIn(const char* str, const char* arr[], const int size) {
+    size_t i;
 
     for (i = 0; i < size; i++) {
         if (strcmpi(str, *(arr + i)) == 0) return 1;
@@ -105,13 +105,11 @@ int isStrIn(char* str, char* arr[], int size) {
     return 0;
 }
 
-char** new2DArray(int rows, int cols) {
-    char** bidimensionalArr;
+char** new2DArray(const int rows, const int cols) {
+    size_t i;
+    size_t j;
 
-    int i;
-    int j;
-
-    bidimensionalArr = malloc(rows * sizeof(char*));
+    char** bidimensionalArr = malloc(rows * sizeof(char*));
     if (bidimensionalArr == NULL) {
         printf("Memory allocation failed!\n");
         exit(EXIT_FAILURE);
@@ -130,16 +128,15 @@ char** new2DArray(int rows, int cols) {
 }
 
 void sleep(int miliseconds) {
-    clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds))
-        ;
+    const clock_t startTime = clock();
+    while (clock() < (startTime + miliseconds));
 }
 
 int strcmpi(const char* str01, const char* str02) {
-    int i;
+    size_t i;
 
-    int lengthStr01 = strlen(str01);
-    int lengthStr02 = strlen(str02);
+    const size_t lengthStr01 = strlen(str01);
+    const size_t lengthStr02 = strlen(str02);
 
     char charStr01;
     char charStr02;
@@ -164,11 +161,11 @@ void trimStr(char* str) {
 }
 
 void trimLeftStr(char* str) {
-    int i;
-    int j;
-    int strLength = strlen(str);
+    size_t i;
+    size_t j;
+    size_t strLength = strlen(str);
 
-    int counter = 0;
+    size_t counter = 0;
 
     for (i = 0; i < strLength; i++) {
         if (!isspace(*(str + i))) break;
@@ -183,10 +180,10 @@ void trimLeftStr(char* str) {
 }
 
 void trimRightStr(char* str) {
-    int i;
-    int strLength = strlen(str);
+    size_t i;
+    size_t strLength = strlen(str);
 
-    int counter = 0;
+    size_t counter = 0;
 
     for (i = strLength - 1; i > 0; i--) {
         if (!isspace(*(str + i))) break;
