@@ -70,6 +70,7 @@ C-Practical-Work-2024/
 │
 ├── .github/
 │   ├── statics/
+│   │   ├── demo.mp4
 │   │   ├── illustration-01.png
 │   │   ├── illustration-02.png
 │   │   └── preview.png
@@ -85,14 +86,8 @@ C-Practical-Work-2024/
 │   │       └── requirements.md
 │   │
 │   └── workflows/
+│       ├── format-code-on-pr.yml
 │       └── format-code.yml
-│
-├── src/
-│   ├── main.c
-│   ├── src.cbp
-│   │
-│   └── statics/
-│       └── initial-state.txt
 |
 ├── libs/
 │   ├── libs.cbp
@@ -103,6 +98,13 @@ C-Practical-Work-2024/
 │   ├── validators.c
 │   ├── validators.h
 |   |
+│   ├── game/
+|   |   ├── macros.h
+|   |   ├── main.h
+|   |   ├── methods.c
+|   |   ├── methods.h
+|   |   └── structs.h
+|   |
 │   └── patterns/
 │       ├── constructors.c
 │       ├── constructors.h
@@ -111,6 +113,27 @@ C-Practical-Work-2024/
 │       ├── methods.c
 │       ├── methods.h
 │       └── structs.h
+│
+├── src/
+│   ├── macros.h
+│   ├── main.c
+│   ├── src.cbp
+│   ├── structs.h
+│   ├── utilities.c
+│   ├── utilities.h
+│   ├── validators.c
+│   ├── validators.h
+│   │
+│   ├── sdl/
+│   │   ├── main.h
+│   │   ├── methods.c
+│   │   ├── methods.h
+│   │   │
+│   │   └── SDL2/
+│   │       └── ( ... )
+│   │
+│   └── statics/
+│       └── initial-state.csv
 |
 ├── .clang-format
 ├── .gitignore
@@ -124,34 +147,56 @@ C-Practical-Work-2024/
     -   **[translations](./.github/translations)** - Translations of `.md` (Markdown) files.
     -   **[workflows](./.github/workflows)** - GitHub Actions workflows.
 
--   **[src](./src)** - Main project of the application.
-
-    -   **[main.c](./src/main.c)** - Main execution file.
-    -   **[src.cbp](./src/src.cbp)** - Project configuration file.
-
-    -   **[statics](./src/statics)** - Files (images, videos, diagrams, etc.).
-
-        -   **[initial-state.txt](./src/statics/initial-state.txt)** - File with the initial state of the application.
-
 -   **[libs](./libs)** - Project containing the libraries necessary for the execution of the main application project.
 
     -   **[libs.cbp](./libs/libs.cbp)** - Project configuration file.
     -   **[macros.h](./libs/macros.h)** - File with essential project macros.
     -   **[main.h](./libs/main.h)** - File indexing all `.h` files of the project.
     -   **[utilities.c](./libs/utilities.c)** - File with the implementation of the function prototypes found in `utilities.h`.
-    -   **[utilities.h](./libs/utilities.h)** - File with common structures and function prototypes.
+    -   **[utilities.h](./libs/utilities.h)** - File with common function prototypes.
     -   **[validators.c](./libs/validators.c)** - File with the implementation of the function prototypes found in `validators.h`.
     -   **[validators.h](./libs/validators.h)** - File with functions prototypes related to validation process.
+
+    -   **[game](./libs/game)** - Functions and structures to create and interact with Conway's Game of Life.
+
+        -   **[macros.h](./libs/game/macros.h)** - File containing macros.
+        -   **[main.h](./libs/game/main.h)** - File that indexes all `.h` files within the `games` folder.
+        -   **[methods.c](./libs/game/methods.c)** - File containing the implementation of the function prototypes found in `methods.h`.
+        -   **[methods.h](./libs/game/methods.h)** - File containing the function prototypes related to Conway's Game of Life methods.
+        -   **[structs.h](./libs/game/structs.h)** - File containing structures.
 
     -   **[patterns](./libs/patterns)** - Functions and structures for create patterns with cells.
 
         -   **[constructors.c](./libs/patterns/constructors.c)** - File with the implementation of the function prototypes found in `constructors.h`.
-        -   **[constructors.h](./libs/patterns/constructors.h)** - File with structures and function prototypes related to patterns creation.
-        -   **[macros.h](./libs/macros.h)** - File with macros.
-        -   **[main.h](./libs/main.h)** - File indexing all `.h` files inside `patterns` folder.
+        -   **[constructors.h](./libs/patterns/constructors.h)** - File with function prototypes related to patterns creation.
+        -   **[macros.h](./libs/patterns/macros.h)** - File with macros.
+        -   **[main.h](./libs/patterns/main.h)** - File indexing all `.h` files inside `patterns` folder.
         -   **[methods.c](./libs/patterns/methods.c)** - File with the implementation of the function prototypes found in `methods.h`.
         -   **[methods.h](./libs/patterns/methods.h)** - File with function prototypes related to pattern methods.
         -   **[structs.h](./libs/patterns/methods.h)** - File with structs.
+
+-   **[src](./src)** - Main project of the application.
+
+    -   **[macros.h](./src/macros.h)** - File with the project's main macros.
+    -   **[main.c](./src/main.c)** - Main execution file.
+    -   **[src.cbp](./src/src.cbp)** - Project configuration file.
+    -   **[structs.h](./src/structs.h)** - File with the main structures for configuring the project.
+    -   **[utilities.c](./src/utilities.c)** - File with the implementation of the function prototypes found in `utilities.h`.
+    -   **[utilities.h](./src/utilities.h)** - File with the function prototypes for configuring the project.
+    -   **[validators.c](./src/validators.c)** - File with the implementation of the function prototypes found in `utilities.h`.
+    -   **[validators.h](./src/validators.h)** - File with the function prototypes for validating the project's arguments.
+
+    -   **[sdl](./src/sdl)** - Functions for interacting with the SDL2 library.
+
+        -   **[SDL2](./src/sdl/SDL2)** - SDL2 library.
+
+        -   **[main.h](./src/sdl/main.h)** - File indexing all `.h` files inside `sdl` folder.
+        -   **[methods.c](./src/sdl/methods.c)** - File with the implementation of the function prototypes found in `methods.h`.
+        -   **[methods.h](./src/sdl/methods.h)** - File with the function prototypes to interact with the SDL2 library.
+
+    -   **[statics](./src/statics)** - Files (images, videos, diagrams, etc.).
+
+        -   **[initial-state.txt](./src/statics/initial-state.txt)** - File with the initial state of the application.
 
 -   **[.clang-format](./.clang-format)** - Configuration file for the `clang-format` code formatting tool.
 -   **[.gitignore](./.gitignore)** - Git configuration file to avoid tracking unwanted files.
