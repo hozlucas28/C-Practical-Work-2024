@@ -1,4 +1,4 @@
-# Code Documentation
+# Code documentation
 
 This document provides a series of templates and examples to document the [structures](#structures), [functions](#functions), and [macros](#macros) of the application.
 

@@ -64,7 +64,24 @@ Este repositorio contiene el trabajo práctico de la materia Tópicos de Program
 
 4. Selecciona el proyecto [src.cbp](./src/src.cbp) (proyecto principal) y ejecútalo en modo Release para disfrutar del Juego de la Vida de Conway.
 
-## Problemas conocidos
+### Argumentos del programa
+
+| Argumento              | Descripción                                            | Valor/es aceptado/s                                                    | Valor por defecto                                     | Ejemplo                                              |
+| :--------------------- | :----------------------------------------------------- | :--------------------------------------------------------------------- | :---------------------------------------------------- | ---------------------------------------------------- |
+| `--dashboard-rows`     | Cantidad de filas que tendrá el tablero.               | `int` (0, valor por defecto]                                           | `(<RESOLUCIÓN DEL ALTO DE LA PANTALLA> / 10) * 0.93`  | `--dashboard-rows=28`                                |
+| `--dashboard-cols`     | Cantidad de columnas que tendrá el tablero.            | `int` (0, valor por defecto]                                           | `(<RESOLUCIÓN DEL ANCHO DE LA PANTALLA> / 10) * 0.99` | `--dashboard-cols=55`                                |
+| `--pattern`            | Patrón a dibujar en el centro del tablero.             | `"glider"`, `"toad"`, `"press"` ó `"glider cannon"`                    | `""`                                                  | `--pattern="glider cannon"`                          |
+| `--maximum-generation` | Generaciones máximas.                                  | `int` (un valor menor a `0` se interpreta como generaciones infinitas) | `0`                                                   | `--maximum-generation=-1`                            |
+| `--delay`              | Tiempo de espera para generar la siguiente generación. | `int` [0, 1000]                                                        | `0`                                                   | `--delay=50`                                         |
+| `--platform`           | Plataforma en donde se dibujara el tablero.            | `"console"` ó `"sdl"`                                                  | `""`                                                  | `--platform="sdl"`                                   |
+| `--initial-state-file` | Ruta a un archivo con el estado inicial del tablero.   | Cualquier ruta a un archivo con extensión `.txt` ó `.csv`              | `""`                                                  | `--initial-state-file="./statics/initial-state.csv"` |
+
+> [¿Cómo defino los argumentos del programa?](https://www.youtube.com/watch?v=9Mi_TTOml94) (opcional).
+
+> [!IMPORTANT]
+> Todos los argumentos (exceptuando `--dashboard-rows`, `--dashboard-cols` y `--initial-state-file`) serán solicitados por consola si no son definidos o acepados. Además, el parámetro `--pattern` sera ignorado si se declara un parámetro `--initial-state-file` válido.
+
+### Problemas conocidos
 
 | Problema                                                              | Solución                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | :-------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

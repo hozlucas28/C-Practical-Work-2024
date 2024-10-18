@@ -64,13 +64,30 @@ This repository contains the practical work for the Programming Topics course at
 
 4. Select the [src.cbp](./src/src.cbp) project (main project) and run it in Release mode to enjoy Conway's Game of Life.
 
-## Known Issues
+### Program arguments
+
+| Argument               | Description                                             | Accepted value(s)                                        | Default value                              | Example                                              |
+| :--------------------- | :------------------------------------------------------ | :------------------------------------------------------- | :----------------------------------------- | ---------------------------------------------------- |
+| `--dashboard-rows`     | Number of rows for the dashboard.                       | `int` (0, default value]                                 | `(<SCREEN HEIGHT RESOLUTION> / 10) * 0.93` | `--dashboard-rows=28`                                |
+| `--dashboard-cols`     | Number of columns for the dashboard.                    | `int` (0, default value]                                 | `(<SCREEN WIDTH RESOLUTION> / 10) * 0.99`  | `--dashboard-cols=55`                                |
+| `--pattern`            | Pattern to draw in the center of the dashboard.         | `"glider"`, `"toad"`, `"press"` or `"glider cannon"`     | `""`                                       | `--pattern="glider cannon"`                          |
+| `--maximum-generation` | Maximum number of generations.                          | `int` (a value less than `0` means infinite generations) | `0`                                        | `--maximum-generation=-1`                            |
+| `--delay`              | Delay to generate the next generation.                  | `int` [0, 1000]                                          | `0`                                        | `--delay=50`                                         |
+| `--platform`           | Platform where the dashboard will be rendered.          | `"console"` or `"sdl"`                                   | `""`                                       | `--platform="sdl"`                                   |
+| `--initial-state-file` | Path to a file with the initial state of the dashboard. | Any path to a file with a `.txt` or `.csv` extension     | `""`                                       | `--initial-state-file="./statics/initial-state.csv"` |
+
+> [How do I define the program arguments?](https://www.youtube.com/watch?v=9Mi_TTOml94) (optional).
+
+> [!IMPORTANT]
+> All arguments (except for `--dashboard-rows`, `--dashboard-cols`, and `--initial-state-file`) will be requested via the console if not defined or accepted. Additionally, the `--pattern` parameter will be ignored if a valid `--initial-state-file` is provided.
+
+### Known issues
 
 | Issue                                                       | Solution                                                                                                                                                                                                                                                                                                                                                                                                         |
 | :---------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **[src.cbp](./src/src.cbp) (main project) doesn't compile** | _Select the [libs.cbp](./libs/libs.cbp) project (library project) and compile it in Release mode and Debug mode. Then, select the [src.cbp](./src/src.cbp) project (main project), right-click on it, choose `Build Options`, and go to the `Linker settings` tab. There, add the `libs.a` files located in the `libs/bin/Debug` and `libs/bin/Release` folders. Finally, try compiling the main project again._ |
 
-## Application Structure
+## Application structure
 
 ```plaintext
 C-Practical-Work-2024/
@@ -210,7 +227,7 @@ C-Practical-Work-2024/
 -   **[LICENSE](./LICENSE)** - Project license.
 -   **[README.md](./README.md)** - Markdown file with the general documentation for the application and repository.
 
-## Team Workflow
+## Team workflow
 
 ```mermaid
 %%{init: { 'logLevel': 'debug', 'theme': 'dark', 'gitGraph': {'showBranches': true, 'showCommitLabel': true, 'mainBranchName': 'Master', 'parallelCommits': true}} }%%
@@ -259,7 +276,7 @@ C-Practical-Work-2024/
 
 > The other branches are fictional and represent individual contributions from each member to the `develop` branch.
 
-## Development Team
+## Development team
 
 -   [Giannotti Tiago](https://github.com/TiagoGiannotti)
 -   [Hoz Lucas](https://github.com/hozlucas28)
@@ -267,7 +284,7 @@ C-Practical-Work-2024/
 -   [Linares Guido](https://www.linkedin.com/in/guido-linares-25859b209/)
 -   [Quiroga Ferney Santiago](https://github.com/Ferny1011)
 
-## Additional Material
+## Additional material
 
 -   [Code Documentation](./.github/translations/en/documentation.md)
 -   [Practical Work Requirements](./.github/translations/en/requirements.md)
