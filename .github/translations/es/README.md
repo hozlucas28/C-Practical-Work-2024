@@ -40,9 +40,16 @@ Este repositorio contiene el trabajo práctico de la materia Tópicos de Program
 
 ## Características
 
+-   Confirmaciones siguiendo la guía de los [Commits Convencionales](https://www.conventionalcommits.org/es/v1.0.0/)
+-   Control de entradas utilizando validaciones
 -   Convenciones y estándares de código
+-   Despliegue de entregables
+-   Diseño responsivo
 -   Documentación del código utilizando la sintaxis de [Doxygen](https://www.doxygen.nl/)
+-   Implementación de argumentos del programa
+-   Implementación de la libraría [Simple DirectMedia Layer (SDL)](https://www.libsdl.org/)
 -   Integración continua con [GitHub Actions](https://docs.github.com/es/actions)
+-   Lectura e interpretación de archivos
 -   Memoria dinámica
 -   Planificación de la arquitectura
 -   Planificación del flujo de trabajo del equipo (ramas, etiquetas y versionado)

@@ -43,8 +43,15 @@ This repository contains the practical work for the Programming Topics course at
 -   Architecture planning
 -   Code conventions and standards
 -   Code documentation using [Doxygen](https://www.doxygen.nl/) syntax
+-   Commits following the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 -   Continuous integration with [GitHub Actions](https://docs.github.com/en/actions)
+-   Deployment of releases
 -   Dynamic memory
+-   File reading and interpretation
+-   Implementation of program arguments
+-   Implementation of the [Simple DirectMedia Layer (SDL)](https://www.libsdl.org/) library
+-   Input control using validations
+-   Responsive design
 -   Team Workflow planning (branches, tags, and releases)
 
 ## Installation
