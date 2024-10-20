@@ -100,6 +100,22 @@ void printGameByConsole(TGame* pGame);
 void setDashboardCenter(TGame* pGame);
 
 /**
+ * @brief Sets a Conway's Game of Life dashboard based on a file.
+ *
+ * This function reads a file content and updates a Conway's Game of Life structure with the parsed
+ * content to set the dashboard. Also, it modifies the `rows`, `cols`, `center`, `cellsAlive`, and
+ * `cellsDead` field of the Conway's Game of Life structure.
+ *
+ * @param filePath File path with the content to be parsed.
+ * @param pGame Pointer to the Conway's Game of Life structure.
+ * @param minRows Minimum number of rows for the dashboard.
+ * @param minCols Minimum number of columns for the dashboard.
+ *
+ * @return Returns `1` on success, otherwise returns `0`.
+ */
+int setDashboardFromFile(const char* filePath, TGame* pGame, const int minRows, const int minCols);
+
+/**
  * @brief Starts a Conway's Game of Life game using the console as the output.
  *
  * @param pGame Pointer to a Conway's Game of Life structure.
