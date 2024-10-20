@@ -33,10 +33,12 @@ void destroy2DArray(char** arr, const int rows, const int cols);
  *
  * @param filePath File path with the content to be parsed.
  * @param pGame Pointer to the Conway's Game of Life structure.
+ * @param minRows Minimum number of rows for the dashboard.
+ * @param minCols Minimum number of columns for the dashboard.
  *
  * @return Returns `1` on success, otherwise returns `0`.
  */
-int setDashboardFromFile(const char* filePath, TGame* pGame);
+int setDashboardFromFile(const char* filePath, TGame* pGame, const int minRows, const int minCols);
 
 /**
  * @brief Gets user input as a string.

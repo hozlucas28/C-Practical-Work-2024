@@ -32,22 +32,23 @@ int main(const int argc, char* argv[]) {
 
     rows = mainArguments.dashboardRows;
     cols = mainArguments.dashboardCols;
-    dashboard = new2DArray(rows, cols);
-
-    game.dashboard = dashboard;
-    game.rows = rows;
-    game.cols = cols;
-    game.cellsAlive = 0;
-    game.cellsDead = cols * rows;
-    game.generation = 0;
-
-    setDashboardCenter(&game);
-
-    fillDashboard(&game, DEAD_CELL);
 
     /* ----------------------------- Request Pattern ---------------------------- */
 
     if (*mainArguments.initialStateFile == '\0') {
+        dashboard = new2DArray(rows, cols);
+
+        game.dashboard = dashboard;
+        game.rows = rows;
+        game.cols = cols;
+        game.cellsAlive = 0;
+        game.cellsDead = cols * rows;
+        game.generation = 0;
+
+        setDashboardCenter(&game);
+
+        fillDashboard(&game, DEAD_CELL);
+
         if (*mainArguments.pattern == '\0') {
             requestedPattern = getUserInputStr(
                 "> Which pattern do you want? ('Glider','Toad', 'Press', or 'Glider cannon'): ",
@@ -68,7 +69,14 @@ int main(const int argc, char* argv[]) {
     } else {
         /* --------------------------- Draw Initial State --------------------------- */
 
-        setDashboardFromFile(mainArguments.initialStateFile, &game);
+        if (!setDashboardFromFile(mainArguments.initialStateFile, &game, rows, cols)) {
+            printf(
+                "> An error occurred on set the initial state of the dashboard! Please check the "
+                "file path with the initial state (received %s) and it's content.\n",
+                mainArguments.initialStateFile);
+
+            exit(EXIT_FAILURE);
+        }
     }
 
     /* ----------------------- Request Maximum Generation ----------------------- */

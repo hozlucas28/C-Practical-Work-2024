@@ -20,8 +20,9 @@ void destroy2DArray(char** arr, const int rows, const int cols) {
     free(arr);
 }
 
-int setDashboardFromFile(const char* filePath, TGame* pGame) {
+int setDashboardFromFile(const char* filePath, TGame* pGame, const int minRows, const int minCols) {
     FILE* pf;
+    TPattern pattern;
 
     char* line;
     const size_t lineLength = 100;
@@ -33,8 +34,11 @@ int setDashboardFromFile(const char* filePath, TGame* pGame) {
     int rowInt;
     int colInt;
 
-    int rows = pGame->rows;
-    int cols = pGame->cols;
+    int rows = minRows;
+    int cols = minCols;
+
+    int patternRows = 0;
+    int patternCols = 0;
 
     pf = fopen(filePath, "rt");
     if (pf == NULL) return 0;
@@ -59,14 +63,56 @@ int setDashboardFromFile(const char* filePath, TGame* pGame) {
         sscanf(row, "%d", &rowInt);
         sscanf(col, "%d", &colInt);
 
-        rows = MAX(rowInt, rows);
-        cols = MAX(colInt, cols);
+        patternRows = MAX(rowInt, patternRows);
+        patternCols = MAX(colInt, patternCols);
     }
 
-    printf("\n\n> rows: %d\n", rows);
-    printf("> cols: %d\n\n", cols);
+    rows = MAX(patternRows, rows);
+    cols = MAX(patternCols, cols);
 
-    // TODO: draw in dashboard.
+    pGame->dashboard = new2DArray(rows, cols);
+    pGame->rows = rows;
+    pGame->cols = cols;
+    pGame->cellsAlive = 0;
+    pGame->generation = 0;
+
+    setDashboardCenter(pGame);
+
+    fillDashboard(pGame, DEAD_CELL);
+
+    pattern.arr = new2DArray(patternRows, patternCols);
+    pattern.rows = patternRows;
+    pattern.cols = patternCols;
+
+    setPatternCenter(&pattern);
+
+    fillPattern(&pattern, DEAD_CELL);
+
+    rewind(pf);
+    fgets(line, lineLength, pf);
+
+    while (fgets(line, lineLength, pf)) {
+        row = line;
+        sep = strrchr(line, ';');
+        if (sep == NULL) continue;
+
+        *sep = '\0';
+        col = sep + 1;
+
+        sscanf(row, "%d", &rowInt);
+        sscanf(col, "%d", &colInt);
+
+        pattern.arr[rowInt - 1][colInt - 1] = ALIVE_CELL;
+        pGame->cellsAlive++;
+    }
+
+    pGame->cellsDead = (cols * rows) - pGame->cellsAlive;
+
+    drawPatternInDashboard(pGame, &pattern);
+    destroy2DArray(pattern.arr, pattern.rows, pattern.cols);
+
+    fclose(pf);
+    free(line);
 
     return 1;
 }
@@ -129,8 +175,7 @@ char** new2DArray(const int rows, const int cols) {
 
 void sleep(int miliseconds) {
     const clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds))
-        ;
+    while (clock() < (startTime + miliseconds));
 }
 
 int strcmpi(const char* str01, const char* str02) {
