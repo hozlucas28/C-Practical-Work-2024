@@ -10,8 +10,8 @@
 #include "./structs.h"
 
 int countAliveNeighbors(TGame* pGame, const int cellRow, const int cellCol, const int radius) {
-    size_t i;
-    size_t j;
+    int i;
+    int j;
 
     const int startRow = cellRow - radius;
     const int startCol = cellCol - radius;
