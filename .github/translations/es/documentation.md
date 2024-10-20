@@ -21,10 +21,7 @@ Las documentaciones que se realicen deben seguir las siguientes reglas:
  * <DESCRIPCIÓN DETALLADA DE LA ESTRUCTURA (PROPÓSITO Y LISTADO DE CAMPOS)>.
  */
 typedef struct {
-    /**
-     * @brief <BREVE DESCRIPCIÓN DEL MIEMBRO>.
-     */
-    DataType01 member01;
+    DataType01 member01; /** <BREVE DESCRIPCIÓN DEL MIEMBRO>. */
 
     // ...
 } MyStruct;
@@ -42,15 +39,8 @@ _Por ejemplo..._
  * representing the x and y coordinates.
  */
 typedef struct {
-    /**
-     * @brief The x-coordinate of the point.
-     */
-    int x;
-
-    /**
-     * @brief The y-coordinate of the point.
-     */
-    int y;
+    int x; /** The x-coordinate of the point. */
+    int y; /** The y-coordinate of the point. */
 } Point2D;
 ```
 
@@ -116,7 +106,9 @@ int factorial(int n) {
  * @def <NOMBRE DE LA MACRO>
  * @brief <BREVE DESCRIPCIÓN DE LO QUE HACE LA MACRO>.
  *
- * @warning <ADVERTENCIAS SOBRE EL USO DE LA MACRO (OPCIONAL)>.
+ * <DESCRIPCIÓN DETALLADA DE LA MACRO (OPCIONAL)>.
+ *
+ * @warning <ADVERTENCIAS SOBRE EL USO DE LA MACRO>.
  */
 #define MY_MACRO value
 ```

@@ -43,8 +43,15 @@ This repository contains the practical work for the Programming Topics course at
 -   Architecture planning
 -   Code conventions and standards
 -   Code documentation using [Doxygen](https://www.doxygen.nl/) syntax
+-   Commits following the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 -   Continuous integration with [GitHub Actions](https://docs.github.com/en/actions)
+-   Deployment of releases
 -   Dynamic memory
+-   File reading and interpretation
+-   Implementation of program arguments
+-   Implementation of the [Simple DirectMedia Layer (SDL)](https://www.libsdl.org/) library
+-   Input control using validations
+-   Responsive design
 -   Team Workflow planning (branches, tags, and releases)
 
 ## Installation
@@ -57,19 +64,40 @@ This repository contains the practical work for the Programming Topics course at
 
 4. Select the [src.cbp](./src/src.cbp) project (main project) and run it in Release mode to enjoy Conway's Game of Life.
 
-## Known Issues
+### Program arguments
+
+| Argument               | Description                                             | Accepted value(s)                                        | Default value                              | Example                                              |
+| :--------------------- | :------------------------------------------------------ | :------------------------------------------------------- | :----------------------------------------- | ---------------------------------------------------- |
+| `--dashboard-rows`     | Number of rows for the dashboard.                       | `int` (0, default value]                                 | `(<SCREEN HEIGHT RESOLUTION> / 10) * 0.93` | `--dashboard-rows=28`                                |
+| `--dashboard-cols`     | Number of columns for the dashboard.                    | `int` (0, default value]                                 | `(<SCREEN WIDTH RESOLUTION> / 10) * 0.99`  | `--dashboard-cols=55`                                |
+| `--pattern`            | Pattern to draw in the center of the dashboard.         | `"glider"`, `"toad"`, `"press"` or `"glider cannon"`     | `""`                                       | `--pattern="glider cannon"`                          |
+| `--maximum-generation` | Maximum number of generations.                          | `int` (a value less than `0` means infinite generations) | `0`                                        | `--maximum-generation=-1`                            |
+| `--delay`              | Delay to generate the next generation.                  | `int` [0, 1000]                                          | `0`                                        | `--delay=50`                                         |
+| `--platform`           | Platform where the dashboard will be rendered.          | `"console"` or `"sdl"`                                   | `""`                                       | `--platform="sdl"`                                   |
+| `--initial-state-file` | Path to a file with the initial state of the dashboard. | Any path to a file with a `.txt` or `.csv` extension     | `""`                                       | `--initial-state-file="./statics/initial-state.csv"` |
+
+> [How do I define the program arguments?](https://www.youtube.com/watch?v=9Mi_TTOml94) (optional).
+
+> [!IMPORTANT]
+> All arguments (except for `--dashboard-rows`, `--dashboard-cols`, and `--initial-state-file`) will be requested via the console if not defined or accepted. Additionally, the `--pattern` parameter will be ignored if a valid `--initial-state-file` is provided.
+
+> [!WARNING]
+> The content of the file targeted by the `--initial-state-file` parameter must follow a specific format, as seen in the file [initial-state.csv](./src/statics/initial-state.csv).
+
+### Known issues
 
 | Issue                                                       | Solution                                                                                                                                                                                                                                                                                                                                                                                                         |
 | :---------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **[src.cbp](./src/src.cbp) (main project) doesn't compile** | _Select the [libs.cbp](./libs/libs.cbp) project (library project) and compile it in Release mode and Debug mode. Then, select the [src.cbp](./src/src.cbp) project (main project), right-click on it, choose `Build Options`, and go to the `Linker settings` tab. There, add the `libs.a` files located in the `libs/bin/Debug` and `libs/bin/Release` folders. Finally, try compiling the main project again._ |
 
-## Application Structure
+## Application structure
 
 ```plaintext
 C-Practical-Work-2024/
 │
 ├── .github/
 │   ├── statics/
+│   │   ├── demo.mp4
 │   │   ├── illustration-01.png
 │   │   ├── illustration-02.png
 │   │   └── preview.png
@@ -85,14 +113,8 @@ C-Practical-Work-2024/
 │   │       └── requirements.md
 │   │
 │   └── workflows/
+│       ├── format-code-on-pr.yml
 │       └── format-code.yml
-│
-├── src/
-│   ├── main.c
-│   ├── src.cbp
-│   │
-│   └── statics/
-│       └── initial-state.txt
 |
 ├── libs/
 │   ├── libs.cbp
@@ -103,6 +125,13 @@ C-Practical-Work-2024/
 │   ├── validators.c
 │   ├── validators.h
 |   |
+│   ├── game/
+|   |   ├── macros.h
+|   |   ├── main.h
+|   |   ├── methods.c
+|   |   ├── methods.h
+|   |   └── structs.h
+|   |
 │   └── patterns/
 │       ├── constructors.c
 │       ├── constructors.h
@@ -111,6 +140,27 @@ C-Practical-Work-2024/
 │       ├── methods.c
 │       ├── methods.h
 │       └── structs.h
+│
+├── src/
+│   ├── macros.h
+│   ├── main.c
+│   ├── src.cbp
+│   ├── structs.h
+│   ├── utilities.c
+│   ├── utilities.h
+│   ├── validators.c
+│   ├── validators.h
+│   │
+│   ├── sdl/
+│   │   ├── main.h
+│   │   ├── methods.c
+│   │   ├── methods.h
+│   │   │
+│   │   └── SDL2/
+│   │       └── ( ... )
+│   │
+│   └── statics/
+│       └── initial-state.csv
 |
 ├── .clang-format
 ├── .gitignore
@@ -124,41 +174,63 @@ C-Practical-Work-2024/
     -   **[translations](./.github/translations)** - Translations of `.md` (Markdown) files.
     -   **[workflows](./.github/workflows)** - GitHub Actions workflows.
 
--   **[src](./src)** - Main project of the application.
-
-    -   **[main.c](./src/main.c)** - Main execution file.
-    -   **[src.cbp](./src/src.cbp)** - Project configuration file.
-
-    -   **[statics](./src/statics)** - Files (images, videos, diagrams, etc.).
-
-        -   **[initial-state.txt](./src/statics/initial-state.txt)** - File with the initial state of the application.
-
 -   **[libs](./libs)** - Project containing the libraries necessary for the execution of the main application project.
 
     -   **[libs.cbp](./libs/libs.cbp)** - Project configuration file.
     -   **[macros.h](./libs/macros.h)** - File with essential project macros.
     -   **[main.h](./libs/main.h)** - File indexing all `.h` files of the project.
     -   **[utilities.c](./libs/utilities.c)** - File with the implementation of the function prototypes found in `utilities.h`.
-    -   **[utilities.h](./libs/utilities.h)** - File with common structures and function prototypes.
+    -   **[utilities.h](./libs/utilities.h)** - File with common function prototypes.
     -   **[validators.c](./libs/validators.c)** - File with the implementation of the function prototypes found in `validators.h`.
     -   **[validators.h](./libs/validators.h)** - File with functions prototypes related to validation process.
+
+    -   **[game](./libs/game)** - Functions and structures to create and interact with Conway's Game of Life.
+
+        -   **[macros.h](./libs/game/macros.h)** - File containing macros.
+        -   **[main.h](./libs/game/main.h)** - File that indexes all `.h` files within the `games` folder.
+        -   **[methods.c](./libs/game/methods.c)** - File containing the implementation of the function prototypes found in `methods.h`.
+        -   **[methods.h](./libs/game/methods.h)** - File containing the function prototypes related to Conway's Game of Life methods.
+        -   **[structs.h](./libs/game/structs.h)** - File containing structures.
 
     -   **[patterns](./libs/patterns)** - Functions and structures for create patterns with cells.
 
         -   **[constructors.c](./libs/patterns/constructors.c)** - File with the implementation of the function prototypes found in `constructors.h`.
-        -   **[constructors.h](./libs/patterns/constructors.h)** - File with structures and function prototypes related to patterns creation.
-        -   **[macros.h](./libs/macros.h)** - File with macros.
-        -   **[main.h](./libs/main.h)** - File indexing all `.h` files inside `patterns` folder.
+        -   **[constructors.h](./libs/patterns/constructors.h)** - File with function prototypes related to patterns creation.
+        -   **[macros.h](./libs/patterns/macros.h)** - File with macros.
+        -   **[main.h](./libs/patterns/main.h)** - File indexing all `.h` files inside `patterns` folder.
         -   **[methods.c](./libs/patterns/methods.c)** - File with the implementation of the function prototypes found in `methods.h`.
         -   **[methods.h](./libs/patterns/methods.h)** - File with function prototypes related to pattern methods.
         -   **[structs.h](./libs/patterns/methods.h)** - File with structs.
+
+-   **[src](./src)** - Main project of the application.
+
+    -   **[macros.h](./src/macros.h)** - File with the project's main macros.
+    -   **[main.c](./src/main.c)** - Main execution file.
+    -   **[src.cbp](./src/src.cbp)** - Project configuration file.
+    -   **[structs.h](./src/structs.h)** - File with the main structures for configuring the project.
+    -   **[utilities.c](./src/utilities.c)** - File with the implementation of the function prototypes found in `utilities.h`.
+    -   **[utilities.h](./src/utilities.h)** - File with the function prototypes for configuring the project.
+    -   **[validators.c](./src/validators.c)** - File with the implementation of the function prototypes found in `utilities.h`.
+    -   **[validators.h](./src/validators.h)** - File with the function prototypes for validating the project's arguments.
+
+    -   **[sdl](./src/sdl)** - Functions for interacting with the SDL2 library.
+
+        -   **[SDL2](./src/sdl/SDL2)** - SDL2 library.
+
+        -   **[main.h](./src/sdl/main.h)** - File indexing all `.h` files inside `sdl` folder.
+        -   **[methods.c](./src/sdl/methods.c)** - File with the implementation of the function prototypes found in `methods.h`.
+        -   **[methods.h](./src/sdl/methods.h)** - File with the function prototypes to interact with the SDL2 library.
+
+    -   **[statics](./src/statics)** - Files (images, videos, diagrams, etc.).
+
+        -   **[initial-state.txt](./src/statics/initial-state.txt)** - File with the initial state of the application.
 
 -   **[.clang-format](./.clang-format)** - Configuration file for the `clang-format` code formatting tool.
 -   **[.gitignore](./.gitignore)** - Git configuration file to avoid tracking unwanted files.
 -   **[LICENSE](./LICENSE)** - Project license.
 -   **[README.md](./README.md)** - Markdown file with the general documentation for the application and repository.
 
-## Team Workflow
+## Team workflow
 
 ```mermaid
 %%{init: { 'logLevel': 'debug', 'theme': 'dark', 'gitGraph': {'showBranches': true, 'showCommitLabel': true, 'mainBranchName': 'Master', 'parallelCommits': true}} }%%
@@ -207,7 +279,7 @@ C-Practical-Work-2024/
 
 > The other branches are fictional and represent individual contributions from each member to the `develop` branch.
 
-## Development Team
+## Development team
 
 -   [Giannotti Tiago](https://github.com/TiagoGiannotti)
 -   [Hoz Lucas](https://github.com/hozlucas28)
@@ -215,7 +287,7 @@ C-Practical-Work-2024/
 -   [Linares Guido](https://www.linkedin.com/in/guido-linares-25859b209/)
 -   [Quiroga Ferney Santiago](https://github.com/Ferny1011)
 
-## Additional Material
+## Additional material
 
 -   [Code Documentation](./.github/translations/en/documentation.md)
 -   [Practical Work Requirements](./.github/translations/en/requirements.md)

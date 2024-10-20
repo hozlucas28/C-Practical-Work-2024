@@ -9,10 +9,10 @@
 #include "./macros.h"
 #include "./utilities.h"
 
-int validateDelay(char* delay) {
-    int i;
+unsigned char validateDelay(const char* delay) {
+    size_t i;
     int delayInt;
-    int delayLength = strlen(delay);
+    size_t delayLength = strlen(delay);
 
     for (i = 0; i < delayLength; i++) {
         if (!isdigit(*(delay + i))) return 0;
@@ -22,10 +22,10 @@ int validateDelay(char* delay) {
     return delayInt >= MINIMUM_DELAY && delayInt <= MAXIMUM_DELAY;
 }
 
-int validateGeneration(char* generation) {
-    int i;
+unsigned char validateGeneration(const char* generation) {
+    size_t i;
     int generationInt;
-    int generationLength = strlen(generation);
+    size_t generationLength = strlen(generation);
 
     for (i = 0; i < generationLength; i++) {
         if (*(generation + i) != '-' && !isdigit(*(generation + i))) return 0;
@@ -35,13 +35,13 @@ int validateGeneration(char* generation) {
     return generationInt >= INT_MIN && generationInt <= INT_MAX;
 }
 
-int validatePattern(char* pattern) {
-    char* options[] = {"glider", "toad", "press", "glider cannon"};
+unsigned char validatePattern(const char* pattern) {
+    const char* options[] = {"glider", "toad", "press", "glider cannon"};
     return isStrIn(pattern, options, 4);
 }
 
-int validatePlatform(char* userInput) {
-    char* options[] = {"console", "simple directmedia layer (sdl)", "simple directmedia layer",
-                       "sdl"};
+unsigned char validatePlatform(const char* userInput) {
+    const char* options[] = {"console", "simple directmedia layer (sdl)",
+                             "simple directmedia layer", "sdl"};
     return isStrIn(userInput, options, 4);
 }

@@ -9,7 +9,7 @@
 #include "./structs.h"
 #include "./utilities.h"
 
-int main(int argc, char* argv[]) {
+int main(const int argc, char* argv[]) {
     TMainArguments mainArguments;
 
     TGame game;
@@ -32,38 +32,52 @@ int main(int argc, char* argv[]) {
 
     rows = mainArguments.dashboardRows;
     cols = mainArguments.dashboardCols;
-    dashboard = new2DArray(rows, cols);
-
-    game.dashboard = dashboard;
-    game.rows = rows;
-    game.cols = cols;
-    game.cellsAlive = 0;
-    game.cellsDead = cols * rows;
-    game.generation = 0;
-
-    setDashboardCenter(&game);
-
-    fillDashboard(&game, DEAD_CELL);
 
     /* ----------------------------- Request Pattern ---------------------------- */
 
-    if (strcmp(mainArguments.pattern, "") == 0) {
-        requestedPattern = getUserInputStr(
-            "> Which pattern do you want? ('Glider','Toad', 'Press', or 'Glider cannon'): ",
-            "> Invalid pattern! Try again...", 50, &validatePattern);
+    if (*mainArguments.initialStateFile == '\0') {
+        dashboard = new2DArray(rows, cols);
 
-        printf("> Pattern received: '%s'.\n\n", requestedPattern);
+        game.dashboard = dashboard;
+        game.rows = rows;
+        game.cols = cols;
+        game.cellsAlive = 0;
+        game.cellsDead = cols * rows;
+        game.generation = 0;
 
-        drawPattern(&game, requestedPattern);
+        setDashboardCenter(&game);
 
-        free(requestedPattern);
+        fillDashboard(&game, DEAD_CELL);
+
+        if (*mainArguments.pattern == '\0') {
+            requestedPattern = getUserInputStr(
+                "> Which pattern do you want? ('Glider','Toad', 'Press', or 'Glider cannon'): ",
+                "> Invalid pattern! Try again...", 50, &validatePattern);
+
+            printf("> Pattern received: '%s'.\n\n", requestedPattern);
+
+            drawPattern(&game, requestedPattern);
+
+            free(requestedPattern);
+        } else {
+            requestedPattern = mainArguments.pattern;
+
+            printf("> Pattern received: '%s'.\n\n", requestedPattern);
+
+            drawPattern(&game, requestedPattern);
+        };
     } else {
-        requestedPattern = mainArguments.pattern;
+        /* --------------------------- Draw Initial State --------------------------- */
 
-        printf("> Pattern received: '%s'.\n\n", requestedPattern);
+        if (!setDashboardFromFile(mainArguments.initialStateFile, &game, rows, cols)) {
+            printf(
+                "> An error occurred on set the initial state of the dashboard! Please check the "
+                "file path with the initial state (received %s) and it's content.\n",
+                mainArguments.initialStateFile);
 
-        drawPattern(&game, requestedPattern);
-    };
+            exit(EXIT_FAILURE);
+        }
+    }
 
     /* ----------------------- Request Maximum Generation ----------------------- */
 
@@ -121,7 +135,7 @@ int main(int argc, char* argv[]) {
 
     /* ---------------------------- Request Platform ---------------------------- */
 
-    if (strcmp(mainArguments.platform, "") == 0) {
+    if (*mainArguments.platform == '\0') {
         platformSelected = getUserInputStr(
             "> In which platform do you want to start the Conway's Game of Life game? (console, or "
             "Simple DirectMedia Layer (SDL)): ",

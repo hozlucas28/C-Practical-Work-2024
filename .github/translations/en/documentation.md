@@ -1,4 +1,4 @@
-# Code Documentation
+# Code documentation
 
 This document provides a series of templates and examples to document the [structures](#structures), [functions](#functions), and [macros](#macros) of the application.
 
@@ -21,10 +21,7 @@ The documentation must follow these rules:
  * <DETAILED DESCRIPTION OF THE STRUCTURE (PURPOSE, AND LISTS OF FIELDS)>.
  */
 typedef struct {
-    /**
-     * @brief <BRIEF DESCRIPTION OF THE MEMBER>.
-     */
-    DataType01 member01;
+    DataType01 member01; /** <BRIEF DESCRIPTION OF THE MEMBER>. */
 
     // ...
 } MyStruct;
@@ -42,15 +39,8 @@ _For example..._
  * representing the x and y coordinates.
  */
 typedef struct {
-    /**
-     * @brief The x-coordinate of the point.
-     */
-    int x;
-
-    /**
-     * @brief The y-coordinate of the point.
-     */
-    int y;
+    int x; /**  The x-coordinate of the point. */
+    int y; /** The y-coordinate of the point. */
 } Point2D;
 ```
 
@@ -116,7 +106,9 @@ int factorial(int n) {
  * @def <MACRO NAME>
  * @brief <BRIEF DESCRIPTION OF WHAT THE MACRO DOES>.
  *
- * @warning <WARNINGS ABOUT THE USE OF THE MACRO (OPTIONAL)>.
+ * <DETAILED DESCRIPTION OF THE MACRO (OPTIONAL)>.
+ *
+ * @warning <WARNINGS ABOUT THE USE OF THE MACRO>.
  */
 #define MY_MACRO value
 ```

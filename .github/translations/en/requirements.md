@@ -3,13 +3,13 @@
 > [!CAUTION]
 > 2 grades are required in the subject, the practical work (PW) must be submitted and defended individually in parts 1 and 2 before the midterm exam. The defense will be individual, and you must demonstrate mastery of the tools in general and the practical work in particular. For the PW to be archived, it must be submitted by the deadline indicated by the teachers in the following format: `ID_LASTNAME_FIRSTNAME_PW.zip`, e.g., `41127133_PEREZ_MARIA_PIA_PW.zip`. Note that it is a `.zip`, not `.rar` or `.7z`, respect the submission format. The PW as a suffix indicates it is practical work. Attach the statement and remove the `bin` and `obj` folders, as you are sharing programs, and for obvious reasons, the servers will delete compressed files containing binaries or executables.
 
-## Necessary Knowledge
+## Necessary knowledge
 
 -   **Part 1**: Structured programming and arrays.
 -   **Part 2**: Dynamic memory.
 -   **Part 3**: Files.
 
-## General Guidelines and Statement
+## General guidelines and statement
 
 Develop the following work in groups of 3 to 5 people. Submission and defense are mandatory. Parts 1 and 2 will be required to take the midterm exam. Keep in mind that the solution must be executable in the laboratories of the [UNLaM](https://www.unlam.edu.ar/), so it must be compatible with the **MinGW 64-bit** compiler. For richer and lag-free visualization, it is recommended to use the [SDL (Simple DirectMedia Layer)](https://www.libsdl.org/) library, the teachers will provide a project with the library included. You will only need to know the functions that allow drawing the elements of the work (_Illustration 1_).
 

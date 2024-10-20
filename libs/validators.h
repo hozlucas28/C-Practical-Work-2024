@@ -12,7 +12,7 @@
  *
  * @return 1 if the delay is valid, 0 otherwise.
  */
-int validateDelay(char* delay);
+unsigned char validateDelay(const char* delay);
 
 /**
  * @brief Validates a generation.
@@ -24,7 +24,7 @@ int validateDelay(char* delay);
  *
  * @return 1 if the generation is valid, 0 otherwise.
  */
-int validateGeneration(char* generation);
+unsigned char validateGeneration(const char* generation);
 
 /**
  * @brief Validates a pattern.
@@ -36,7 +36,7 @@ int validateGeneration(char* generation);
  *
  * @return 1 if the pattern is valid, 0 otherwise.
  */
-int validatePattern(char* pattern);
+unsigned char validatePattern(const char* pattern);
 
 /**
  * @brief Validates a platform.
@@ -48,6 +48,6 @@ int validatePattern(char* pattern);
  *
  * @return 1 if the platform is valid, 0 otherwise.
  */
-int validatePlatform(char* platform);
+unsigned char validatePlatform(const char* platform);
 
 #endif  // LIBS_VALIDATORS_H_INCLUDED

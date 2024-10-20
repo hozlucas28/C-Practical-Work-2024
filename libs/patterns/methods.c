@@ -5,9 +5,9 @@
 
 #include "./structs.h"
 
-void fillPattern(TPattern* pPattern, char with) {
-    int i;
-    int j;
+void fillPattern(TPattern* pPattern, const char with) {
+    size_t i;
+    size_t j;
 
     for (i = 0; i < pPattern->rows; i++) {
         for (j = 0; j < pPattern->cols; j++) {
@@ -17,8 +17,8 @@ void fillPattern(TPattern* pPattern, char with) {
 }
 
 void printPatternByConsole(TPattern* pPattern) {
-    int i;
-    int j;
+    size_t i;
+    size_t j;
 
     for (i = 0; i < pPattern->rows; i++) {
         for (j = 0; j < pPattern->cols; j++) {
@@ -30,8 +30,8 @@ void printPatternByConsole(TPattern* pPattern) {
 }
 
 void setPatternCenter(TPattern* pPattern) {
-    int row = pPattern->rows / 2;
-    int col = pPattern->cols / 2;
+    const int row = pPattern->rows / 2;
+    const int col = pPattern->cols / 2;
 
     pPattern->center[0] = row;
     pPattern->center[1] = col;

@@ -3,7 +3,14 @@
 
 #include "../../libs/main.h"
 
-// TODO: Documentation
+/**
+ * @brief Gets the current screen resolution.
+ *
+ * @param width Pointer to store the screen width.
+ * @param height Pointer to store the screen height.
+ *
+ * @return Returns `1` if the screen resolution was successfully obtained, or `0` if it was not.
+ */
 int getScreenResolution(int* width, int* height);
 
 /**
@@ -15,6 +22,7 @@ int getScreenResolution(int* width, int* height);
  *
  * @warning This function assumes that `pGame` has been properly initialized.
  */
-int startGameBySDL(TGame* pGame, int maxGeneration, int delayBetweenGenerations);
+unsigned char startGameBySDL(TGame* pGame, const int maxGeneration,
+                             const int delayBetweenGenerations);
 
 #endif  // SDL_METHODS_H_INCLUDED

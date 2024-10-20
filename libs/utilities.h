@@ -4,6 +4,7 @@
 
 #include <stdlib.h>
 
+#include "./game/main.h"
 #include "./macros.h"
 #include "./patterns/main.h"
 
@@ -21,7 +22,23 @@
  * @warning Ensure that the array has been dynamically allocated and that the number of rows and
  * columns are correctly specified to avoid undefined behavior.
  */
-void destroy2DArray(char** arr, int rows, int cols);
+void destroy2DArray(char** arr, const int rows, const int cols);
+
+/**
+ * @brief Sets a Conway's Game of Life dashboard based on a file.
+ *
+ * This function reads a file content and updates a Conway's Game of Life structure with the parsed
+ * content to set the dashboard. Also, it modifies the `rows`, `cols`, `center`, `cellsAlive`, and
+ * `cellsDead` field of the Conway's Game of Life structure.
+ *
+ * @param filePath File path with the content to be parsed.
+ * @param pGame Pointer to the Conway's Game of Life structure.
+ * @param minRows Minimum number of rows for the dashboard.
+ * @param minCols Minimum number of columns for the dashboard.
+ *
+ * @return Returns `1` on success, otherwise returns `0`.
+ */
+int setDashboardFromFile(const char* filePath, TGame* pGame, const int minRows, const int minCols);
 
 /**
  * @brief Gets user input as a string.
@@ -42,8 +59,8 @@ void destroy2DArray(char** arr, int rows, int cols);
  * @warning Ensure to free the returned pointer after use with the appropriate deallocation
  * functions to avoid memory leaks.
  */
-char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
-                      int (*validator)(char* userInput));
+char* getUserInputStr(const char* message, const char* onInvalidMessage, const int strLength,
+                      unsigned char (*validator)(const char* userInput));
 
 /**
  * @brief Checks if a string is present in an array of strings.
@@ -56,7 +73,7 @@ char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
  *
  * @return 1 if the string is found in the array, 0 otherwise.
  */
-int isStrIn(char* str, char* arr[], int arrLength);
+int isStrIn(const char* str, const char* arr[], const int arrLength);
 
 /**
  * @brief Initializes a 2D array of characters.
@@ -72,14 +89,14 @@ int isStrIn(char* str, char* arr[], int arrLength);
  * @warning Ensure to free the allocated memory using appropriate deallocation functions to avoid
  * memory leaks.
  */
-char** new2DArray(int rows, int cols);
+char** new2DArray(const int rows, const int cols);
 
 /**
  * @brief Pauses the execution of the program.
  *
  * @warning The actual delay may be longer than specified due to system timer.
  */
-void sleep(int milliseconds);
+void sleep(const int milliseconds);
 
 /**
  * @brief Compares two strings case-insensitively.

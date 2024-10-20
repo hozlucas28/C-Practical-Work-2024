@@ -7,10 +7,11 @@
 #include <string.h>
 #include <time.h>
 
+#include "./macros.h"
 #include "./patterns/main.h"
 
-void destroy2DArray(char** arr, int rows, int cols) {
-    int i;
+void destroy2DArray(char** arr, const int rows, const int cols) {
+    size_t i;
 
     for (i = 0; i < rows; i++) {
         free(*(arr + i));
@@ -19,8 +20,105 @@ void destroy2DArray(char** arr, int rows, int cols) {
     free(arr);
 }
 
-char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
-                      int (*validator)(char* userInput)) {
+int setDashboardFromFile(const char* filePath, TGame* pGame, const int minRows, const int minCols) {
+    FILE* pf;
+    TPattern pattern;
+
+    char* line;
+    const size_t lineLength = 100;
+
+    char* row;
+    char* col;
+    char* sep;
+
+    int rowInt;
+    int colInt;
+
+    int rows = minRows;
+    int cols = minCols;
+
+    int patternRows = 0;
+    int patternCols = 0;
+
+    pf = fopen(filePath, "rt");
+    if (pf == NULL) return 0;
+
+    line = malloc(sizeof(char) * (lineLength + 1));
+    if (line == NULL) {
+        fclose(pf);
+        return 0;
+    };
+    *(line + lineLength) = '\0';
+
+    fgets(line, lineLength, pf);
+
+    while (fgets(line, lineLength, pf)) {
+        row = line;
+        sep = strrchr(line, ';');
+        if (sep == NULL) continue;
+
+        *sep = '\0';
+        col = sep + 1;
+
+        sscanf(row, "%d", &rowInt);
+        sscanf(col, "%d", &colInt);
+
+        patternRows = MAX(rowInt, patternRows);
+        patternCols = MAX(colInt, patternCols);
+    }
+
+    rows = MAX(patternRows, rows);
+    cols = MAX(patternCols, cols);
+
+    pGame->dashboard = new2DArray(rows, cols);
+    pGame->rows = rows;
+    pGame->cols = cols;
+    pGame->cellsAlive = 0;
+    pGame->generation = 0;
+
+    setDashboardCenter(pGame);
+
+    fillDashboard(pGame, DEAD_CELL);
+
+    pattern.arr = new2DArray(patternRows, patternCols);
+    pattern.rows = patternRows;
+    pattern.cols = patternCols;
+
+    setPatternCenter(&pattern);
+
+    fillPattern(&pattern, DEAD_CELL);
+
+    rewind(pf);
+    fgets(line, lineLength, pf);
+
+    while (fgets(line, lineLength, pf)) {
+        row = line;
+        sep = strrchr(line, ';');
+        if (sep == NULL) continue;
+
+        *sep = '\0';
+        col = sep + 1;
+
+        sscanf(row, "%d", &rowInt);
+        sscanf(col, "%d", &colInt);
+
+        pattern.arr[rowInt - 1][colInt - 1] = ALIVE_CELL;
+        pGame->cellsAlive++;
+    }
+
+    pGame->cellsDead = (cols * rows) - pGame->cellsAlive;
+
+    drawPatternInDashboard(pGame, &pattern);
+    destroy2DArray(pattern.arr, pattern.rows, pattern.cols);
+
+    fclose(pf);
+    free(line);
+
+    return 1;
+}
+
+char* getUserInputStr(const char* message, const char* onInvalidMessage, const int strLength,
+                      unsigned char (*validator)(const char* userInput)) {
     char* userInput = malloc(strLength * sizeof(char));
     if (userInput == NULL) {
         printf("Memory allocation failed!\n");
@@ -43,8 +141,8 @@ char* getUserInputStr(char* message, char* onInvalidMessage, int strLength,
     return userInput;
 }
 
-int isStrIn(char* str, char* arr[], int size) {
-    int i;
+int isStrIn(const char* str, const char* arr[], const int size) {
+    size_t i;
 
     for (i = 0; i < size; i++) {
         if (strcmpi(str, *(arr + i)) == 0) return 1;
@@ -53,13 +151,11 @@ int isStrIn(char* str, char* arr[], int size) {
     return 0;
 }
 
-char** new2DArray(int rows, int cols) {
-    char** bidimensionalArr;
+char** new2DArray(const int rows, const int cols) {
+    size_t i;
+    size_t j;
 
-    int i;
-    int j;
-
-    bidimensionalArr = malloc(rows * sizeof(char*));
+    char** bidimensionalArr = malloc(rows * sizeof(char*));
     if (bidimensionalArr == NULL) {
         printf("Memory allocation failed!\n");
         exit(EXIT_FAILURE);
@@ -78,16 +174,16 @@ char** new2DArray(int rows, int cols) {
 }
 
 void sleep(int miliseconds) {
-    clock_t startTime = clock();
+    const clock_t startTime = clock();
     while (clock() < (startTime + miliseconds))
         ;
 }
 
 int strcmpi(const char* str01, const char* str02) {
-    int i;
+    size_t i;
 
-    int lengthStr01 = strlen(str01);
-    int lengthStr02 = strlen(str02);
+    const size_t lengthStr01 = strlen(str01);
+    const size_t lengthStr02 = strlen(str02);
 
     char charStr01;
     char charStr02;
@@ -112,11 +208,11 @@ void trimStr(char* str) {
 }
 
 void trimLeftStr(char* str) {
-    int i;
-    int j;
-    int strLength = strlen(str);
+    size_t i;
+    size_t j;
+    size_t strLength = strlen(str);
 
-    int counter = 0;
+    size_t counter = 0;
 
     for (i = 0; i < strLength; i++) {
         if (!isspace(*(str + i))) break;
@@ -131,10 +227,10 @@ void trimLeftStr(char* str) {
 }
 
 void trimRightStr(char* str) {
-    int i;
-    int strLength = strlen(str);
+    size_t i;
+    size_t strLength = strlen(str);
 
-    int counter = 0;
+    size_t counter = 0;
 
     for (i = strLength - 1; i > 0; i--) {
         if (!isspace(*(str + i))) break;

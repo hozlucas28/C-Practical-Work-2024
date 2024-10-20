@@ -40,9 +40,16 @@ Este repositorio contiene el trabajo práctico de la materia Tópicos de Program
 
 ## Características
 
+-   Confirmaciones siguiendo la guía de los [Commits Convencionales](https://www.conventionalcommits.org/es/v1.0.0/)
+-   Control de entradas utilizando validaciones
 -   Convenciones y estándares de código
+-   Despliegue de entregables
+-   Diseño responsivo
 -   Documentación del código utilizando la sintaxis de [Doxygen](https://www.doxygen.nl/)
+-   Implementación de argumentos del programa
+-   Implementación de la libraría [Simple DirectMedia Layer (SDL)](https://www.libsdl.org/)
 -   Integración continua con [GitHub Actions](https://docs.github.com/es/actions)
+-   Lectura e interpretación de archivos
 -   Memoria dinámica
 -   Planificación de la arquitectura
 -   Planificación del flujo de trabajo del equipo (ramas, etiquetas y versionado)
@@ -57,7 +64,27 @@ Este repositorio contiene el trabajo práctico de la materia Tópicos de Program
 
 4. Selecciona el proyecto [src.cbp](./src/src.cbp) (proyecto principal) y ejecútalo en modo Release para disfrutar del Juego de la Vida de Conway.
 
-## Problemas conocidos
+### Argumentos del programa
+
+| Argumento              | Descripción                                            | Valor/es aceptado/s                                                    | Valor por defecto                                     | Ejemplo                                              |
+| :--------------------- | :----------------------------------------------------- | :--------------------------------------------------------------------- | :---------------------------------------------------- | ---------------------------------------------------- |
+| `--dashboard-rows`     | Cantidad de filas que tendrá el tablero.               | `int` (0, valor por defecto]                                           | `(<RESOLUCIÓN DEL ALTO DE LA PANTALLA> / 10) * 0.93`  | `--dashboard-rows=28`                                |
+| `--dashboard-cols`     | Cantidad de columnas que tendrá el tablero.            | `int` (0, valor por defecto]                                           | `(<RESOLUCIÓN DEL ANCHO DE LA PANTALLA> / 10) * 0.99` | `--dashboard-cols=55`                                |
+| `--pattern`            | Patrón a dibujar en el centro del tablero.             | `"glider"`, `"toad"`, `"press"` ó `"glider cannon"`                    | `""`                                                  | `--pattern="glider cannon"`                          |
+| `--maximum-generation` | Generaciones máximas.                                  | `int` (un valor menor a `0` se interpreta como generaciones infinitas) | `0`                                                   | `--maximum-generation=-1`                            |
+| `--delay`              | Tiempo de espera para generar la siguiente generación. | `int` [0, 1000]                                                        | `0`                                                   | `--delay=50`                                         |
+| `--platform`           | Plataforma en donde se dibujara el tablero.            | `"console"` ó `"sdl"`                                                  | `""`                                                  | `--platform="sdl"`                                   |
+| `--initial-state-file` | Ruta a un archivo con el estado inicial del tablero.   | Cualquier ruta a un archivo con extensión `.txt` ó `.csv`              | `""`                                                  | `--initial-state-file="./statics/initial-state.csv"` |
+
+> [¿Cómo defino los argumentos del programa?](https://www.youtube.com/watch?v=9Mi_TTOml94) (opcional).
+
+> [!IMPORTANT]
+> Todos los argumentos (exceptuando `--dashboard-rows`, `--dashboard-cols` y `--initial-state-file`) serán solicitados por consola si no son definidos o acepados. Además, el parámetro `--pattern` sera ignorado si se declara un parámetro `--initial-state-file` válido.
+
+> [!WARNING]
+> El contenido del archivo apuntado por el parámetro `--initial-state-file` debe seguir un formato especifico como puede observar en el archivo [initial-state.csv](../../../src/statics/initial-state.csv).
+
+### Problemas conocidos
 
 | Problema                                                              | Solución                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | :-------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -70,6 +97,7 @@ C-Practical-Work-2024/
 │
 ├── .github/
 │   ├── statics/
+│   │   ├── demo.mp4
 │   │   ├── illustration-01.png
 │   │   ├── illustration-02.png
 │   │   └── preview.png
@@ -85,14 +113,8 @@ C-Practical-Work-2024/
 │   │       └── requirements.md
 │   │
 │   └── workflows/
+│       ├── format-code-on-pr.yml
 │       └── format-code.yml
-│
-├── src/
-│   ├── main.c
-│   ├── src.cbp
-│   │
-│   └── statics/
-│       └── initial-state.txt
 |
 ├── libs/
 │   ├── libs.cbp
@@ -103,6 +125,13 @@ C-Practical-Work-2024/
 │   ├── validators.c
 │   ├── validators.h
 |   |
+│   ├── game/
+|   |   ├── macros.h
+|   |   ├── main.h
+|   |   ├── methods.c
+|   |   ├── methods.h
+|   |   └── structs.h
+|   |
 │   └── patterns/
 │       ├── constructors.c
 │       ├── constructors.h
@@ -111,6 +140,27 @@ C-Practical-Work-2024/
 │       ├── methods.c
 │       ├── methods.h
 │       └── structs.h
+│
+├── src/
+│   ├── macros.h
+│   ├── main.c
+│   ├── src.cbp
+│   ├── structs.h
+│   ├── utilities.c
+│   ├── utilities.h
+│   ├── validators.c
+│   ├── validators.h
+│   │
+│   ├── sdl/
+│   │   ├── main.h
+│   │   ├── methods.c
+│   │   ├── methods.h
+│   │   │
+│   │   └── SDL2/
+│   │       └── ( ... )
+│   │
+│   └── statics/
+│       └── initial-state.csv
 |
 ├── .clang-format
 ├── .gitignore
@@ -124,34 +174,56 @@ C-Practical-Work-2024/
     -   **[translations](./.github/translations)** - Traducciones de los archivos con extensión `.md` (Markdown).
     -   **[workflows](./.github/workflows)** - Flujos de trabajo de las GitHub Actions.
 
--   **[src](./src)** - Proyecto principal de la aplicación.
-
-    -   **[main.c](./src/main.c)** - Archivo de ejecución principal.
-    -   **[src.cbp](./src/src.cbp)** - Archivo de configuración del proyecto.
-
-    -   **[statics](./src/statics)** - Archivos (imágenes, videos, diagramas, etc.).
-
-        -   **[initial-state.txt](./src/statics/initial-state.txt)** - Archivo con el estado inicial de la aplicación.
-
 -   **[libs](./libs)** - Proyecto con las librerías necesarias para la ejecución del proyecto principal de aplicación.
 
     -   **[libs.cbp](./libs/libs.cbp)** - Archivo de configuración del proyecto.
     -   **[macros.h](./libs/macros.h)** - Archivo con las macros esenciales del proyecto.
     -   **[main.h](./libs/main.h)** - Archivo que indexa todos los archivos `.h` del proyecto.
     -   **[utilities.c](./libs/utilities.c)** - Archivo con el desarrollo de los prototipos de función presentes en `utilities.h`.
-    -   **[utilities.h](./libs/utilities.h)** - Archivo con las estructuras y los prototipos de función de uso común.
+    -   **[utilities.h](./libs/utilities.h)** - Archivo con los prototipos de función de uso común.
     -   **[validators.c](./libs/validators.c)** - Archivo con el desarrollo de los prototipos de función presentes en `validators.h`.
     -   **[validators.h](./libs/validators.h)** - Archivo con prototipos de funciones relacionadas con procesos de validación.
+
+    -   **[game](./libs/game)** - Funciones y estructuras para crear e interactuar con el Juego de la Vida de Conway.
+
+        -   **[macros.h](./libs/game/macros.h)** - Archivo con macros.
+        -   **[main.h](./libs/game/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `games`.
+        -   **[methods.c](./libs/game/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
+        -   **[methods.h](./libs/game/methods.h)** - Archivo con los prototipos de función relacionados a los métodos del Juego de la Vida de Conway.
+        -   **[structs.h](./libs/game/methods.h)** - Archivo con estructuras.
 
     -   **[patterns](./libs/patterns)** - Funciones y estructuras para crear patrones con células.
 
         -   **[constructors.c](./libs/patterns/constructors.c)** - Archivo con el desarrollo de los prototipos de función presentes en `constructors.h`.
-        -   **[constructors.h](./libs/patterns/constructors.h)** - Archivo con las estructuras y los prototipos de función relacionados a la creación de patrones.
-        -   **[macros.h](./libs/macros.h)** - Archivo con macros.
-        -   **[main.h](./libs/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `patterns`.
+        -   **[constructors.h](./libs/patterns/constructors.h)** - Archivo con los prototipos de función relacionados a la creación de patrones.
+        -   **[macros.h](./libs/patterns/macros.h)** - Archivo con macros.
+        -   **[main.h](./libs/patterns/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `patterns`.
         -   **[methods.c](./libs/patterns/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
         -   **[methods.h](./libs/patterns/methods.h)** - Archivo con los prototipos de función relacionados a los métodos de los patrones.
         -   **[structs.h](./libs/patterns/methods.h)** - Archivo con estructuras.
+
+-   **[src](./src)** - Proyecto principal de la aplicación.
+
+    -   **[macros.h](./src/macros.h)** - Archivo con las principales macros del proyecto.
+    -   **[main.c](./src/main.c)** - Archivo de ejecución principal.
+    -   **[src.cbp](./src/src.cbp)** - Archivo de configuración del proyecto.
+    -   **[structs.h](./src/structs.h)** - Archivo con las principales estructuras para configurar el proyecto.
+    -   **[utilities.c](./src/utilities.c)** - Archivo con el desarrollo de los prototipos de función presentes en `utilities.h`.
+    -   **[utilities.h](./src/utilities.h)** - Archivo con los prototipos de función para configurar el proyecto.
+    -   **[validators.c](./src/validators.c)** - Archivo con el desarrollo de los prototipos de función presentes en `utilities.h`.
+    -   **[validators.h](./src/validators.h)** - Archivo con los prototipos de función para validar los argumentos del proyecto.
+
+    -   **[sdl](./src/sdl)** - Funciones para interactuar con la librería SDL2.
+
+        -   **[SDL2](./src/sdl/SDL2)** - Librería SDL2.
+
+        -   **[main.h](./src/sdl/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `sdl`.
+        -   **[methods.c](./src/sdl/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
+        -   **[methods.h](./src/sdl/methods.h)** - Archivo con los prototipos de función que permiten interactuar con la librería SDL2.
+
+    -   **[statics](./src/statics)** - Archivos (imágenes, videos, diagramas, etc.).
+
+        -   **[initial-state.csv](./src/statics/initial-state.txt)** - Archivo con el estado inicial de la aplicación.
 
 -   **[.clang-format](./.clang-format)** - Archivo de configuración de la herramienta de formateo de código `clang-format`.
 -   **[.gitignore](./.gitignore)** - Archivo de configuración de Git para evitar el rastreo de archivos no deseados.
