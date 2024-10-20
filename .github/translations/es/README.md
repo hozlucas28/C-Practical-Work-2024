@@ -81,6 +81,9 @@ Este repositorio contiene el trabajo práctico de la materia Tópicos de Program
 > [!IMPORTANT]
 > Todos los argumentos (exceptuando `--dashboard-rows`, `--dashboard-cols` y `--initial-state-file`) serán solicitados por consola si no son definidos o acepados. Además, el parámetro `--pattern` sera ignorado si se declara un parámetro `--initial-state-file` válido.
 
+> [!WARNING]
+> El contenido del archivo apuntado por el parámetro `--initial-state-file` debe seguir un formato especifico como puede observar en el archivo [initial-state.csv](../../../src/statics/initial-state.csv).
+
 ### Problemas conocidos
 
 | Problema                                                              | Solución                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |

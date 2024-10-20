@@ -81,6 +81,9 @@ This repository contains the practical work for the Programming Topics course at
 > [!IMPORTANT]
 > All arguments (except for `--dashboard-rows`, `--dashboard-cols`, and `--initial-state-file`) will be requested via the console if not defined or accepted. Additionally, the `--pattern` parameter will be ignored if a valid `--initial-state-file` is provided.
 
+> [!WARNING]
+> The content of the file targeted by the `--initial-state-file` parameter must follow a specific format, as seen in the file [initial-state.csv](./src/statics/initial-state.csv).
+
 ### Known issues
 
 | Issue                                                       | Solution                                                                                                                                                                                                                                                                                                                                                                                                         |
