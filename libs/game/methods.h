@@ -29,7 +29,10 @@ int countAliveNeighbors(TGame* pGame, const int row, const int col, const int ra
  * @param pGame Pointer to the Conway's Game of Life structure where the pattern will be drawn.
  * @param pattern Pattern to be drawn.
  *
- * @warning The pattern must be `glider`, `toad`, `press`, or `glider cannon`.
+ * @warning The pattern must be one of the following: `glider`, `toad`, `beacon`, or `glider
+ * cannon`. If the number of rows or columns of the Conway's Game of Life board are less than the
+ * number of rows or columns of the pattern, the board will be resized to match the pattern's
+ * dimensions.
  */
 void drawPattern(TGame* pGame, const char* pattern);
 
@@ -98,6 +101,22 @@ void printGameByConsole(TGame* pGame);
  * `cols` field values.
  */
 void setDashboardCenter(TGame* pGame);
+
+/**
+ * @brief Sets a Conway's Game of Life dashboard based on a file.
+ *
+ * This function reads a file content and updates a Conway's Game of Life structure with the parsed
+ * content to set the dashboard. Also, it modifies the `rows`, `cols`, `center`, `cellsAlive`, and
+ * `cellsDead` field of the Conway's Game of Life structure.
+ *
+ * @param filePath File path with the content to be parsed.
+ * @param pGame Pointer to the Conway's Game of Life structure.
+ * @param minRows Minimum number of rows for the dashboard.
+ * @param minCols Minimum number of columns for the dashboard.
+ *
+ * @return Returns `1` on success, otherwise returns `0`.
+ */
+int setDashboardFromFile(const char* filePath, TGame* pGame, const int minRows, const int minCols);
 
 /**
  * @brief Starts a Conway's Game of Life game using the console as the output.

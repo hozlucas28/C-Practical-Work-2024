@@ -3,6 +3,7 @@
 
 #include <limits.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "../patterns/main.h"
 #include "../utilities.h"
@@ -74,8 +75,24 @@ void drawPatternInDashboard(TGame* pGame, TPattern* pPattern) {
     size_t pI = 0;
     size_t pJ = 0;
 
-    const int startRow = pGame->center[0] - pPattern->center[0];
-    const int startCol = pGame->center[1] - pPattern->center[1];
+    int startRow;
+    int startCol;
+
+    if (pPattern->rows > pGame->rows || pPattern->cols > pGame->cols) {
+        destroy2DArray(pGame->dashboard, pGame->rows, pGame->cols);
+
+        pGame->dashboard = new2DArray(pPattern->rows, pPattern->cols);
+        pGame->rows = pPattern->rows;
+        pGame->cols = pPattern->cols;
+        pGame->cellsDead = (pGame->rows * pGame->cols) - pGame->cellsAlive;
+
+        setDashboardCenter(pGame);
+
+        fillDashboard(pGame, DEAD_CELL);
+    }
+
+    startRow = pGame->center[0] - pPattern->center[0];
+    startCol = pGame->center[1] - pPattern->center[1];
 
     for (i = startRow; pI < pPattern->rows; i++) {
         if (i < 0) continue;
@@ -201,6 +218,103 @@ void setDashboardCenter(TGame* pGame) {
 
     pGame->center[0] = row;
     pGame->center[1] = col;
+}
+
+int setDashboardFromFile(const char* filePath, TGame* pGame, const int minRows, const int minCols) {
+    FILE* pf;
+    TPattern pattern;
+
+    char* line;
+    const size_t lineLength = 100;
+
+    char* row;
+    char* col;
+    char* sep;
+
+    int rowInt;
+    int colInt;
+
+    int rows = minRows;
+    int cols = minCols;
+
+    int patternRows = 0;
+    int patternCols = 0;
+
+    pf = fopen(filePath, "rt");
+    if (pf == NULL) return 0;
+
+    line = malloc(sizeof(char) * (lineLength + 1));
+    if (line == NULL) {
+        fclose(pf);
+        return 0;
+    };
+    *(line + lineLength) = '\0';
+
+    fgets(line, lineLength, pf);
+
+    while (fgets(line, lineLength, pf)) {
+        row = line;
+        sep = strrchr(line, ';');
+        if (sep == NULL) continue;
+
+        *sep = '\0';
+        col = sep + 1;
+
+        sscanf(row, "%d", &rowInt);
+        sscanf(col, "%d", &colInt);
+
+        patternRows = MAX(rowInt, patternRows);
+        patternCols = MAX(colInt, patternCols);
+    }
+
+    rows = MAX(patternRows, rows);
+    cols = MAX(patternCols, cols);
+
+    pGame->dashboard = new2DArray(rows, cols);
+    pGame->rows = rows;
+    pGame->cols = cols;
+    pGame->cellsAlive = 0;
+    pGame->generation = 0;
+
+    setDashboardCenter(pGame);
+
+    fillDashboard(pGame, DEAD_CELL);
+
+    pattern.arr = new2DArray(patternRows, patternCols);
+    pattern.rows = patternRows;
+    pattern.cols = patternCols;
+
+    setPatternCenter(&pattern);
+
+    fillPattern(&pattern, DEAD_CELL);
+
+    rewind(pf);
+    fgets(line, lineLength, pf);
+
+    while (fgets(line, lineLength, pf)) {
+        row = line;
+        sep = strrchr(line, ';');
+        if (sep == NULL) continue;
+
+        *sep = '\0';
+        col = sep + 1;
+
+        sscanf(row, "%d", &rowInt);
+        sscanf(col, "%d", &colInt);
+
+        pattern.arr[rowInt - 1][colInt - 1] = ALIVE_CELL;
+        pGame->cellsAlive++;
+    }
+
+    pGame->cellsDead = (cols * rows) - pGame->cellsAlive;
+
+    drawPatternInDashboard(pGame, &pattern);
+    destroy2DArray(pattern.arr, pattern.rows, pattern.cols);
+
+    fclose(pf);
+    free(line);
+
+    return 1;
 }
 
 void startGameByConsole(TGame* pGame, const int maxGeneration, const int delayBetweenGenerations) {
