@@ -75,7 +75,8 @@ char** new2DArray(const int rows, const int cols) {
 
 void sleep(int miliseconds) {
     const clock_t startTime = clock();
-    while (clock() < (startTime + miliseconds));
+    while (clock() < (startTime + miliseconds))
+        ;
 }
 
 int strcmpi(const char* str01, const char* str02) {
