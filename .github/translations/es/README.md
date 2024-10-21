@@ -25,7 +25,7 @@
 </h4>
 
 <p align="center">
-    <a href="#">
+    <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw">
         <img src="../../statics/preview.png" width="800" alt="Vista previa">
     </a>
 </p>
