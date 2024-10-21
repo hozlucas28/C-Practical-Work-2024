@@ -75,8 +75,24 @@ void drawPatternInDashboard(TGame* pGame, TPattern* pPattern) {
     size_t pI = 0;
     size_t pJ = 0;
 
-    const int startRow = pGame->center[0] - pPattern->center[0];
-    const int startCol = pGame->center[1] - pPattern->center[1];
+    int startRow;
+    int startCol;
+
+    if (pPattern->rows > pGame->rows || pPattern->cols > pGame->cols) {
+        destroy2DArray(pGame->dashboard, pGame->rows, pGame->cols);
+
+        pGame->dashboard = new2DArray(pPattern->rows, pPattern->cols);
+        pGame->rows = pPattern->rows;
+        pGame->cols = pPattern->cols;
+        pGame->cellsDead = (pGame->rows * pGame->cols) - pGame->cellsAlive;
+
+        setDashboardCenter(pGame);
+
+        fillDashboard(pGame, DEAD_CELL);
+    }
+
+    startRow = pGame->center[0] - pPattern->center[0];
+    startCol = pGame->center[1] - pPattern->center[1];
 
     for (i = startRow; pI < pPattern->rows; i++) {
         if (i < 0) continue;

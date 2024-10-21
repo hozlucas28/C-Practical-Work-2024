@@ -29,7 +29,10 @@ int countAliveNeighbors(TGame* pGame, const int row, const int col, const int ra
  * @param pGame Pointer to the Conway's Game of Life structure where the pattern will be drawn.
  * @param pattern Pattern to be drawn.
  *
- * @warning The pattern must be `glider`, `toad`, `press`, or `glider cannon`.
+ * @warning The pattern must be one of the following: `glider`, `toad`, `beacon`, or `glider
+ * cannon`. If the number of rows or columns of the Conway's Game of Life board is less than the
+ * number of rows or columns of the pattern, the board will be resized to match the pattern's
+ * dimensions.
  */
 void drawPattern(TGame* pGame, const char* pattern);
 
