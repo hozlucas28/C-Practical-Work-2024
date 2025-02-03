@@ -58,11 +58,11 @@ Este repositorio contiene el trabajo práctico de la materia Tópicos de Program
 
 1. Clona el repositorio en tu dispositivo e instala el IDE [CodeBlocks](https://www.codeblocks.org/) con MinGW.
 
-2. Abre los archivos [src.cbp](./src/src.cbp) (proyecto principal) y [libs.cbp](./libs/libs.cbp) (proyecto con las librerías) con la aplicación CodeBlocks. Estos archivos se encuentran dentro del repositorio clonado.
+2. Abre los archivos [src.cbp](../../../src/src.cbp) (proyecto principal) y [libs.cbp](../../../libs/libs.cbp) (proyecto con las librerías) con la aplicación CodeBlocks. Estos archivos se encuentran dentro del repositorio clonado.
 
-3. Selecciona el proyecto [libs.cbp](./libs/libs.cbp) (proyecto con las librerías) y compílalo en modo Release y en modo Debug.
+3. Selecciona el proyecto [libs.cbp](../../../libs/libs.cbp) (proyecto con las librerías) y compílalo en modo Release y en modo Debug.
 
-4. Selecciona el proyecto [src.cbp](./src/src.cbp) (proyecto principal) y ejecútalo en modo Release para disfrutar del Juego de la Vida de Conway.
+4. Selecciona el proyecto [src.cbp](../../../src/src.cbp) (proyecto principal) y ejecútalo en modo Release para disfrutar del Juego de la Vida de Conway.
 
 ### Argumentos del programa
 
@@ -86,9 +86,9 @@ Este repositorio contiene el trabajo práctico de la materia Tópicos de Program
 
 ### Problemas conocidos
 
-| Problema                                                              | Solución                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| :-------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Proyecto [src.cbp](./src/src.cbp) (proyecto principal) no compila** | _Selecciona el proyecto [libs.cbp](./libs/libs.cbp) (proyecto con las librerías) y compílalo en modo Release y en modo Debug. Luego, selecciona el proyecto [src.cbp](./src/src.cbp) (proyecto principal), haz clic derecho sobre este, elige la opción `Build Options` y ve a la pestaña `Linker settings`. Allí, añade los archivos `libs.a` que se encuentran dentro de las carpetas `libs/bin/Debug` y `libs/bin/Release`. Finalmente vuelve a intentar compilar el proyecto principal._ |
+| Problema                                                                     | Solución                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| :--------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Proyecto [src.cbp](../../../src/src.cbp) (proyecto principal) no compila** | _Selecciona el proyecto [libs.cbp](../../../libs/libs.cbp) (proyecto con las librerías) y compílalo en modo Release y en modo Debug. Luego, selecciona el proyecto [src.cbp](../../../src/src.cbp) (proyecto principal), haz clic derecho sobre este, elige la opción `Build Options` y ve a la pestaña `Linker settings`. Allí, añade los archivos `libs.a` que se encuentran dentro de las carpetas `libs/bin/Debug` y `libs/bin/Release`. Finalmente vuelve a intentar compilar el proyecto principal._ |
 
 ## Estructura de la aplicación
 
@@ -168,67 +168,67 @@ C-Practical-Work-2024/
 └── README.md
 ```
 
--   **[.github](./.github)** - Archivos relacionados a la documentación de la aplicación y a la integración continua.
+-   **[.github](../../../.github)** - Archivos relacionados a la documentación de la aplicación y a la integración continua.
 
-    -   **[statics](./.github/statics)** - Archivos estáticos (imágenes, videos, diagramas, etc.).
-    -   **[translations](./.github/translations)** - Traducciones de los archivos con extensión `.md` (Markdown).
-    -   **[workflows](./.github/workflows)** - Flujos de trabajo de las GitHub Actions.
+    -   **[statics](../../../.github/statics)** - Archivos estáticos (imágenes, videos, diagramas, etc.).
+    -   **[translations](../../../.github/translations)** - Traducciones de los archivos con extensión `.md` (Markdown).
+    -   **[workflows](../../../.github/workflows)** - Flujos de trabajo de las GitHub Actions.
 
--   **[libs](./libs)** - Proyecto con las librerías necesarias para la ejecución del proyecto principal de aplicación.
+-   **[libs](../../../libs)** - Proyecto con las librerías necesarias para la ejecución del proyecto principal de aplicación.
 
-    -   **[libs.cbp](./libs/libs.cbp)** - Archivo de configuración del proyecto.
-    -   **[macros.h](./libs/macros.h)** - Archivo con las macros esenciales del proyecto.
-    -   **[main.h](./libs/main.h)** - Archivo que indexa todos los archivos `.h` del proyecto.
-    -   **[utilities.c](./libs/utilities.c)** - Archivo con el desarrollo de los prototipos de función presentes en `utilities.h`.
-    -   **[utilities.h](./libs/utilities.h)** - Archivo con los prototipos de función de uso común.
-    -   **[validators.c](./libs/validators.c)** - Archivo con el desarrollo de los prototipos de función presentes en `validators.h`.
-    -   **[validators.h](./libs/validators.h)** - Archivo con prototipos de funciones relacionadas con procesos de validación.
+    -   **[libs.cbp](../../../libs/libs.cbp)** - Archivo de configuración del proyecto.
+    -   **[macros.h](../../../libs/macros.h)** - Archivo con las macros esenciales del proyecto.
+    -   **[main.h](../../../libs/main.h)** - Archivo que indexa todos los archivos `.h` del proyecto.
+    -   **[utilities.c](../../../libs/utilities.c)** - Archivo con el desarrollo de los prototipos de función presentes en `utilities.h`.
+    -   **[utilities.h](../../../libs/utilities.h)** - Archivo con los prototipos de función de uso común.
+    -   **[validators.c](../../../libs/validators.c)** - Archivo con el desarrollo de los prototipos de función presentes en `validators.h`.
+    -   **[validators.h](../../../libs/validators.h)** - Archivo con prototipos de funciones relacionadas con procesos de validación.
 
-    -   **[game](./libs/game)** - Funciones y estructuras para crear e interactuar con el Juego de la Vida de Conway.
+    -   **[game](../../../libs/game)** - Funciones y estructuras para crear e interactuar con el Juego de la Vida de Conway.
 
-        -   **[macros.h](./libs/game/macros.h)** - Archivo con macros.
-        -   **[main.h](./libs/game/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `games`.
-        -   **[methods.c](./libs/game/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
-        -   **[methods.h](./libs/game/methods.h)** - Archivo con los prototipos de función relacionados a los métodos del Juego de la Vida de Conway.
-        -   **[structs.h](./libs/game/methods.h)** - Archivo con estructuras.
+        -   **[macros.h](../../../libs/game/macros.h)** - Archivo con macros.
+        -   **[main.h](../../../libs/game/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `games`.
+        -   **[methods.c](../../../libs/game/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
+        -   **[methods.h](../../../libs/game/methods.h)** - Archivo con los prototipos de función relacionados a los métodos del Juego de la Vida de Conway.
+        -   **[structs.h](../../../libs/game/methods.h)** - Archivo con estructuras.
 
-    -   **[patterns](./libs/patterns)** - Funciones y estructuras para crear patrones con células.
+    -   **[patterns](../../../libs/patterns)** - Funciones y estructuras para crear patrones con células.
 
-        -   **[constructors.c](./libs/patterns/constructors.c)** - Archivo con el desarrollo de los prototipos de función presentes en `constructors.h`.
-        -   **[constructors.h](./libs/patterns/constructors.h)** - Archivo con los prototipos de función relacionados a la creación de patrones.
-        -   **[macros.h](./libs/patterns/macros.h)** - Archivo con macros.
-        -   **[main.h](./libs/patterns/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `patterns`.
-        -   **[methods.c](./libs/patterns/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
-        -   **[methods.h](./libs/patterns/methods.h)** - Archivo con los prototipos de función relacionados a los métodos de los patrones.
-        -   **[structs.h](./libs/patterns/methods.h)** - Archivo con estructuras.
+        -   **[constructors.c](../../../libs/patterns/constructors.c)** - Archivo con el desarrollo de los prototipos de función presentes en `constructors.h`.
+        -   **[constructors.h](../../../libs/patterns/constructors.h)** - Archivo con los prototipos de función relacionados a la creación de patrones.
+        -   **[macros.h](../../../libs/patterns/macros.h)** - Archivo con macros.
+        -   **[main.h](../../../libs/patterns/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `patterns`.
+        -   **[methods.c](../../../libs/patterns/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
+        -   **[methods.h](../../../libs/patterns/methods.h)** - Archivo con los prototipos de función relacionados a los métodos de los patrones.
+        -   **[structs.h](../../../libs/patterns/methods.h)** - Archivo con estructuras.
 
--   **[src](./src)** - Proyecto principal de la aplicación.
+-   **[src](../../../src)** - Proyecto principal de la aplicación.
 
-    -   **[macros.h](./src/macros.h)** - Archivo con las principales macros del proyecto.
-    -   **[main.c](./src/main.c)** - Archivo de ejecución principal.
-    -   **[src.cbp](./src/src.cbp)** - Archivo de configuración del proyecto.
-    -   **[structs.h](./src/structs.h)** - Archivo con las principales estructuras para configurar el proyecto.
-    -   **[utilities.c](./src/utilities.c)** - Archivo con el desarrollo de los prototipos de función presentes en `utilities.h`.
-    -   **[utilities.h](./src/utilities.h)** - Archivo con los prototipos de función para configurar el proyecto.
-    -   **[validators.c](./src/validators.c)** - Archivo con el desarrollo de los prototipos de función presentes en `utilities.h`.
-    -   **[validators.h](./src/validators.h)** - Archivo con los prototipos de función para validar los argumentos del proyecto.
+    -   **[macros.h](../../../src/macros.h)** - Archivo con las principales macros del proyecto.
+    -   **[main.c](../../../src/main.c)** - Archivo de ejecución principal.
+    -   **[src.cbp](../../../src/src.cbp)** - Archivo de configuración del proyecto.
+    -   **[structs.h](../../../src/structs.h)** - Archivo con las principales estructuras para configurar el proyecto.
+    -   **[utilities.c](../../../src/utilities.c)** - Archivo con el desarrollo de los prototipos de función presentes en `utilities.h`.
+    -   **[utilities.h](../../../src/utilities.h)** - Archivo con los prototipos de función para configurar el proyecto.
+    -   **[validators.c](../../../src/validators.c)** - Archivo con el desarrollo de los prototipos de función presentes en `utilities.h`.
+    -   **[validators.h](../../../src/validators.h)** - Archivo con los prototipos de función para validar los argumentos del proyecto.
 
-    -   **[sdl](./src/sdl)** - Funciones para interactuar con la librería SDL2.
+    -   **[sdl](../../../src/sdl)** - Funciones para interactuar con la librería SDL2.
 
-        -   **[SDL2](./src/sdl/SDL2)** - Librería SDL2.
+        -   **[SDL2](../../../src/sdl/SDL2)** - Librería SDL2.
 
-        -   **[main.h](./src/sdl/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `sdl`.
-        -   **[methods.c](./src/sdl/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
-        -   **[methods.h](./src/sdl/methods.h)** - Archivo con los prototipos de función que permiten interactuar con la librería SDL2.
+        -   **[main.h](../../../src/sdl/main.h)** - Archivo que indexa todos los archivos `.h` dentro de la carpeta `sdl`.
+        -   **[methods.c](../../../src/sdl/methods.c)** - Archivo con el desarrollo de los prototipos de función presentes en `methods.h`.
+        -   **[methods.h](../../../src/sdl/methods.h)** - Archivo con los prototipos de función que permiten interactuar con la librería SDL2.
 
-    -   **[statics](./src/statics)** - Archivos (imágenes, videos, diagramas, etc.).
+    -   **[statics](../../../src/statics)** - Archivos (imágenes, videos, diagramas, etc.).
 
-        -   **[initial-state.csv](./src/statics/initial-state.txt)** - Archivo con el estado inicial de la aplicación.
+        -   **[initial-state.csv](../../../src/statics/initial-state.txt)** - Archivo con el estado inicial de la aplicación.
 
--   **[.clang-format](./.clang-format)** - Archivo de configuración de la herramienta de formateo de código `clang-format`.
--   **[.gitignore](./.gitignore)** - Archivo de configuración de Git para evitar el rastreo de archivos no deseados.
--   **[LICENSE](./LICENSE)** - Licencia del proyecto.
--   **[README.md](./README.md)** - Archivo Markdown con la documentación general de la aplicación y del repositorio.
+-   **[.clang-format](../../../.clang-format)** - Archivo de configuración de la herramienta de formateo de código `clang-format`.
+-   **[.gitignore](../../../.gitignore)** - Archivo de configuración de Git para evitar el rastreo de archivos no deseados.
+-   **[LICENSE](../../../LICENSE)** - Licencia del proyecto.
+-   **[README.md](../../../README.md)** - Archivo Markdown con la documentación general de la aplicación y del repositorio.
 
 ## Flujo de trabajo del equipo
 
