@@ -2,9 +2,9 @@
     Trabajo Práctico de C [2024]
 </h1>
 
-<h4 align="center">
-    Repositorio del trabajo práctico para la materia Tópicos de Programación - <a href="https://www.unlam.edu.ar/">UNLaM</a> (Universidad Nacional de La Matanza).
-</h4>
+<p align="center">
+    <strong>Repositorio del trabajo práctico para la materia Tópicos de Programación - <a href="https://www.unlam.edu.ar/">UNLaM</a> (Universidad Nacional de La Matanza).</strong>
+</p>
 
 <p align="center">
     <a href="#----resumen">Resumen</a> •
@@ -20,9 +20,9 @@
     <a href="#----agradecimientos">Agradecimientos</a>
 </p>
 
-<h4 align="center">
+<p align="center">
     <a href="../../../README.md">[ Versión en Inglés ]</a>
-</h4>
+</p>
 
 <p align="center">
     <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw">
@@ -31,7 +31,7 @@
 </p>
 
 <p align="center">
-    <strong><a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw" target="_blank">(video demostrativo)</a></strong>
+    <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw" target="_blank">(video demostrativo)</a>
 </p>
 
 ## Resumen

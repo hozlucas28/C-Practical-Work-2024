@@ -2,9 +2,9 @@
     C Practical Work [2024]
 </h1>
 
-<h4 align="center">
-    Repository for the practical work of the Programming Topics course - <a href="https://www.unlam.edu.ar/">UNLaM</a> (National University of La Matanza).
-</h4>
+<p align="center">
+    <strong>Repository for the practical work of the Programming Topics course - <a href="https://www.unlam.edu.ar/">UNLaM</a> (National University of La Matanza).</strong>
+</p>
 
 <p align="center">
     <a href="#----summary">Summary</a> •
@@ -20,9 +20,9 @@
     <a href="#----acknowledgments">Acknowledgments</a>
 </p>
 
-<h4 align="center">
+<p align="center">
     <a href="./.github/translations/es/README.md">[ Spanish Version ]</a>
-</h4>
+</p>
 
 <p align="center">
     <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw">
@@ -31,7 +31,7 @@
 </p>
 
 <p align="center">
-    <strong><a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw" target="_blank">(demonstration video)</a></strong>
+    <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw" target="_blank">(demonstration video)</a>
 </p>
 
 ## Summary
