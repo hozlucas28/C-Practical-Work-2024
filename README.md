@@ -296,7 +296,7 @@ C-Practical-Work-2024/
 
 ## License
 
-This repository is under the [MIT License](../LICENSE). For more information about what is permitted with the contents of this repository, visit [choosealicense.com](https://choosealicense.com/licenses/).
+This repository is under the [MIT License](./LICENSE). For more information about what is permitted with the contents of this repository, visit [choosealicense.com](https://choosealicense.com/licenses/).
 
 ## Acknowledgments
 
