@@ -235,38 +235,48 @@ C-Practical-Work-2024/
 ## Team workflow
 
 ```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'dark', 'gitGraph': {'showBranches': true, 'showCommitLabel': true, 'mainBranchName': 'Master', 'parallelCommits': true}} }%%
-    gitGraph:
-        commit
-        commit tag: "v0.0.1"
-        branch develop
-        branch "Giannotti Tiago"
-        commit
-        commit
-        checkout develop
-        branch "Hoz Lucas"
-        commit
-        commit
-        checkout develop
-        branch "Huergo Estefania"
-        commit
-        commit
-        checkout develop
-        branch "Linares Guido"
-        commit
-        commit
-        checkout develop
-        branch "Quiroga Ferney"
-        commit
-        commit
-        checkout develop
-        merge "Hoz Lucas"
-        merge "Giannotti Tiago"
-        merge "Huergo Estefania"
-        merge "Quiroga Ferney"
-        merge "Linares Guido"
-        checkout Master
-        merge develop tag: "v1.0.0"
+---
+config:
+  logLevel: debug
+  theme: base
+  gitGraph:
+    showBranches: true
+    showCommitLabel: true
+    mainBranchName: Master
+    parallelCommits: true
+---
+
+gitGraph:
+    commit
+    commit tag: "v0.0.1"
+    branch develop
+    branch "Giannotti Tiago"
+    commit
+    commit
+    checkout develop
+    branch "Hoz Lucas"
+    commit
+    commit
+    checkout develop
+    branch "Huergo Estefania"
+    commit
+    commit
+    checkout develop
+    branch "Linares Guido"
+    commit
+    commit
+    checkout develop
+    branch "Quiroga Ferney"
+    commit
+    commit
+    checkout develop
+    merge "Hoz Lucas"
+    merge "Giannotti Tiago"
+    merge "Huergo Estefania"
+    merge "Quiroga Ferney"
+    merge "Linares Guido"
+    checkout Master
+    merge develop tag: "v1.0.0"
 ```
 
 ### Tags
