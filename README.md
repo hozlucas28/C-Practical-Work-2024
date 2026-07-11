@@ -13,7 +13,7 @@
     <a href="#----features">Features</a> •
     <a href="#----installation">Installation</a> •
     <a href="#----known-issues">Known Issues</a> •
-    <a href="#----application-structure">Application Structure</a> •
+    <a href="#----application-structure">Application Structure</a>
     <br>
     <a href="#----team-workflow">Team Workflow</a> •
     <a href="#----development-team">Development Team</a> •
@@ -23,17 +23,15 @@
 </p>
 
 <p align="center">
-    <a href="./.github/translations/es/README.md">[ Spanish Version ]</a>
+    <a href="./.github/translations/es/README.md">(spanish version)</a>
 </p>
 
 <p align="center">
-    <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw">
-        <img src="./.github/statics/preview.png" width="800" alt="Preview">
-    </a>
-</p>
-
-<p align="center">
-    <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw" target="_blank">(demonstration video)</a>
+    <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw" target="_blank">
+		<img src="./.github/statics/preview.png" alt="Preview" width="800">
+		<br />
+		(demonstration video)
+	</a>
 </p>
 
 ## Summary
