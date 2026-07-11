@@ -28,10 +28,10 @@
 
 <p align="center">
     <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw" target="_blank">
-			<img src="../../statics/preview.png" alt="Vista previa" width="800">
-			<br />
-			(video demostrativo)
-		</a>
+		<img src="../../statics/preview.png" alt="Vista previa" width="800">
+		<br />
+		(video demostrativo)
+	</a>
 </p>
 
 ## Resumen
