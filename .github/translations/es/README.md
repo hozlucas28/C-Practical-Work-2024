@@ -23,7 +23,7 @@
 </p>
 
 <p align="center">
-    <a href="../../../README.md">(versión en Inglés)</a>
+    <a href="../../../README.md">(versión en inglés)</a>
 </p>
 
 <p align="center">
