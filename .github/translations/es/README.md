@@ -13,7 +13,7 @@
     <a href="#----caracteristicas">Características</a> •
     <a href="#----instalacion">Instalación</a> •
     <a href="#----problemas-conocidos">Problemas conocidos</a> •
-    <a href="#----estructura-de-la-aplicación">Estructura de la aplicación</a> •
+    <a href="#----estructura-de-la-aplicación">Estructura de la aplicación</a>
     <br>
     <a href="#----flujo-de-trabajo-del-equipo">Flujo de trabajo del equipo</a> •
     <a href="#----equipo-de-desarrollo">Equipo de desarrollo</a> •
@@ -23,17 +23,15 @@
 </p>
 
 <p align="center">
-    <a href="../../../README.md">[ Versión en Inglés ]</a>
+    <a href="../../../README.md">(versión en Inglés)</a>
 </p>
 
 <p align="center">
-    <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw">
-        <img src="../../statics/preview.png" width="800" alt="Vista previa">
-    </a>
-</p>
-
-<p align="center">
-    <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw" target="_blank">(video demostrativo)</a>
+    <a href="https://youtu.be/o5M8t04p9Es?si=9KL47cKXzm7n2_Mw" target="_blank">
+			<img src="../../statics/preview.png" alt="Vista previa" width="800">
+			<br />
+			(video demostrativo)
+		</a>
 </p>
 
 ## Resumen
