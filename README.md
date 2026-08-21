@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-    <strong>Repository for the practical work of the Programming Topics subject</strong>
+    <strong>Repository for the practical work of the Programming Topics course</strong>
     <br>
     <strong>- <a href="https://www.unlam.edu.ar/">UNLaM</a> (National University of La Matanza) -</strong>
 </p>
@@ -36,7 +36,7 @@
 
 ## Summary
 
-This repository contains the practical work for the Programming Topics subject at the [National University of La Matanza (UNLaM)](https://www.unlam.edu.ar/). The practical work involves the development of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) using the C programming language and the [Simple DirectMedia Layer (SDL)](https://www.libsdl.org/) library for the graphical interface.
+This repository contains the practical work for the Programming Topics course at the [National University of La Matanza (UNLaM)](https://www.unlam.edu.ar/). The practical work involves the development of [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) using the C programming language and the [Simple DirectMedia Layer (SDL)](https://www.libsdl.org/) library for the graphical interface.
 
 ## Features
 
@@ -308,4 +308,4 @@ This repository is under the [MIT license](./LICENSE). For more information abou
 
 ## Acknowledgments
 
-We would like to thank the teachers from the [UNLaM](https://www.unlam.edu.ar/) Programming subject for their support and guidance.
+We would like to thank the teachers from the [UNLaM](https://www.unlam.edu.ar/) Programming course for their support and guidance.
